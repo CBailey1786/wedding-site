@@ -19,7 +19,7 @@ const Navbar = () => {
         aria-controls="mobile-menu"
       >
 
-<i />
+        <i />
       </button>
 
       {/* Backdrop */}
@@ -43,7 +43,7 @@ const Navbar = () => {
         <NavLink to="/" end className="logoLink" aria-label="Home">
           <img className="nhmLogo" src={nhmLogo} alt="natural history museum outline" />
         </NavLink>
-        
+
 
         {/* Right links (desktop) */}
         <div className="navBarSection navBarSection--right">
@@ -56,8 +56,8 @@ const Navbar = () => {
         {/* Side drawer (mobile) */}
         <aside id="mobile-menu" className={`sideMenu ${isOpen ? "open" : ""}`}>
           <button className="closeBtn" onClick={closeMenu} aria-label="Close menu">
-        <span></span>
-        <span></span>
+            <span></span>
+            <span></span>
           </button>
 
           <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>

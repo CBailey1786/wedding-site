@@ -1,7 +1,6 @@
 #root {
   display: flex;
   flex-direction: column;
-  height: 100vh;
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
@@ -10,11 +9,48 @@
 
   font-family: "Sorts Mill Goudy", serif;
   font-weight: 400;
+  padding: 5rem  0 5rem 0;
+  align-self: start;
 
 
 
 }
 
+.pageBody {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    position: relative;
+    
+
+  width: min(100%, 1200px); /* 1rem gutters on each side */
+  margin-inline: auto;
+}
+
+/* good global default so padding doesn't increase the width */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+/* base: fluid up to 1200 */
+.pageBody {
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  padding-inline: 1rem; /* gutters */
+}
+
+/* lock: at ≥1200px viewport, freeze at exactly 1200px */
+@media (min-width: 1200px) {
+  .pageBody {
+    width: 900px;     /* hard cap */
+    max-width: none;   /* avoid re-expanding due to other rules */
+  }
+}
 
 .actionButton{
   background-color: #283B34;
@@ -23,8 +59,6 @@
 }
 
 .actionButton:hover{
-  background-color: white;
-  color: #283B34;
-  border: 1px solid #283B34;
-  border-radius: 10px;
+  opacity: 90%;
+  border: 1px #283B34 solid;
 }

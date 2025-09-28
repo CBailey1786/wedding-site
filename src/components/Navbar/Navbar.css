@@ -9,6 +9,7 @@
   margin-bottom: 2rem;
   position: relative;
   z-index: auto; 
+  align-items: end;
 }
 
 
@@ -39,7 +40,7 @@
   white-space: nowrap;
 }
 .nav-link:hover { color: white; background-color: #283B34; }
-.nav-link.active { color: black; }
+.nav-link.active { color: black; text-decoration: underline; }
 .nav-link.active:hover { color: white; }
 
 /* Center logo */
@@ -186,12 +187,12 @@
 
 /* ===== BREAKPOINTS ===== */
 /* Desktop: hide burger, show desktop links */
-@media (min-width: 1100px) {
+@media (min-width: 1200px) {
   .burger { display: none; }
   .navBarSection { display: flex; }
 }
 /* Mobile: hide desktop link groups (drawer handles links) */
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .navBarSection { display: none; }
   .navbar { margin-top: 1.5rem; }
 }

@@ -1,12 +1,12 @@
 import React from "react";
 import './Home.css'
 import nhmOutside from '../../src/assets/nhm-outside.png';
-
+import { NavLink } from "react-router-dom";
 
 
 const Home = () => {
     return (
-        <div className = "homeBody">
+        <div className = "pageBody">
         <div className = "namesSection">
             <h1 className = "names">Amanda </h1> <h2 className = "namesAnd">and</h2> <h1 className = "names"> Cameron</h1>
         </div>
@@ -18,7 +18,10 @@ const Home = () => {
         <h4>More information and formal invitations to follow.</h4>
 </div>
 
-        <button className="actionButton">Hotels</button>
+        <NavLink to="/Hotels" end className="logoLink" aria-label="Home">
+          <button className="actionButton">Hotels</button>
+        </NavLink>
+        
 
         <img className = "nhmImage" src={nhmOutside} alt="natural history museum outside" />
         </div>

@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
+import Hotels from './pages/Hotels';
 
 // TEMP: add stubs until you create these pages
-const About = () => <div>About</div>;
 const Contact = () => <div>Contact</div>;
 const Blogs = () => <div>Blogs</div>;
 const SignUp = () => <div>Sign Up</div>;
@@ -17,7 +17,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/Hotels" element={<Hotels />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/sign-up" element={<SignUp />} />

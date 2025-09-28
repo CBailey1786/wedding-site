@@ -4,10 +4,19 @@ h1, h2 {
     margin: 0;
 }
 
+h3 {
+    margin-bottom: 0;
+}
+
 h4 { 
     margin: 0;
     margin-top: 1.2rem;
 }
+
+.blurb{
+    text-align: start;
+}
+
 
 .namesSection {
     display: flex;
@@ -16,7 +25,7 @@ h4 {
 }
 
 
-.names {
+.header {
     width: 250px;
     text-transform: uppercase;
     font-size: 2.25rem; /* ~36px */ 
@@ -61,4 +70,28 @@ h4 {
 .nhmImage {
     width: 90%;
     border-radius: 1rem; /* ~16px */
+}
+
+.hotelCardSection{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+    margin-bottom: 2rem;
+}
+
+.miniCards{
+    width: 100%;
+    display: flex;
+ 
+    flex-direction: row;
+    gap: 3rem;
+    position: relative;
+    margin-top: 2rem;
+
+}
+
+@media (max-width: 850px) {
+  .miniCards {
+    flex-direction: column;
+  }
 }
