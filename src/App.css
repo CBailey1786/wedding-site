@@ -62,3 +62,38 @@
   opacity: 90%;
   border: 1px #283B34 solid;
 }
+
+
+
+h1, h2 {
+    margin: 0;
+}
+
+h3 {
+    margin-bottom: 0;
+}
+
+h4 { 
+    margin: 0;
+    margin-top: 1.2rem;
+}
+
+.blurb{
+    text-align: start;
+    margin-bottom: 1.6rem;
+}
+
+
+.namesSection {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+
+.header {
+    width: 250px;
+    text-transform: uppercase;
+    font-size: 2.25rem; /* ~36px */ 
+    text-align: center;
+}

@@ -17,7 +17,7 @@ const Hotels = () => {
                 blurb:
                     "Since opening its doors over 150 years ago, The Langham has established itself as a London icon. Expect elegance and exceptional service at every turn.",
                 address: "1C Portland Place, London W1B 1JA",
-                displayWebsite: "https://www.langhamhotels.com",
+                displayWebsite: "www.langhamhotels.com",
                 website: "https://www.langhamhotels.com/en/the-langham/london",
                 rate: "TBC",
                 details: 'TBC',
@@ -31,8 +31,8 @@ const Hotels = () => {
                 blurb:
                     "Perched high above the bustle of London life, The Treehouse offers modern luxury with a playful twist. Spectacular views are guaranteed.",
                 address: "14-15 Langham Place, London W1B 2QS",
-                displayWebsite: "https://www.treehousehotels.com",
-                website: "www.treehousehotels.com/london",
+                displayWebsite: "www.treehousehotels.com",
+                website: "https://www.treehousehotels.com/london",
                 rate: "TBC",
                 details: 'TBC',
             },

@@ -5,6 +5,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import Hotels from './pages/Hotels';
+import Venue from './pages/Venue';
 
 // TEMP: add stubs until you create these pages
 const Contact = () => <div>Contact</div>;
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Hotels" element={<Hotels />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/Venue" element={<Venue />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Routes>
