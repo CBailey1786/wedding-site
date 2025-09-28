@@ -74,14 +74,14 @@ const Hotels = () => {
             </div>
 
             <div className="miniCards">
-                <AdditionalHotels name="The Royal Horseguards" address="2 Whitehall Ct, London SW1A 2EJ" displayWebsite="https://www.royalhorseguardshotel.com" website = "https://www.royalhorseguardshotel.com/" />
-                <AdditionalHotels name="The Corinthia" address="10 Whitehall Pl, London SW1A 2BD" displayWebsite="https://www.corinthia.com" website = "https://www.corinthia.com/en-gb/london/" />
+                <AdditionalHotels name="The Royal Horseguards" address="2 Whitehall Ct, London SW1A 2EJ" displayWebsite="www.royalhorseguardshotel.com" website = "https://www.royalhorseguardshotel.com/" />
+                <AdditionalHotels name="The Corinthia" address="10 Whitehall Pl, London SW1A 2BD" displayWebsite="www.corinthia.com" website = "https://www.corinthia.com/en-gb/london/" />
 
             </div>
 
             <div className="miniCards">
-                <AdditionalHotels name="Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="https://www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
-                <AdditionalHotels name="The Churchill" address="30 Portman Square, London W1H 7BH" displayWebsite="https://www.hyatt.com" website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
+                <AdditionalHotels name="Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
+                <AdditionalHotels name="The Churchill" address="30 Portman Square, London W1H 7BH" displayWebsite="www.hyatt.com" website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
 
             </div>
 
