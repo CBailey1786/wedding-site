@@ -1,17 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import './App.css';
+import Navbar from './components/Navbar/Navbar';
+import Home from './pages/Home';
+
+// TEMP: add stubs until you create these pages
+const About = () => <div>About</div>;
+const Contact = () => <div>Contact</div>;
+const Blogs = () => <div>Blogs</div>;
+const SignUp = () => <div>Sign Up</div>;
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center text-center px-6">
-      <h1 className="text-4xl font-bold mb-4">Amanda & Cameron</h1>
-      <p className="text-xl mb-2">Save the Date</p>
-      <p className="text-2xl font-semibold mb-6">13 June 2026</p>
-      <p className="text-md">Formal invitation to follow</p>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/sign-up" element={<SignUp />} />
+      </Routes>
+    </Router>
   );
 }
 
-export default App
+export default App;

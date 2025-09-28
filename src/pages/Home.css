@@ -1,0 +1,72 @@
+.homeBody {
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: none;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+h4 { 
+    margin: 0;
+    margin-top: 1.2rem;
+}
+
+.namesSection {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+}
+
+
+.names {
+    width: 250px;
+    text-transform: uppercase;
+    font-size: 2.25rem; /* ~36px */ 
+    text-align: center;
+}
+
+.namesAnd {
+    font-family: "Fuggles", cursive;
+    font-size: 1.875rem; /* ~30px */
+    align-self: center;
+}
+
+@media screen and (max-width: 1000px) {
+  .namesSection {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .names{
+        font-size: 1.8rem; /* ~36px */
+  }
+
+  .namesAnd {
+    justify-content: center;
+    margin-bottom: 0.3rem;
+    font-size: 1.5rem;
+}
+h1, h2 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+h4 { 
+    margin: 0;
+    font-size: 0.8rem;
+    margin-top: 1.2rem;
+}
+
+}
+
+
+.nhmImage {
+    width: 90%;
+    border-radius: 1rem; /* ~16px */
+}

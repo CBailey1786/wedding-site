@@ -1,0 +1,166 @@
+/* ===== LAYOUT: 3-column grid so logo always has its own column ===== */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: end;
+  gap: 3rem;               /* was 20px */
+  padding: 1rem 1rem 0 0;     /* was 16px 16px 0 0 */
+  margin-bottom: 2rem    /* was 50px */
+}
+
+/* left/right link containers */
+.navBarSection {
+  display: flex;
+  gap: 1rem;
+  min-width: 0;               /* allow shrinking without overflow */
+  margin-bottom: 1.5625rem;   /* was 25px */
+}
+
+/* make left group right-aligned, right group left-aligned */
+.navBarSection:first-of-type { justify-content: flex-end; }
+.navBarSection:last-of-type  { justify-content: flex-start; }
+
+/* links */
+.nav-link {
+  text-decoration: none;
+  font-size: 1.25rem;         /* was 20px */
+  color: black;
+  height: fit-content;
+  padding: 0.625rem 1.25rem;  /* was 10px 20px */
+  border-radius: 0.3125rem;   /* was 5px */
+  white-space: nowrap;        /* prevents wrapping that can push under logo */
+}
+
+.nav-link:hover {
+  color: white;
+  background-color: #283B34;
+}
+.nav-link.active { color: black; }
+.nav-link.active:hover { color: white; }
+
+/* logo sits in the center column, never shrinks */
+.nhmLogo{
+  justify-self: center;
+  width: clamp(90px, 11vw, 148px); /* keeps sensible size across screens */
+  height: auto;
+  object-fit: contain;
+  
+}
+
+/* ===== Burger button ===== */
+.burger {
+    position: absolute;
+  display: none;
+  Left: 3rem;
+  top: 3rem;                 /* keeps it away from centered logo */
+  flex-direction: column;
+  justify-content: space-between;
+  width: 1.5rem;
+  height: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;   
+}
+
+.burger:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.burger span {
+  display: block;
+  height: 3px;
+  background: #283B34;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animate burger into X */
+.burger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.burger.open span:nth-child(2) { opacity: 0; }
+.burger.open span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+/* ===== Mobile breakpoint ===== */
+@media screen and (max-width: 1100px) {
+  /* hide the side link groups by default */
+  .navBarSection {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 75%;
+    background: white;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+
+  /* show when menu is open */
+  .navBarSection.open { display: flex; }
+
+  .navbar{margin-top: 1.5rem;}
+
+  /* show burger, keep logo centered */
+  .burger { display: flex;    -moz-focus-inner { border: 0; };}
+  .nhmLogo { margin: 0 auto; }
+}
+
+.sideMenu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 60%;
+  max-width: 340px;
+  background: #fff;
+  box-shadow: -2px 0 12px rgba(0,0,0,0.18);
+  padding: 2.25rem 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  /* start off-canvas */
+  transform: translateX(-120%);
+  transition: transform 0.6s ease-in-out;
+  z-index: 1001;
+}
+.sideMenu.open {
+  transform: translateX(0);
+}
+
+.closeBtn{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2rem;
+    padding: 0 0.5rem  0 0.5rem;
+    background: none;
+    color: #283B34;
+
+      flex-direction: column;
+  justify-content: space-between;
+  width: 1.5rem;
+  height: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001;   
+}
+
+.closeBtn span{
+  display: block;
+  height: 3px;
+  background: #283B34;
+  border-radius: 2px
+}
+
+.closeBtn span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+.closeBtn span:nth-child(2) { transform: translateY(7.5px) rotate(-45deg); }
