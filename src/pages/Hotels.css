@@ -15,6 +15,7 @@ h4 {
 
 .blurb{
     text-align: start;
+    margin-bottom: 1.6rem;
 }
 
 
@@ -86,8 +87,6 @@ h4 {
     flex-direction: row;
     gap: 3rem;
     position: relative;
-    margin-top: 2rem;
-
 }
 
 @media (max-width: 850px) {

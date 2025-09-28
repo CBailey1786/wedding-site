@@ -15,10 +15,7 @@ const HotelCard = ({ name, img, info, reversed = false }) => {
             <div>{info.address}</div>
           </div>
 
-          <div>
-            <div className="hotelCardInfoLabel">WEBSITE</div>
-            <a href={info.website} target="_blank">{info.displayWebsite}</a>
-          </div>
+
 
           <div>
             <div className="hotelCardInfoLabel">RATE</div>
@@ -28,6 +25,10 @@ const HotelCard = ({ name, img, info, reversed = false }) => {
           <div>
             <div className="hotelCardInfoLabel">BOOKING DETAILS</div>
             <div>{info.details}</div>
+          </div>
+          
+        <div className = "websiteButton">
+            <a href={info.website} target="_blank">Visit their website</a>
           </div>
         </div>
 

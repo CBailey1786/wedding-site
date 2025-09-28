@@ -35,11 +35,12 @@
 .hotelCardMedia{
     margin-bottom: 1rem;
     margin-top: 1rem;
+    height: 100%;
 }
 /* image fills its half */
 .hotelCardMedia img {
   display: block;
-  width: 80%;
+  width: 90%;
   height: auto;        /* or height: 100%; object-fit: cover; if you want cropped */
   object-fit: cover;
   justify-self: end;
@@ -90,6 +91,11 @@
   .hotelCard.reversed .hotelCardBody {
     flex-direction: column;
   }
+
+  .hotelCard.reversed .cardHeader { text-align: left; 
+    border-top: #283B34 2px solid;
+    border-left: #283B34 1rem solid ;
+border-right: 0; }
 
   /* full width columns when stacked */
   .hotelCardInformation,
@@ -143,4 +149,17 @@
 a {
     color: #283B34;
 
+}
+
+.websiteButton{
+    text-align: center;
+    border: #283B34 1px solid;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: #283B34;
+    color: white;
+}
+
+.websiteButton a {
+    color: white;
 }

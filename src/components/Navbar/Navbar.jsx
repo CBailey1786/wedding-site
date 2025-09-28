@@ -71,7 +71,7 @@ const Navbar = () => {
           <NavLink to="/London" className="nav-link" onClick={closeMenu}>London</NavLink>
           <NavLink to="/FAQ" className="nav-link" onClick={closeMenu}>FAQ</NavLink>
 
-          <NavLink to="/Hotels" end className="nav-link" aria-label="Home">
+          <NavLink to="/Hotels" end className="nav-link" onClick={closeMenu} aria-label="Home">
             <button className="actionButton">Hotels</button>
           </NavLink>
         </aside>
