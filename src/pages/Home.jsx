@@ -1,5 +1,8 @@
 import React from "react";
 import './Home.css'
+import nhmOutside from '../../src/assets/nhm-outside.png';
+
+
 
 const Home = () => {
     return (
@@ -17,7 +20,7 @@ const Home = () => {
 
         <button className="actionButton">Hotels</button>
 
-        <img className = "nhmImage" src="src\assets\nhm-outside.png" alt="natural history museum outside" />
+        <img className = "nhmImage" src={nhmOutside} alt="natural history museum outside" />
         </div>
     );
 };

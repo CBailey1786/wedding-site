@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+import nhmLogo from '../../assets/natural-history-outline.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ const Navbar = () => {
         {/* Logo in center */}
         <img
           className="nhmLogo"
-          src="src/assets/natural-history-outline.png"
+          src={nhmLogo}
           alt="natural history museum outline"
         />
 
