@@ -18,9 +18,8 @@ const Navbar = () => {
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
       >
-        <span></span>
-        <span></span>
-        <span></span>
+
+<i />
       </button>
 
       {/* Backdrop */}

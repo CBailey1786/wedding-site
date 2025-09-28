@@ -1,197 +1,197 @@
-/* ===== LAYOUT: 3-column grid so logo always has its own column ===== */
+/* ===== NAVBAR (use GRID so the logo truly centers) ===== */
 .navbar {
   width: 100%;
-  display: flex;
-  justify-content: space-evenly;
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: end;
-  gap: 3rem;               /* was 20px */
-  padding: 1rem 1rem 0 0;     /* was 16px 16px 0 0 */
-  margin-bottom: 2rem    /* was 50px */
+  display: grid; /* <— was flex */
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;        /* use center, not end */
+  gap: 3rem;
+  padding: 1rem 1rem 0 0;
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: auto; 
 }
 
-.logoLink {
-  justify-self: center;      /* if using grid */
-  display: inline-flex;
-  text-decoration: none;     /* no underline around image */
-}
 
-.logoLink:focus-visible {
-  outline: 2px solid #283B34; /* accessible focus, tweak if desired */
-  border-radius: 6px;
-}
-
-/* left/right link containers */
+/* Link groups */
 .navBarSection {
   display: flex;
-  gap: 1rem;
-  min-width: 0;               /* allow shrinking without overflow */
-  margin-bottom: 1.5625rem;   /* was 25px */
+  gap: 1rem;          /* modern browsers */
+  min-width: 0;
+  margin-bottom: 1.25rem;
+}
+/* flex-gap fallback (iOS 13-) */
+@supports not (gap: 1rem) {
+  .navBarSection { margin-left: -1rem; }
+  .navBarSection > * { margin-left: 1rem; }
 }
 
-/* make left group right-aligned, right group left-aligned */
 .navBarSection:first-of-type { justify-content: flex-end; }
 .navBarSection:last-of-type  { justify-content: flex-start; }
 
-/* links */
+/* Links */
 .nav-link {
   text-decoration: none;
-  font-size: 1.25rem;         /* was 20px */
+  font-size: 1.25rem;
   color: black;
-  height: fit-content;
-  padding: 0.625rem 1.25rem;  /* was 10px 20px */
-  border-radius: 0.3125rem;   /* was 5px */
-  white-space: nowrap;        /* prevents wrapping that can push under logo */
+  /* height: fit-content;  ← not needed; can cause oddities */
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.3125rem;
+  white-space: nowrap;
 }
-
-.nav-link:hover {
-  color: white;
-  background-color: #283B34;
-}
+.nav-link:hover { color: white; background-color: #283B34; }
 .nav-link.active { color: black; }
 .nav-link.active:hover { color: white; }
 
-/* logo sits in the center column, never shrinks */
-.nhmLogo{
+/* Center logo */
+.logoLink {
+  grid-column: 2;
   justify-self: center;
-  width: clamp(90px, 11vw, 148px); /* keeps sensible size across screens */
+  display: inline-flex;
+  text-decoration: none;
+}
+.logoLink:focus { outline: none }
+.logoLink:focus-visible { outline: none } /* newer browsers */
+
+.nhmLogo{
+  width: 148px; /* fallback for older browsers */
+  width: clamp(90px, 11vw, 148px);
   height: auto;
   object-fit: contain;
-  
 }
 
-/* ===== Burger button ===== */
+/* ===== BURGER (spanless; requires <i> inside the button) ===== */
+/* JSX should be: <button class="burger"><i></i></button> */
 .burger {
-  display: flex;              /* show by default */
+  display: flex; /* mobile-first: visible by default */
   position: fixed;
-  left: 3rem;
-  top: 3rem;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 1.5rem;
-  height: 1.2rem;
+  /* keep clear of notches */
+  top: max(3rem, env(safe-area-inset-top));
+  left: max(3rem, env(safe-area-inset-right));
+  width: 28px;
+  height: 22px;
+  color: #283B34;            /* bars use currentColor */
   background: none;
-  border: none;
+  border: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 1000;  
+  z-index: 101;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  transform: translateZ(0);  /* iOS compositing nudge */
 }
-
-.burger:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.burger span {
+.burger::before,
+.burger::after,
+.burger i {
+  content: "";
   display: block;
-  height: 3px;
-  background: #283B34;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;               /* >=3px to avoid subpixel fade */
+  background: currentColor;
   border-radius: 2px;
 }
+.burger i { top: 50%; transform: translateY(-50%); }
+.burger::before { top: 0; }
+.burger::after  { bottom: 0; }
 
-@media (min-width: 1100px) {
-  .burger { display: none; }        /* hide burger on desktop */
-  .navBarSection { display: flex; } /* show desktop link groups */
-}
+.burger:focus { outline: none }
+.burger:focus-visible { outline: none } /* newer browsers */
 
-/* ===== Mobile breakpoint ===== */
-@media screen and (max-width: 1100px) {
-  /* hide the side link groups by default */
-  .navBarSection {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 75%;
-    background: white;
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  /* show when menu is open */
-  .navBarSection.open { display: flex; }
-
-  .navbar{margin-top: 1.5rem;}
-
-  /* show burger, keep logo centered */
-  .burger { display: flex;    -moz-focus-inner { border: 0; };}
-  .nhmLogo { margin: 0 auto; }
-}
-
+/* ===== SIDE MENU & BACKDROP (use fixed + dvh) ===== */
 .sideMenu {
-
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
+  height: 100vh;             /* fallback */
+}
+@supports (height: 100dvh) {
+  .sideMenu { height: 100dvh; } /* correct on iOS Safari */
+}
+.sideMenu {
+  position: fixed;
+  top: 0; left: 0;
   height: 100vh;
   width: 60%;
   max-width: 340px;
   background: #fff;
   box-shadow: -2px 0 12px rgba(0,0,0,0.18);
   padding: 4rem 1.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-
-  /* start off-canvas */
+  display: flex; flex-direction: column; gap: 1.25rem;
   transform: translateX(-120%);
   transition: transform 0.6s ease-in-out;
-  z-index: 1001;
+  z-index: 2000;                 /* above backdrop */
+  visibility: hidden; pointer-events: none;
 }
-.sideMenu.open {
-  
-  transform: translateX(0);
-}
+.sideMenu.open { transform: translateX(0); visibility: visible; pointer-events: auto; }
 
-.closeBtn{
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    font-size: 2rem;
-    padding: 0 0.5rem  0 0.5rem;
-    background: none;
-    color: #283B34;
 
-  flex-direction: column;
-  justify-content: space-between;
-  width: 1.5rem;
-  height: 1.2rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1001;   
-}
 
-.closeBtn:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-.closeBtn span{
-  display: block;
-  height: 3px;
-  background: #283B34;
-  border-radius: 2px
-}
-
-.closeBtn span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
-.closeBtn span:nth-child(2) { transform: translateY(7.5px) rotate(-45deg); }
-
+/* Backdrop: inert when closed */
 .backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
+  position: fixed;
+  inset: 0;
   background-color: #283B34;
   opacity: 0;
+  pointer-events: none;          /* inert when closed */
   transition: opacity 0.6s ease-in-out;
+  z-index: 1999;                 /* below the menu */
 }
 .backdrop.open {
   opacity: 0.32;
+  pointer-events: auto;
+}
+
+.closeBtn {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right)); /* use right for top-right */
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  color: #283B34;                 /* stroke color via currentColor */
+  z-index: 2010;                  /* above the sideMenu/backdrop */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+
+/* Two strokes forming the X */
+.closeBtn::before,
+.closeBtn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 3px;                    /* >=3px for Safari crispness */
+  background: currentColor;
+  border-radius: 2px;
+  transform-origin: center;
+}
+.closeBtn::before { transform: translate(-50%, -50%) rotate(45deg); }
+.closeBtn::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+
+.closeBtn:focus { outline: none }
+.closeBtn:focus-visible { outline: none } /* newer browsers */
+.closeBtn:focus { outline: none; box-shadow: none; }
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .sideMenu, .burger::before, .burger::after, .burger i,
+  .backdrop { transition: none !important; }
+}
+
+/* ===== BREAKPOINTS ===== */
+/* Desktop: hide burger, show desktop links */
+@media (min-width: 1100px) {
+  .burger { display: none; }
+  .navBarSection { display: flex; }
+}
+/* Mobile: hide desktop link groups (drawer handles links) */
+@media (max-width: 1100px) {
+  .navBarSection { display: none; }
+  .navbar { margin-top: 1.5rem; }
 }
