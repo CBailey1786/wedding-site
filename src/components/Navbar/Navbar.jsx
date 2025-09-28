@@ -24,11 +24,13 @@ const Navbar = () => {
       </button>
 
       {/* Backdrop */}
-      <div
-        className={`backdrop ${isOpen ? "open" : ""}`}
-        onClick={closeMenu}
-        aria-hidden={!isOpen}
-      />
+      {isOpen && (
+        <div
+          className="backdrop open"
+          onClick={closeMenu}
+          aria-hidden
+        />
+      )}
 
       <nav className="navbar">
         {/* Left links (desktop) */}
@@ -39,12 +41,10 @@ const Navbar = () => {
           <NavLink to="/Venue" className="nav-link">Venue</NavLink>
         </div>
 
-        {/* Logo in center */}
-        <img
-          className="nhmLogo"
-          src={nhmLogo}
-          alt="natural history museum outline"
-        />
+        <NavLink to="/" end className="logoLink" aria-label="Home">
+          <img className="nhmLogo" src={nhmLogo} alt="natural history museum outline" />
+        </NavLink>
+        
 
         {/* Right links (desktop) */}
         <div className="navBarSection navBarSection--right">
