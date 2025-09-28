@@ -11,16 +11,18 @@ const Navbar = () => {
   return (
     <>
       {/* Burger (always in DOM, visible on mobile) */}
-      <button
-        className={`burger ${isOpen ? "open" : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle menu"
-        aria-expanded={isOpen}
-        aria-controls="mobile-menu"
-      >
+      <div className="burgerWrapper">
+        <button
+          className={`burger ${isOpen ? "open" : ""}`}
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+        >
 
-        <i />
-      </button>
+          <i />
+        </button>
+      </div>
 
       {/* Backdrop */}
       {isOpen && (
@@ -69,7 +71,9 @@ const Navbar = () => {
           <NavLink to="/London" className="nav-link" onClick={closeMenu}>London</NavLink>
           <NavLink to="/FAQ" className="nav-link" onClick={closeMenu}>FAQ</NavLink>
 
-          <button className="actionButton">Hotels</button>
+          <NavLink to="/Hotels" end className="nav-link" aria-label="Home">
+            <button className="actionButton">Hotels</button>
+          </NavLink>
         </aside>
       </nav>
     </>

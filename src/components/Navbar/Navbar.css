@@ -62,12 +62,26 @@
 
 /* ===== BURGER (spanless; requires <i> inside the button) ===== */
 /* JSX should be: <button class="burger"><i></i></button> */
-.burger {
-  display: flex; /* mobile-first: visible by default */
+
+.burgerWrapper{
   position: fixed;
   /* keep clear of notches */
-  top: max(3rem, env(safe-area-inset-top));
-  left: max(3rem, env(safe-area-inset-right));
+  top: max(2rem, env(safe-area-inset-top));
+  left: max(2rem, env(safe-area-inset-right));
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+  z-index: 101;
+  background-color: #fefefe;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  
+}
+.burger {
+  display: flex; /* mobile-first: visible by default */
   width: 28px;
   height: 22px;
   color: #283B34;            /* bars use currentColor */
@@ -75,10 +89,11 @@
   border: 0;
   padding: 0;
   cursor: pointer;
-  z-index: 101;
+
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
   transform: translateZ(0);  /* iOS compositing nudge */
+
 }
 .burger::before,
 .burger::after,

@@ -80,7 +80,7 @@ const Hotels = () => {
             </div>
 
             <div className="miniCards">
-                <AdditionalHotels name="Marriott Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="https://www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
+                <AdditionalHotels name="Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="https://www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
                 <AdditionalHotels name="The Churchill" address="30 Portman Square, London W1H 7BH" displayWebsite="https://www.hyatt.com" website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
 
             </div>
