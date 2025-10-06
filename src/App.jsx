@@ -6,10 +6,9 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
 import Hotels from './pages/Hotels';
 import Venue from './pages/Venue';
+import Travel from './pages/Travel';
 
 // TEMP: add stubs until you create these pages
-const Contact = () => <div>Contact</div>;
-const Blogs = () => <div>Blogs</div>;
 const SignUp = () => <div>Sign Up</div>;
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/Hotels" element={<Hotels />} />
         <Route path="/Venue" element={<Venue />} />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/Travel" element={<Travel />} />
         <Route path="/sign-up" element={<SignUp />} />
       </Routes>
     </Router>

@@ -10,8 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Burger (always in DOM, visible on mobile) */}
-      <div className="burgerWrapper">
+      {/* <div className="burgerWrapper">
         <button
           className={`burger ${isOpen ? "open" : ""}`}
           onClick={() => setIsOpen(!isOpen)}
@@ -24,23 +23,23 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Backdrop */}
+
       {isOpen && (
         <div
           className="backdrop open"
           onClick={closeMenu}
           aria-hidden
         />
-      )}
+      )} */}
 
       <nav className="navbar">
         {/* Left links (desktop) */}
-        <div className="navBarSection navBarSection--left">
+        {/* <div className="navBarSection navBarSection--left">
           <NavLink to="/" className="nav-link">Home</NavLink>
           <NavLink to="/Story" className="nav-link">Story</NavLink>
           <NavLink to="/Schedule" className="nav-link">Schedule</NavLink>
           <NavLink to="/Venue" className="nav-link">Venue</NavLink>
-        </div>
+        </div> */}
 
         <NavLink to="/" end className="logoLink" aria-label="Home">
           <img className="nhmLogo" src={nhmLogo} alt="natural history museum outline" />
@@ -48,15 +47,15 @@ const Navbar = () => {
 
 
         {/* Right links (desktop) */}
-        <div className="navBarSection navBarSection--right">
+        {/* <div className="navBarSection navBarSection--right">
           <NavLink to="/Hotels" className="nav-link">Hotels</NavLink>
           <NavLink to="/Travel" className="nav-link">Travel</NavLink>
           <NavLink to="/London" className="nav-link">London</NavLink>
           <NavLink to="/FAQ" className="nav-link">FAQ</NavLink>
-        </div>
+        </div> */}
 
         {/* Side drawer (mobile) */}
-        <aside id="mobile-menu" className={`sideMenu ${isOpen ? "open" : ""}`}>
+        {/* <aside id="mobile-menu" className={`sideMenu ${isOpen ? "open" : ""}`}>
           <button className="closeBtn" onClick={closeMenu} aria-label="Close menu">
             <span></span>
             <span></span>
@@ -66,7 +65,6 @@ const Navbar = () => {
           <NavLink to="/Story" className="nav-link" onClick={closeMenu}>Story</NavLink>
           <NavLink to="/Schedule" className="nav-link" onClick={closeMenu}>Schedule</NavLink>
           <NavLink to="/Venue" className="nav-link" onClick={closeMenu}>Venue</NavLink>
-          {/* <NavLink to="/Hotels" className="nav-link" onClick={closeMenu}>Hotels</NavLink> */}
           <NavLink to="/Travel" className="nav-link" onClick={closeMenu}>Travel</NavLink>
           <NavLink to="/London" className="nav-link" onClick={closeMenu}>London</NavLink>
           <NavLink to="/FAQ" className="nav-link" onClick={closeMenu}>FAQ</NavLink>
@@ -74,7 +72,8 @@ const Navbar = () => {
           <NavLink to="/Hotels" end className="nav-link" onClick={closeMenu} aria-label="Home">
             <button className="actionButton">Hotels</button>
           </NavLink>
-        </aside>
+        </aside> */}
+
       </nav>
     </>
   );
