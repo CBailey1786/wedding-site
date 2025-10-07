@@ -4,6 +4,7 @@ h3{
 }
 .namesAnd {
     font-family: "Fuggles", cursive;
+    font-weight: 400;
     font-size: 1.875rem; /* ~30px */
     align-self: center;
 }
