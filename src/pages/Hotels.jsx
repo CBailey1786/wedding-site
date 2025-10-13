@@ -2,7 +2,7 @@ import React from "react";
 import './Hotels.css'
 import nhmOutside from '../../src/assets/nhm-outside.png';
 import HotelCard from "../components/HotelCard/HotelCard";
-import LanghamImg from '../../src/assets/Langham_london.jpg';
+import ChurchillImg from '../../src/assets/the-churchill-outside.webp';
 import TreehouseImg from '../../src/assets/Treehouse_london.png';
 import AdditionalHotels from "../components/HotelCard/AdditionalHotels";
 
@@ -11,14 +11,14 @@ const Hotels = () => {
 
     const HOTELS = [
         {
-            name: "The Langham",
-            img: LanghamImg,
+            name: "The Churchill",
+            img: ChurchillImg,
             info: {
                 blurb:
-                    "Since opening its doors over 150 years ago, The Langham has established itself as a London icon. Expect elegance and exceptional service at every turn.",
-                address: "1C Portland Place, London W1B 1JA",
-                displayWebsite: "www.langhamhotels.com",
-                website: "https://www.langhamhotels.com/en/the-langham/london",
+                    "Tucked between Hyde Park and Baker Street in the heart of London’s West End, The Churchill is steeped in authentic British charm.",
+                address: "30 Portman Square, London, W1H 7BH",
+                displayWebsite: "www.hyatt.com",
+                website: "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill",
                 rate: "TBC",
                 details: 'TBC',
             },
@@ -30,7 +30,7 @@ const Hotels = () => {
             info: {
                 blurb:
                     "Perched high above the bustle of London life, The Treehouse offers modern luxury with a playful twist. Spectacular views are guaranteed.",
-                address: "14-15 Langham Place, London W1B 2QS",
+                address: "14-15 Langham Place, London, W1B 2QS",
                 displayWebsite: "www.treehousehotels.com",
                 website: "https://www.treehousehotels.com/london",
                 rate: "TBC",
@@ -46,12 +46,10 @@ const Hotels = () => {
             </div>
 
             <div className="blurb">
-                <h3>We are delighted to offer room blocks at two fantastic central London hotels.
-                    Located just across the road from one another, The Langham and The Treehouse are both a stone’s throw away from Regent Street,
-                    Soho, and Marylebone (a personal favourite of ours).
+                <h3>We are delighted to be working with two fantastic central London hotels to offer rooms at a discounted rate. Located in the heart of the city, The Churchill and The Treehouse are both just a stone’s throw from Regent Street, Soho, and Marylebone (a personal favourite of ours).
                 </h3>
 
-                <h3>Discounted rooms are on a first-come first-serve, so booking early is encouraged.
+                <h3>Please check back here regularly for further information about room blocks. Discounted rooms will be available on a first-come, first-served basis, so early booking is encouraged.
                 </h3>
             </div>
 
@@ -81,7 +79,7 @@ const Hotels = () => {
 
             <div className="miniCards">
                 <AdditionalHotels name="Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
-                <AdditionalHotels name="The Churchill" address="30 Portman Square, London W1H 7BH" displayWebsite="www.hyatt.com" website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
+                <AdditionalHotels name="The Langham" address="1C Portland Pl, London, W1H 7BH" displayWebsite="www.langhamhotels.com" website = "https://www.langhamhotels.com/en/the-langham/london"/>
 
             </div>
 

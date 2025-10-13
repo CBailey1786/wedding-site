@@ -18,11 +18,11 @@ const Home = () => {
 
                 <h4>More information and formal invitations to follow.</h4>
             </div>
-            {/* 
+            
         <NavLink to="/Hotels" end className="logoLink" aria-label="Home">
           <button className="actionButton">Hotels</button>
         </NavLink>
-         */}
+        
 
             <img className = "nhmImage" src={nhmOutsideWebp} alt="Natural History Museum" loading="lazy" />    
         </div>

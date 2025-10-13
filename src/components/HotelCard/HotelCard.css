@@ -39,6 +39,7 @@
 }
 /* image fills its half */
 .hotelCardMedia img {
+      aspect-ratio: 1.266 / 1;
   display: block;
   width: 90%;
   height: auto;        /* or height: 100%; object-fit: cover; if you want cropped */
@@ -111,6 +112,7 @@ border-right: 0; }
 
   /* 80% image, centered */
   .hotelCardMedia img {
+
     width: 70%;
     height: auto;
     margin: 0 auto 1rem;  /* centers horizontally + adds bottom gap */
