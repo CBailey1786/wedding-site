@@ -2,7 +2,7 @@ import React from "react";
 import './Hotels.css'
 import nhmOutside from '../../src/assets/nhm-outside.png';
 import HotelCard from "../components/HotelCard/HotelCard";
-import ChurchillImg from '../../src/assets/the-churchill-outside.webp';
+import GrosvenorImg from '../../src/assets/grosvenor.jpg';
 import TreehouseImg from '../../src/assets/Treehouse_london.png';
 import AdditionalHotels from "../components/HotelCard/AdditionalHotels";
 
@@ -11,19 +11,18 @@ const Hotels = () => {
 
     const HOTELS = [
         {
-            name: "The Churchill",
-            img: ChurchillImg,
+            name: "Grosvenor House",
+            img: GrosvenorImg,
             info: {
                 blurb:
-                    "Tucked between Hyde Park and Baker Street in the heart of London’s West End, The Churchill is steeped in authentic British charm.",
-                address: "30 Portman Square, London, W1H 7BH",
-                displayWebsite: "www.hyatt.com",
-                website: "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill",
-                rate: "TBC",
-                details: 'TBC',
+                    "Located on Park Lane with views over Hyde Park, Grosvenor House combines classic London style with modern comfort. Its central location makes it an ideal base for the weekend.",
+                address: "86-90 Park Ln, London W1K 7TN",
+                displayWebsite: "www.marriott.com",
+                website: "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/",
             },
         },
         // duplicate for now — swap this out later
+
         {
             name: "The Treehouse",
             img: TreehouseImg,
@@ -33,8 +32,6 @@ const Hotels = () => {
                 address: "14-15 Langham Place, London, W1B 2QS",
                 displayWebsite: "www.treehousehotels.com",
                 website: "https://www.treehousehotels.com/london",
-                rate: "TBC",
-                details: 'TBC',
             },
         },
     ];
@@ -46,10 +43,10 @@ const Hotels = () => {
             </div>
 
             <div className="blurb">
-                <h3>We are delighted to be working with two fantastic central London hotels to offer rooms at a discounted rate. Located in the heart of the city, The Churchill and The Treehouse are both just a stone’s throw from Regent Street, Soho, and Marylebone (a personal favourite of ours).
+                <h3>We are delighted to be working with two fantastic central London hotels. Located in the heart of the city, Grosvenor House and The Treehouse are both just a stone’s throw from Regent Street, Soho, and Marylebone (a personal favourite of ours).
                 </h3>
 
-                <h3>Please check back here regularly for further information about room blocks. Discounted rooms will be available on a first-come, first-served basis, so early booking is encouraged.
+                <h3>While we are unable to provide discounted rates, we will be providing transport to and from the wedding from both hotels. We recommend booking early as possible to secure the best rates.
                 </h3>
             </div>
 
@@ -67,7 +64,7 @@ const Hotels = () => {
             </div>
 
             <div className="blurb">
-                <h3>Beyond the two room blocks, you’ll find a shortlist of other excellent London hotels below. No special discounts apply, but we recommend them wholeheartedly.
+                <h3>Beyond this, you’ll find a shortlist of other excellent London hotels below. While we won’t be able to provide transport to these, we wholeheartedly recommend them.
                 </h3>
             </div>
 
@@ -78,7 +75,7 @@ const Hotels = () => {
             </div>
 
             <div className="miniCards">
-                <AdditionalHotels name="Grosvenor House" address="86-90 Park Ln, London W1K 7TN" displayWebsite="www.marriott.com" website = "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/"/>
+                <AdditionalHotels name="The Churchill" address="30 Portman Square, London, W1H 7BH" displayWebsite="www.hyatt.com" website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
                 <AdditionalHotels name="The Langham" address="1C Portland Pl, London, W1H 7BH" displayWebsite="www.langhamhotels.com" website = "https://www.langhamhotels.com/en/the-langham/london"/>
 
             </div>

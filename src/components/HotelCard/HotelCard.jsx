@@ -15,21 +15,8 @@ const HotelCard = ({ name, img, info, reversed = false }) => {
             <div>{info.address}</div>
           </div>
 
-
-
-          <div>
-            <div className="hotelCardInfoLabel">RATE</div>
-            <div>{info.rate}</div>
-          </div>
-
-          <div>
-            <div className="hotelCardInfoLabel">BOOKING DETAILS</div>
-            <div>{info.details}</div>
-          </div>
           
-        <div className = "websiteButton">
-            <a href={info.website} target="_blank">Visit their website</a>
-          </div>
+            <a className = "websiteButton" href={info.website} target="_blank">Visit their website</a>
         </div>
 
 <div className="hotelCardMedia">
