@@ -1,5 +1,5 @@
 import { parseSessionFromCookie } from "./_auth.js";
-import { getPartyWithDetails } from "./_db.js";
+import { getPartyWithDetails } from "./_db.ts";
 
 export const handler = async (event) => {
   const session = parseSessionFromCookie(event.headers.cookie);
