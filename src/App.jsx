@@ -11,7 +11,7 @@ import Home from './pages/Home';
 import Hotels from './pages/Hotels';
 import Venue from './pages/Venue';
 import Travel from './pages/Travel';
-import RSVP from './pages/RSVP';
+import RSVP from './pages/RSVP/RSVPMain';
 import Login from "./Login";
 
 
