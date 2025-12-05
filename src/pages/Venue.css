@@ -1,0 +1,18 @@
+.venuePhotos{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    flex-direction: row;
+    position: relative;
+}
+
+.venueImg{
+    width: 100%;
+    border-radius: 1rem;
+}
+
+@media screen and (max-width: 1000px) {
+  .venuePhotos {
+    grid-template-columns: 1fr;
+  }
+}

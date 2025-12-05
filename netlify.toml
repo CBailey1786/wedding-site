@@ -1,0 +1,6 @@
+[build]
+  command = "npm run build"   # or "npm run build" for CRA, "npm run build" for Vite
+  publish = "dist"            # CRA uses "build", Vite uses "dist" – adjust if needed
+
+[functions]
+  directory = "netlify/functions"

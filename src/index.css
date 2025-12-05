@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Fuggles";
+  src: url("/fonts/Fuggles-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sorts Mill Goudy";
+  src: url("/fonts/SortsMillGoudy-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sorts Mill Goudy";
+  src: url("/fonts/SortsMillGoudy-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  font-family:'Sorts Mill Goudy', Arial, sans-serif;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  box-sizing: border-box;
+  background-color: #ffffff ;
+
+  --brand1: #001A0E;
+  --brand2: #001A0E;
+
+  --light1: #FFFFFF;
+  --light2: #F4FAF8;
+  --light3: #DEEDE6;
+
+  --dark1:#173627;
+  --dark2: #2D5341;
+  --dark3: #476B5B;
+
+  --grey1: #818181;
+
+      --base-font-size: 1rem;
+    --scale-ratio: 1.25;
+    
+    /* Typography scale */
+    --text-xs: calc(var(--base-font-size) / var(--scale-ratio) / var(--scale-ratio));
+    --text-sm: calc(var(--base-font-size) / var(--scale-ratio));
+    --text-base: var(--base-font-size);
+    --text-lg: calc(var(--base-font-size) * var(--scale-ratio));
+    --text-xl: calc(var(--base-font-size) * var(--scale-ratio) * var(--scale-ratio));
+    
+    /* Spacing scale */
+    --space-xs: 0.3125rem;
+    --space-sm: 0.625rem;
+    --space-md: 1.25rem;
+    --space-lg: 2.5rem;
+    --space-xl: 5rem;
+}
+
+h1{
+  font-size: var(--text-xl);
+  color: var(--dark1);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h2{
+  font-size: var(--text-lg);
+  color: var(--dark2);
+    text-transform: uppercase;
+}
+
+p{
+  font-size: var(--text-base);
+  color: var(--dark2);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-xl) var(--space-md)
+}
