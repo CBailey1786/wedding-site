@@ -1,49 +1,41 @@
+// netlify/functions/_auth.js
+
 import jwt from "jsonwebtoken";
 
-export const COOKIE_NAME = "w_session";
+const SESSION_COOKIE_NAME = "wedding_session";
+const SESSION_MAX_AGE_REMEMBER = 60 * 60 * 24 * 30; // 30 days
+const SESSION_MAX_AGE = 60 * 60 * 24; // 1 day
 
-const ONE_HOUR_SECONDS = 60 * 60;
-const REMEMBER_ME_SECONDS = 60 * 60 * 24 * 365; // 5 seconds
+const SECRET = process.env.JWT_SECRET || "dev-secret";
 
-function getMaxAgeSeconds(rememberMe) {
-  return rememberMe ? REMEMBER_ME_SECONDS : ONE_HOUR_SECONDS;
-}
+export function signSession(payload, remember) {
+  const maxAge = remember ? SESSION_MAX_AGE_REMEMBER : SESSION_MAX_AGE;
 
-export function signSession(payload, rememberMe = false) {
-  const maxAge = getMaxAgeSeconds(rememberMe);
-  return jwt.sign(payload, process.env.JWT_SECRET, {
+  return jwt.sign(payload, SECRET, {
     expiresIn: maxAge,
   });
 }
 
-export function parseSessionFromCookie(cookieHeader) {
-  const cookie = cookieHeader || "";
-  const parts = cookie.split(";").map((c) => c.trim());
-  const pair = parts.find((c) => c.startsWith(COOKIE_NAME + "="));
-  if (!pair) return null;
+export function makeCookie(token, remember) {
+  const maxAge = remember ? SESSION_MAX_AGE_REMEMBER : SESSION_MAX_AGE;
 
-  const token = pair.substring(COOKIE_NAME.length + 1);
-  if (!token) return null;
+  // Netlify sets URL / DEPLOY_URL env vars – if it's https, we can safely use Secure
+  const isSecure = (process.env.URL || "").startsWith("https://");
 
-  try {
-    return jwt.verify(token, process.env.JWT_SECRET);
-  } catch (e) {
-    return null;
-  }
-}
-
-export function makeCookie(token, rememberMe = false) {
-
-  const maxAge = getMaxAgeSeconds(rememberMe);
-
-  const attrs = [
-    `${COOKIE_NAME}=${token}`,
-    "HttpOnly",
+  const parts = [
+    `${SESSION_COOKIE_NAME}=${token}`,
     "Path=/",
+    "HttpOnly",
     "SameSite=Lax",
-    process.env.NETLIFY_DEV ? "" : "Secure",
     `Max-Age=${maxAge}`,
-  ].filter(Boolean);
+  ];
 
-  return attrs.join("; ");
+  if (isSecure) {
+    parts.push("Secure");
+  }
+
+  // 🔴 DO NOT set Domain=localhost or hard-code a domain.
+  // Leaving out Domain makes it a host-only cookie, which works on both localhost and Netlify.
+
+  return parts.join("; ");
 }
