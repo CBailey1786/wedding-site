@@ -1,5 +1,5 @@
-import { supabase } from "./_db";
-import { signSession, makeCookie } from "./_auth";
+import { supabase } from "./_db.ts";
+import { signSession, makeCookie } from "./_auth.js";
 
 export const handler = async (event) => {
   if (event.httpMethod !== "POST") {
