@@ -11,7 +11,7 @@ export default function RSVPHeader({guest}) {
         <img src={flowers} alt="flower-motif" />
         <div className = "headerText">
             <h1>RSVP</h1>
-            {guest && <p>{guest}</p>}
+            {guest && <p>{guest.first_name} {guest.last_name}</p>}
         </div>
         
         

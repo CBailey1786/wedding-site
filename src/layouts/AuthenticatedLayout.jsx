@@ -5,7 +5,7 @@ export default function AuthenticatedLayout({ children }) {
   return (
     <>
       <Navbar />
-      <div>{children}</div>
+      {children}
     </>
   );
 }

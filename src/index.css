@@ -63,6 +63,24 @@
     --space-md: 1.25rem;
     --space-lg: 2.5rem;
     --space-xl: 5rem;
+
+    position: relative;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* default, but explicit is fine */
 }
 
 h1{
@@ -87,10 +105,9 @@ p{
   letter-spacing: 1px;
 }
 
-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: var(--space-xl) var(--space-md)
+
+button{
+  font-family:'Sorts Mill Goudy', Arial, sans-serif;
+  font-weight: 400;
+  border: none;
 }
