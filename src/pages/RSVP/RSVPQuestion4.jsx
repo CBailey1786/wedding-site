@@ -1,7 +1,7 @@
 // src/pages/RSVPQuestion1.jsx
 import "./RSVPMain.css"; // reuse your styling if you want
 
-export default function RSVPQuestion4({ guest, value, onChange, onNext, onBack }) {
+export default function RSVPQuestion4({ guest, value, onChange, onNext,nextLabel, onBack }) {
   const handleSelect = (answer) => {
     onChange(answer); // "accept" or "decline"
   };
@@ -83,7 +83,7 @@ export default function RSVPQuestion4({ guest, value, onChange, onNext, onBack }
           onClick={onNext}
           disabled={!canContinue}
         >
-          Next
+          {nextLabel ?? "Next"}
         </button>
       </div>
       </div>

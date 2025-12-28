@@ -137,10 +137,70 @@ box-sizing: border-box;
     color: var(--dark2);
 }    
 
+.email-input {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--grey1);
+  border-radius: var(--space-sm);
+  font-size: var(--text-base);
+  color: var(--dark2);
+  box-sizing: border-box;
+}
+
+.email-input:focus {
+  outline: var(--dark2) 2px solid;
+}
+
 ::placeholder{
     color: var(--grey1)
 }
 
 :focus{
      outline: var(--dark2) 2px solid;
+}
+
+.summary-row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--light2);
+    height: var(--space-xl);
+    align-items: center;
+        padding: var(--space-sm);
+}
+
+.summary-text{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-sm);
+    min-width: 0;
+}
+.summary-label-key{
+    display: inline-block;
+    width: calc(var(--space-xl) + var(--space-lg));
+}
+
+.summary-value{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.summary-edit-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:var(--space-lg);
+    width: var(--space-lg);
+    background: none;
+
+    background-color: var(--light1);
+    padding: var(--space-xs);
+    border-radius: 500px;
+}
+
+.edit_symbol{
+    height: var(--space-md);
 }

@@ -1,4 +1,5 @@
 // netlify/functions/_db.ts
+
 import { createClient } from "@supabase/supabase-js";
 
 export const supabase = createClient(
@@ -29,7 +30,7 @@ export async function getPartyWithDetails(partyId: string) {
         hotels:hotels (
           hotel_id,
           hotel,
-          is_child
+          transport_required
         ),
         events:events (
           events_id,

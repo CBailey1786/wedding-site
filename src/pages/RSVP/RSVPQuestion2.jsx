@@ -6,6 +6,7 @@ export default function RSVPQuestion2({
   value = [],
   onChange,
   onNext,
+  nextLabel,
   onBack,
 }) {
   // you can move this list up to the parent and pass it in as a prop if you want
@@ -94,7 +95,7 @@ export default function RSVPQuestion2({
             onClick={onNext}
             disabled={!canContinue}
           >
-            Next
+            {nextLabel ?? "Next"}
           </button>
         </div>
       </div>

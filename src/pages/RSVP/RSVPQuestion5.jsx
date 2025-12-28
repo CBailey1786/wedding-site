@@ -1,7 +1,7 @@
 // src/pages/RSVPQuestion5.jsx
 import "./RSVPMain.css";
 
-export default function RSVPQuestion5({ guest, value, onChange, onNext, onBack }) {
+export default function RSVPQuestion5({ guest, value, onChange, onNext,nextLabel, onBack }) {
   // value shape: { hasRequirements: "yes" | "no" | null, options: string[], other: string }
   const hasRequirements = value?.hasRequirements ?? null;
   const options = value?.options ?? [];
@@ -164,7 +164,7 @@ export default function RSVPQuestion5({ guest, value, onChange, onNext, onBack }
             onClick={onNext}
             disabled={!canContinue || !hasAnsweredYesNo}
           >
-            Next
+            {nextLabel ?? "Next"}
           </button>
         </div>
       </div>

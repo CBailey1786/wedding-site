@@ -1,7 +1,7 @@
 // src/pages/RSVPQuestion6.jsx
 import "./RSVPMain.css";
 
-export default function RSVPQuestion6({ guest, value, onChange, onNext, onBack }) {
+export default function RSVPQuestion6({ guest, value, onChange, onNext,nextLabel, onBack }) {
   // value shape: { hotel: "grosvenor" | "treehouse" | "other" | "prefer_not_to_say" | null, otherHotel: string }
   const selectedHotel = value?.hotel ?? null;
   const otherHotel = value?.otherHotel ?? "";
@@ -10,7 +10,6 @@ export default function RSVPQuestion6({ guest, value, onChange, onNext, onBack }
     { id: "grosvenor", label: "Grosvenor House" },
     { id: "treehouse", label: "The Treehouse" },
     { id: "other", label: "Other" },
-    { id: "prefer_not_to_say", label: "Prefer not to say" },
   ];
 
   const handleSelect = (id) => {
@@ -93,7 +92,7 @@ export default function RSVPQuestion6({ guest, value, onChange, onNext, onBack }
             onClick={onNext}
             disabled={!canContinue}
           >
-            Next
+            {nextLabel ?? "Next"}
           </button>
         </div>
       </div>

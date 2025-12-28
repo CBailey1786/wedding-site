@@ -3,6 +3,13 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import nhmLogo from '../../assets/natural-history-outline.png';
 
+async function logout() {
+    await fetch("/.netlify/functions/logout", {
+        method: "POST",
+    });
+    window.location.href = "/login";
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -53,6 +60,8 @@ const Navbar = () => {
           <NavLink to="/Hotels" end className="nav-link" onClick={closeMenu} aria-label="Home">
             <button className="actionButton">Hotels</button>
           </NavLink> */}
+
+          <button onClick={logout}>Log out</button>
         </aside>
     </>
   );
