@@ -38,7 +38,8 @@ export async function getPartyWithDetails(partyId: string) {
           attending_rehearsal_dinner,
           attending_welcome_party,
           attending_wedding,
-          attending_farewell_brunch
+          attending_farewell_brunch,
+          email
         ),
         food:food (
           food_id,

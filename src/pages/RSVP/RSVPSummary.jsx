@@ -3,28 +3,101 @@ import "./RSVPMain.css";
 import pencil from "../../assets/pencil.svg";
 
 function toProperCase(str) {
-return str
-.toLowerCase() // Convert the entire string to lowercase
-.split(' ') // Split the string into an array of words
-.map(word => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize the first letter of each word
-.join(' '); // Join the words back into a single string
+  if (typeof str !== "string" || !str.trim()) return ""; // ✅ null-safe
+  return str
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
 }
 
-
-export default function RSVPSummary({ guest, answers, onEdit, onSubmit, submitting }) {
-  // answers is the object for this guest only, e.g. answers[selectedGuest.guest_id]
+export default function RSVPSummary({
+  guest,
+  answers,
+  onEdit,
+  onSubmit,
+  onBack,
+  submitting,
+  summaryView,
+  canResubmit,
+}) {
+  const attending = answers?.attending ?? null;
 
   const rsvpLabel =
-    answers?.attending === "accept"
-      ? "Yes"
-      : answers?.attending === "decline"
-      ? "No"
-      : "Not answered";
+    attending === "accept" ? "Yes" : attending === "decline" ? "No" : "Not answered";
+
+  // ✅ If declined: only show RSVP row + a small message
+  if (attending === "decline") {
+    return (
+      <div className="rsvp-step">
+        <div className="answer_list">
+          <p className="summary-label">SUMMARY</p>
+
+          <div className="answer multiline summary-row">
+            <div className="summary-text">
+              <span className="summary-label-key">RSVP:</span>
+              <span className="summary-value">{rsvpLabel}</span>
+            </div>
+
+            {/* only allow editing the RSVP answer */}
+            <button
+              type="button"
+              className="summary-edit-button"
+              onClick={() => onEdit("rsvp")}
+            >
+              <img src={pencil} alt="Edit" className="edit_symbol" />
+            </button>
+          </div>
+
+          <p className="summary-note" style={{ marginTop: 12 }}>
+            We’re sorry you can’t join us — you will be missed.
+          </p>
+
+          <div className="rsvp-step-actions">
+            {summaryView === "initial" && (
+              <button
+                type="button"
+                className="rsvp-button primary-button"
+                onClick={onSubmit}
+                disabled={submitting}
+              >
+                {submitting ? "Submitting..." : "Submit"}
+              </button>
+            )}
+
+            {summaryView === "review" && (
+              <>
+                <button
+                  type="button"
+                  className="rsvp-button secondary-button"
+                  onClick={onBack}
+                  disabled={submitting}
+                >
+                  Back
+                </button>
+
+                <button
+                  type="button"
+                  className="rsvp-button primary-button"
+                  onClick={onSubmit}
+                  disabled={!canResubmit}
+                  title={!canResubmit ? "Make a change to enable resubmission" : ""}
+                >
+                  {submitting ? "Resubmitting..." : "Resubmit"}
+                </button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ---- Normal (accept / not answered) summary below ----
 
   const eventsLabel = (() => {
     const events = answers?.events ?? [];
     if (!events.length) return "No events selected";
-    // customise this mapping to your event IDs → labels
     const EVENT_LABELS = {
       rehearsal_dinner: "Rehearsal Dinner",
       welcome_party: "Welcome Party",
@@ -32,20 +105,12 @@ export default function RSVPSummary({ guest, answers, onEdit, onSubmit, submitti
       farewell_brunch: "Farewell Brunch",
     };
 
-    var output = ""
-    if (events.length > 1){
-      output = events.length + " events"
-    }
-    else(
-      output = events.map((id) => EVENT_LABELS[id] || id).join(", ")
-    )
-
-    return output
-
+    if (events.length > 1) return `${events.length} events`;
+    return events.map((id) => EVENT_LABELS[id] || id).join(", ");
   })();
 
-  const starterLabel = toProperCase(answers?.starter) ?? "Not selected";
-  const mainLabel = toProperCase(answers?.main) ?? "Not selected";
+  const starterLabel = toProperCase(answers?.starter) || "Not selected";
+  const mainLabel = toProperCase(answers?.main) || "Not selected";
 
   const dietaryLabel = (() => {
     const d = answers?.dietary;
@@ -62,14 +127,14 @@ export default function RSVPSummary({ guest, answers, onEdit, onSubmit, submitti
 
     const parts = (d.options ?? []).map((id) => DIET_LABELS[id] || id);
     if (!parts.length && d.other) parts.push(d.other);
-    return toProperCase(parts.join(", "));
+    return toProperCase(parts.join(", ")) || "Not answered";
   })();
 
   const hotelLabel = (() => {
     const h = answers?.hotel;
     if (!h || !h.hotel) return "Not answered";
     if (h.hotel === "other") return h.otherHotel || "Other";
-    if (h.hotel === "prefer_not_to_say") return "Prefer not to say";
+
     const HOTEL_LABELS = {
       grosvenor: "Grosvenor House",
       treehouse: "The Treehouse",
@@ -99,7 +164,6 @@ export default function RSVPSummary({ guest, answers, onEdit, onSubmit, submitti
 
   return (
     <div className="rsvp-step">
-
       <div className="answer_list">
         <p className="summary-label">SUMMARY</p>
 
@@ -120,14 +184,39 @@ export default function RSVPSummary({ guest, answers, onEdit, onSubmit, submitti
         ))}
 
         <div className="rsvp-step-actions">
-          <button
-            type="button"
-            className="rsvp-button primary-button"
-            onClick={onSubmit}
-            disabled={submitting}
-          >
-            {submitting ? "Submitting..." : "Submit"}
-          </button>
+          {summaryView === "initial" && (
+            <button
+              type="button"
+              className="rsvp-button primary-button"
+              onClick={onSubmit}
+              disabled={submitting}
+            >
+              {submitting ? "Submitting..." : "Submit"}
+            </button>
+          )}
+
+          {summaryView === "review" && (
+            <>
+              <button
+                type="button"
+                className="rsvp-button secondary-button"
+                onClick={onBack}
+                disabled={submitting}
+              >
+                Back
+              </button>
+
+              <button
+                type="button"
+                className="rsvp-button primary-button"
+                onClick={onSubmit}
+                disabled={!canResubmit}
+                title={!canResubmit ? "Make a change to enable resubmission" : ""}
+              >
+                {submitting ? "Resubmitting..." : "Resubmit"}
+              </button>
+            </>
+          )}
         </div>
       </div>
     </div>

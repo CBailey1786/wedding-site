@@ -53,7 +53,7 @@ export default function RSVPQuestion4({ guest, value, onChange, onNext,nextLabel
       </p>
 
         {MAIN_OPTIONS.map((main) => {
-          const isSelected = value.includes(main.id);
+          const isSelected = value == main.id;
           return (
             <button
               key={main.id}

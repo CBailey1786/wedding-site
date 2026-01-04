@@ -6,7 +6,7 @@ import "./RSVPMain.css"; // if it contains the .guest styles etc.
 export default function GuestSelect({ guests, onSelectGuest }) {
   const completed = guests?.filter((g) => g.has_RSVP) ?? [];
   const incomplete = guests?.filter((g) => !g.has_RSVP) ?? [];
-
+  
   return (
     <>
       {completed.length > 0 && (
@@ -18,7 +18,7 @@ export default function GuestSelect({ guests, onSelectGuest }) {
                 key={g.guest_id}
                 type="button"
                 className="answer guest_select selected"
-                onClick={() => onSelectGuest(g)}
+                onClick={() => onSelectGuest(g,"completed")}
               >
                 <p className="guest_name selected">
                   {g.first_name} {g.last_name}
@@ -45,7 +45,7 @@ export default function GuestSelect({ guests, onSelectGuest }) {
                 key={g.guest_id}
                 type="button"
                 className="answer guest_select unselected"
-                onClick={() => onSelectGuest(g)}
+                onClick={() => onSelectGuest(g, "incomplete")}
               >
                 <p className="guest_name unselected">
                   {g.first_name} {g.last_name}

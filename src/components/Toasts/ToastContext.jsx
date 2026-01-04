@@ -4,7 +4,7 @@ import "./Toast.css";
 
 const ToastContext = createContext(undefined);
 
-const EXIT_MS = 220;
+const EXIT_MS = 800;
 
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
@@ -20,7 +20,7 @@ export function ToastProvider({ children }) {
     setTimeout(() => reallyRemove(id), EXIT_MS);
   }, [reallyRemove]);
 
-  const showToast = useCallback((type, message, timeout = 4000) => {
+  const showToast = useCallback((type, message, timeout = 3000) => {
     const id = (globalThis.crypto?.randomUUID?.() ?? String(Date.now() + Math.random()));
 
     setToasts((prev) => [...prev, { id, type, message, leaving: false }]);

@@ -11,10 +11,9 @@ function toBoolAttending(attending) {
 }
 
 function toBoolTransport(transport) {
-  if (typeof transport === "boolean") return transport;
-  if (typeof transport === "string") return transport.toLowerCase() === "yes";
-  return false;
+  return transport === "accept";
 }
+
 
 function buildDietaryDetails(dietary) {
   if (!dietary) return null;
@@ -62,6 +61,7 @@ exports.handler = async (event) => {
       attending_welcome_party: ev.includes("welcome_party"),
       attending_wedding: ev.includes("wedding"),
       attending_farewell_brunch: ev.includes("farewell_brunch"),
+      email: a.email ?? null,
       updated_at: now,
     };
 
