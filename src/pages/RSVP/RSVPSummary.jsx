@@ -49,10 +49,11 @@ export default function RSVPSummary({
             </button>
           </div>
 
+          {!guest.is_plus_one &&
           <p className="summary-note" style={{ marginTop: 12 }}>
             We’re sorry you can’t join us — you will be missed.
           </p>
-
+  }
           <div className="rsvp-step-actions">
             {summaryView === "initial" && (
               <button
@@ -151,8 +152,21 @@ export default function RSVPSummary({
 
   const emailLabel = answers?.email || "Not provided";
 
+      const isPlusOne = guest?.is_plus_one === true;
+const bringingGuest = answers?.attending === "accept";
+
+const plusOneNameLabel = (() => {
+  const fn = answers?.plusOne?.first_name ?? "";
+  const ln = answers?.plusOne?.last_name ?? "";
+  const full = `${fn} ${ln}`.trim();
+  return full || "Not provided";
+})();
+
   const rows = [
     { key: "rsvp", label: "RSVP:", value: rsvpLabel },
+      ...(isPlusOne && bringingGuest
+    ? [{ key: "plusOne", label: "NAME:", value: plusOneNameLabel }]
+    : []),
     { key: "events", label: "EVENTS:", value: eventsLabel },
     { key: "starter", label: "STARTER:", value: starterLabel },
     { key: "main", label: "MAIN:", value: mainLabel },

@@ -1,11 +1,22 @@
 // src/pages/RSVPQuestion5.jsx
 import "./RSVPMain.css";
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion5({ guest, value, onChange, onNext,nextLabel, onBack }) {
   // value shape: { hasRequirements: "yes" | "no" | null, options: string[], other: string }
-  const hasRequirements = value?.hasRequirements ?? null;
+  const hasRequirements =
+  value?.hasRequirements === "yes"
+    ? "yes"
+    : value?.hasRequirements === "no"
+    ? "no"
+    : null;
+
+  console.log(value)
+
   const options = value?.options ?? [];
   const otherText = value?.other ?? "";
+
+  const { subject } = getPronouns(guest)
 
   const DIET_OPTIONS = [
     { id: "vegetarian", label: "Vegetarian" },
@@ -83,7 +94,7 @@ export default function RSVPQuestion5({ guest, value, onChange, onNext,nextLabel
 
       <div className="answer_list">
         <p className="rsvp-question">
-          Do you have any special dietary requirements?
+          Do {subject} have any special dietary requirements?
         </p>
 
         {/* Yes / No */}

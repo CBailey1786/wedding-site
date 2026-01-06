@@ -1,10 +1,13 @@
 // src/pages/RSVPQuestion6.jsx
 import "./RSVPMain.css";
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion6({ guest, value, onChange, onNext,nextLabel, onBack }) {
   // value shape: { hotel: "grosvenor" | "treehouse" | "other" | "prefer_not_to_say" | null, otherHotel: string }
   const selectedHotel = value?.hotel ?? null;
   const otherHotel = value?.otherHotel ?? "";
+
+    const { subject } = getPronouns(guest)
 
   const HOTEL_OPTIONS = [
     { id: "grosvenor", label: "Grosvenor House" },
@@ -13,7 +16,6 @@ export default function RSVPQuestion6({ guest, value, onChange, onNext,nextLabel
   ];
 
   const handleSelect = (id) => {
-    // When changing away from "other", clear the text field
     if (id !== "other") {
       onChange({ hotel: id, otherHotel: "" });
     } else {
@@ -46,7 +48,7 @@ export default function RSVPQuestion6({ guest, value, onChange, onNext,nextLabel
       </div>
 
       <div className="answer_list">
-        <p className="rsvp-question">Which hotel will you be staying in?</p>
+        <p className="rsvp-question">Which hotel will {subject} be staying in?</p>
 
         {HOTEL_OPTIONS.map((opt) => {
           const selected = selectedHotel === opt.id;

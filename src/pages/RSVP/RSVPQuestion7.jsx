@@ -1,5 +1,6 @@
 // src/pages/RSVPQuestion1.jsx
 import "./RSVPMain.css"; // reuse your styling if you want
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion7({ guest, value, onChange, onNext,nextLabel, onBack }) {
   const handleSelect = (answer) => {
@@ -8,6 +9,7 @@ export default function RSVPQuestion7({ guest, value, onChange, onNext,nextLabel
   console.log(guest)
   const canContinue = value === "accept" || value === "decline";
 
+  const { subject } = getPronouns(guest)
   return (
     <div className="rsvp-step">
       
@@ -20,7 +22,7 @@ export default function RSVPQuestion7({ guest, value, onChange, onNext,nextLabel
 
       <div className="answer_list">
               <p className="rsvp-question">
-        Will you be using the organised transportation to the ceremony from Grosvenor House?
+        Will {subject} be using the organised transportation to the ceremony from Grosvenor House?
       </p>
         <button
           type="button"

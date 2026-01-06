@@ -1,11 +1,13 @@
 // src/pages/RSVPQuestion1.jsx
 import "./RSVPMain.css"; // reuse your styling if you want
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion3({ guest, value, onChange, onNext,nextLabel, onBack }) {
   const handleSelect = (answer) => {
     onChange(answer); // "accept" or "decline"
   };
 
+  const { possessive } = getPronouns(guest)
   const STARTER_OPTIONS = [
     {
       id: "burrata",
@@ -34,7 +36,7 @@ export default function RSVPQuestion3({ guest, value, onChange, onNext,nextLabel
 
       <div className="answer_list">
               <p className="rsvp-question">
-        Please select your starter:
+        Please select { possessive } starter:
       </p>
 
         {STARTER_OPTIONS.map((starter) => {

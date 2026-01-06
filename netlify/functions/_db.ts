@@ -27,6 +27,8 @@ export async function getPartyWithDetails(partyId: string) {
         in_wedding_party,
         additional_comments,
         has_RSVP,
+        is_plus_one,
+        main_guest_id,
         hotels:hotels (
           hotel_id,
           hotel,

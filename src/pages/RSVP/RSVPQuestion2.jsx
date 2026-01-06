@@ -1,5 +1,6 @@
 // src/pages/RSVPQuestion2.jsx
 import "./RSVPMain.css";
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion2({
   guest,
@@ -9,6 +10,9 @@ export default function RSVPQuestion2({
   nextLabel,
   onBack,
 }) {
+
+  const { subject } = getPronouns(guest)
+
   // you can move this list up to the parent and pass it in as a prop if you want
   const EVENT_OPTIONS = [
     {
@@ -58,7 +62,7 @@ export default function RSVPQuestion2({
 
       <div className="answer_list">
         <p className="rsvp-question">
-          Please select the events you will be attending:
+          Please select the events { subject } will be attending:
         </p>
 
         {visibleOptions.map((event) => {

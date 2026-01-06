@@ -14,14 +14,14 @@ function toBoolTransport(transport) {
   return transport === "accept";
 }
 
-
 function buildDietaryDetails(dietary) {
   if (!dietary) return null;
 
   const opts = Array.isArray(dietary.options) ? dietary.options : [];
   const parts = [...opts];
 
-  if (opts.includes("other") && dietary.other && dietary.other.trim()) {
+  // If you want "other" to mean "free text", keep this:
+  if (dietary.other && dietary.other.trim()) {
     parts.push(dietary.other.trim());
   }
 
@@ -52,37 +52,74 @@ exports.handler = async (event) => {
 
     const now = new Date().toISOString();
 
+    // --- Load the guest so we know if it's a plus-one ---
+    const { data: guestRow, error: guestLoadErr } = await supabaseAdmin
+      .from("guests")
+      .select("guest_id, is_plus_one")
+      .eq("guest_id", guest_id)
+      .single();
+
+    if (guestLoadErr) throw guestLoadErr;
+
+    const isPlusOne = guestRow?.is_plus_one === true;
+
+    // --- If plus one: update name fields from answers.plusOne ---
+    if (isPlusOne) {
+      const first = a?.plusOne?.first_name?.trim() || null;
+      const last = a?.plusOne?.last_name?.trim() || null;
+
+      const { error: plusOneNameErr } = await supabaseAdmin
+        .from("guests")
+        .update({
+          first_name: first,
+          last_name: last,
+          updated_at: now,
+        })
+        .eq("guest_id", guest_id);
+
+      if (plusOneNameErr) throw plusOneNameErr;
+    }
+
+    const attendingBool = toBoolAttending(a.attending);
+
+    // If declined, overwrite everything with nulls/false
+    const isDecline = a.attending === "decline";
+
     const ev = Array.isArray(a.events) ? a.events : [];
 
     const eventsRow = {
       guest_id,
-      rsvp: toBoolAttending(a.attending),
-      attending_rehearsal_dinner: ev.includes("rehearsal_dinner"),
-      attending_welcome_party: ev.includes("welcome_party"),
-      attending_wedding: ev.includes("wedding"),
-      attending_farewell_brunch: ev.includes("farewell_brunch"),
-      email: a.email ?? null,
+      rsvp: attendingBool,
+      attending_rehearsal_dinner: isDecline ? false : ev.includes("rehearsal_dinner"),
+      attending_welcome_party: isDecline ? false : ev.includes("welcome_party"),
+      attending_wedding: isDecline ? false : ev.includes("wedding"),
+      attending_farewell_brunch: isDecline ? false : ev.includes("farewell_brunch"),
+      email: isDecline ? null : (a.email ?? null),
       updated_at: now,
     };
+
+    const hasDietary =
+      a?.dietary?.hasRequirements === "yes"; // ✅ fixes the Boolean("no") bug
 
     const foodRow = {
       guest_id,
-      starter: a.starter ?? null,
-      main: a.main ?? null,
-      dietary_requirements: Boolean(a?.dietary?.hasRequirements),
-      dietary_requirements_details: buildDietaryDetails(a?.dietary),
+      starter: isDecline ? null : (a.starter ?? null),
+      main: isDecline ? null : (a.main ?? null),
+      dietary_requirements: isDecline ? null : hasDietary,
+      dietary_requirements_details: isDecline ? null : buildDietaryDetails(a?.dietary),
       updated_at: now,
     };
 
-    const hotelStr =
-      a?.hotel?.hotel === "other"
-        ? (a?.hotel?.otherHotel ?? "").trim() || null
-        : a?.hotel?.hotel ?? null;
+    const hotelStr = (() => {
+      if (isDecline) return null;
+      if (a?.hotel?.hotel === "other") return (a?.hotel?.otherHotel ?? "").trim() || null;
+      return a?.hotel?.hotel ?? null;
+    })();
 
     const hotelsRow = {
       guest_id,
       hotel: hotelStr,
-      transport_required: toBoolTransport(a.transport),
+      transport_required: isDecline ? null : toBoolTransport(a.transport),
       updated_at: now,
     };
 
@@ -102,15 +139,16 @@ exports.handler = async (event) => {
       .upsert(hotelsRow, { onConflict: "guest_id" });
     if (hotelsErr) throw hotelsErr;
 
+    // Mark RSVP complete
     const { error: guestErr } = await supabaseAdmin
-  .from("guests")
-  .update({
-    has_RSVP: true,
-    updated_at: now,
-  })
-  .eq("guest_id", guest_id);
+      .from("guests")
+      .update({
+        has_RSVP: true,
+        updated_at: now,
+      })
+      .eq("guest_id", guest_id);
 
-if (guestErr) throw guestErr;
+    if (guestErr) throw guestErr;
 
     return {
       statusCode: 200,

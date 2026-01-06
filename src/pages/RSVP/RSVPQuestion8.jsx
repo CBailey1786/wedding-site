@@ -1,9 +1,12 @@
 // src/pages/RSVPQuestionEmail.jsx
 import "./RSVPMain.css";
+import { getPronouns } from "./utils";
 
 export default function RSVPQuestion8({ guest, value, onChange, onNext,nextLabel, onBack }) {
   // value is just the email string
   const email = value ?? "";
+
+  const {  object } = getPronouns(guest)
 
   const handleChange = (e) => {
     onChange(e.target.value);   // pass back the string directly
@@ -19,12 +22,12 @@ export default function RSVPQuestion8({ guest, value, onChange, onNext,nextLabel
 
       <div className="answer_list">
         <p className="rsvp-question">
-          Please provide the best email address to contact you in the event of any changes or updates:
+          Please provide the best email address to contact {object} in the event of any changes or updates:
         </p>
 
         <input
           type="email"
-          className="email-input"
+          className="single-line-input"
           placeholder="example@gmail.com"
           value={email}
           onChange={handleChange}
