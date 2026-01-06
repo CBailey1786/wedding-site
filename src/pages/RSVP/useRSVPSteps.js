@@ -61,7 +61,7 @@ export function useRSVPSteps() {
   };
 
 function handleEditFromSummary(key) {
-  const targetStep = editStepMap[key];
+  const targetStep = EDIT_STEP_MAP[key];
   if (targetStep == null) return;
 
   // ✅ Editing plus-one name should behave like a normal edit
