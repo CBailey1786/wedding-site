@@ -9,6 +9,7 @@ import CorinthiaImg from '../../src/assets/corinthia-london.jpg';
 import ChurchillImg from '../../src/assets/the-churchill-outside.webp';
 import LanghamImg from '../../src/assets/langham-outside.jpg';
 import AdditionalHotels from "../components/HotelCard/AdditionalHotels";
+import PageHeader from "../layouts/PageHeader";
 
 const Hotels = () => {
 
@@ -41,10 +42,8 @@ const Hotels = () => {
     ];
 
     return (
-        <div className="pageBody">
-            <div className="namesSection">
-                <h1 className="header">Hotels</h1>
-            </div>
+        <div className="mainBody">
+            <PageHeader pageName = "Hotels" />
 
             {/* <div className="blurb">
                 <h3>We are delighted to be working with two fantastic central London hotels. Located in the heart of the city, Grosvenor House and The Treehouse are both just a stone’s throw from Regent Street, Soho, and Marylebone (a personal favourite of ours).

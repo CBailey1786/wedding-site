@@ -1,0 +1,24 @@
+.header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md)
+}
+
+.headerText{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.mainBody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;   /* fill full screen height */
+  box-sizing: border-box;
+padding: var(--space-xl) var(--space-md);
+  margin: 0;
+  gap: var(--space-md);
+  position: relative;
+}

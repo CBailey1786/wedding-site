@@ -3,6 +3,7 @@ import './Home.css'
 import northernLights from '../../src/assets/northern-lights-enhanced.png';
 import nhmOutside from '../../src/assets/nhm-outside.png';
 import { NavLink } from "react-router-dom";
+import PageHeader from "../layouts/PageHeader";
 
 
 const Home = () => {
@@ -27,7 +28,8 @@ const Home = () => {
         //     <img className = "nhmImage" src={nhmOutsideWebp} alt="Natural History Museum" loading="lazy" />    
         // </div>
 
-        <div className="pageBody">
+        <div className="mainBody">
+                    <PageHeader pageName = "" />
             <div className="hero">
                 <div className="heroLeft">
                     <div className="namesSectionHero">

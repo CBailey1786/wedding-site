@@ -96,7 +96,7 @@ export default function RSVPMain() {
 console.log(selectedGuest)
 
   return (
-    <main className="RSVPMain">
+    <main className="mainBody">
       <RSVPHeader guest={selectedGuest} />
 
       {step === 0 && (

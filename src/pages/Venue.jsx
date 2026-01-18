@@ -2,14 +2,15 @@ import React from "react";
 import './Venue.css'
 import NHMHope from '../../src/assets/nhm-hope.png';
 import CameronNHM from '../../src/assets/cameron-nhm-enhanced.png';
+import PageHeader from "../layouts/PageHeader";
 
 
 
 
 const Venue = () => {
     return (
-        <div className="pageBody">
-            <div className="header">Venue</div>
+        <div className="mainBody">
+            <PageHeader pageName = "Venue" />
             <div className="blurb">
                 <h3>Established in 1881, the Natural History Museum is one of London’s true treasures. Sometimes dubbed a <span style = {{fontStyle: "italic"}}>cathedral to nature</span>, more than 80 million specimens are housed within its soaring Romanesque arches, including some collected by Charles Darwin himself (who will be presiding over the evening from his perch atop the grand staircase). </h3>
 

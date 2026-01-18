@@ -47,6 +47,7 @@ const Navbar = () => {
           </button>
 
           <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
+          <NavLink to="/OurLondon" className="nav-link" onClick={closeMenu}>Our London</NavLink>
           <NavLink to="/Hotels" className="nav-link" onClick={closeMenu}>Hotels</NavLink>
           <NavLink to="/Venue" className="nav-link" onClick={closeMenu}>Venue</NavLink>
           <NavLink to="/RSVP" className="nav-link" onClick={closeMenu}>RSVP</NavLink>

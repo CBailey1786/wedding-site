@@ -8,6 +8,7 @@ import AuthenticatedLayout from "./layouts/AuthenticatedLayout";
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home';
+import OurLondon from "./pages/OurLondon/OurLondon";  
 import Hotels from './pages/Hotels';
 import Venue from './pages/Venue';
 import Travel from './pages/Travel';
@@ -31,6 +32,17 @@ function App() {
             <PrivateRoute>
               <AuthenticatedLayout>
                 <Home />
+              </AuthenticatedLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/OurLondon"
+          element={
+            <PrivateRoute>
+              <AuthenticatedLayout>
+                <OurLondon />
               </AuthenticatedLayout>
             </PrivateRoute>
           }
