@@ -118,26 +118,34 @@ const OurLondon = () => {
             </button>
 
                         {selectedPoint.image && (
+                          <div className = "imageWrapper">
               <img
                 src={selectedPoint.image}
                 alt={selectedPoint.title || selectedPoint.name || "Place image"}
                 className="cardImage"
               />
+              <div className="cardPillWrapper">
+              <div className="cardPill">{selectedPoint.type}</div>
+              {selectedPoint.price_text && (
+              <div className="cardPill">{selectedPoint.price_text}</div>
+              )}
+              </div>
+              </div>
             )}
 
+<div className = "cardText">
             <div className="cardTitleRow">
-              <div className="cardTitle">{selectedPoint.name ?? "Unknown"}</div>
-              <div className="cardPill">{selectedPoint.type}</div>
+              <h1 className="cardTitle">{selectedPoint.name ?? "Unknown"}</h1>
+              
             </div>
 
             {selectedPoint.comment && (
               <div className="cardBody">{selectedPoint.comment}</div>
             )}
+            <span className = "cardSubtitle">{selectedPoint.Address ?? ""}</span>
 
-            {/* Example extra fields if your JSON has them */}
-            <div className="cardMeta">
-              <span>{selectedPoint.address ?? ""}</span>
-            </div>
+
+          </div>
           </div>
         )}
       </div>
