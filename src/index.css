@@ -96,6 +96,7 @@ h2{
   font-size: var(--text-lg);
   color: var(--dark2);
     text-transform: uppercase;
+    margin: 0;
 }
 
 p{

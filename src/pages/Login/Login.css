@@ -1,0 +1,167 @@
+.loginBody{
+display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;   /* fill full screen height */
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+}
+
+.imageWrapper{
+    position: relative;
+    height:50vh;
+    width: 100vw;
+
+}
+
+.heroImage{
+    width: 100%;
+    height:100%;
+    object-fit: cover;
+}
+
+.imageOverlay{
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 2vh;
+    width:100%;
+    background-color: white;
+    z-index: 100;
+    border: none;
+    border-radius: 30px 30px 0 0 ;
+}
+
+.loginFormSection{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    padding: var(--space-md) var(--space-md);
+}
+
+.loginForm{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.namesSectionLogin{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    justify-content: center;
+
+}
+
+.single-line-input {
+  width: 100%;
+  padding: var(--space-sm) 40px;
+  border: 1px solid var(--grey1);
+  border-radius: var(--space-sm);
+  font-size: var(--text-base);
+  color: var(--dark2);
+  box-sizing: border-box;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+.inputIcon {
+  position: absolute;
+  top: 25%;
+  left: 14px;
+  color: #9aa0a6;
+  pointer-events: none;
+}
+
+.inputAction {
+  position: absolute;
+  right: 14px;
+    top: 25%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9aa0a6;
+}
+
+.additionalInput{
+    margin-top: 10px;
+    margin-bottom: var(--space-md);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.primary-button{
+    cursor: pointer;
+    background-color: var(--dark2);
+    color: var(--light1);
+    height: var(--space-lg);
+    border-radius: var(--space-sm);
+}
+
+.rememberRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Hide native checkbox */
+.rememberRow input {
+  display: none;
+}
+
+.rememberRow{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Toggle track */
+.toggle {
+  width: 42px;
+  height: 22px;
+  background: #d1d5db;
+  border-radius: 999px;
+  position: relative;
+  transition: background 0.25s;
+}
+
+/* Toggle knob */
+.toggle::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.25s;
+}
+
+.toggle,
+.toggle::after {
+  transition: all 0.8s ease;
+}
+
+
+/* Checked state */
+.rememberRow input:checked + .toggle {
+  background: #0f3d4c; /* your dark teal */
+}
+
+.rememberRow input:checked + .toggle::after {
+  transform: translateX(20px);
+}
+
+

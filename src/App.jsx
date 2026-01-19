@@ -13,7 +13,7 @@ import Hotels from './pages/Hotels';
 import Venue from './pages/Venue';
 import Travel from './pages/Travel';
 import RSVP from './pages/RSVP/RSVPMain';
-import Login from "./Login";
+import Login from "./pages/Login/Login";
 
 
 function App() {

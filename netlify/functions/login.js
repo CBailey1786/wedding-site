@@ -8,26 +8,46 @@ export const handler = async (event) => {
 
   
 
-  const { username, password, rememberMe } = JSON.parse(event.body || "{}");
+  const { firstName, surname, password, rememberMe } = JSON.parse(event.body || "{}");
   console.log(rememberMe)
   const genericError = { statusCode: 401, body: "Invalid credentials" };
 
-  if (!username || !password) return genericError;
+  if (!firstName || !surname || !password) return genericError;
 
   if (password !== process.env.GENERIC_WEDDING_PASSWORD) {
     return genericError;
   }
 
-  // username is citext in DB so eq() is case-insensitive
-  const { data: party, error } = await supabase
-    .from("parties")
-    .select("party_id, username, display_name")
-    .eq("username", username.trim())
-    .maybeSingle();
+  const first = firstName.trim();
+  const last = surname.trim();
 
-  if (error || !party) {
+  // Pull back up to 2 matches so we can detect duplicates cheaply
+  const { data: guests, error } = await supabase
+    .from("guests")
+    .select("party_id, first_name, last_name")
+    .eq("first_name", first)
+    .eq("last_name", last)
+    .limit(2);
+
+
+  if (error || !guests || guests.length === 0) {
     return genericError;
   }
+
+  if (guests.length > 1) {
+    return {
+      statusCode: 409,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ok: false,
+        error: "DUPLICATE_NAME",
+        message:
+          "More than one guest has that name — please try logging in using a different member of the party.",
+      }),
+    };
+  }
+
+  const guest = guests[0];
 
   console.log("rememberMe",rememberMe)
   // Coerce rememberMe into a proper boolean
@@ -40,8 +60,9 @@ export const handler = async (event) => {
 
   const token = signSession(
     {
-      party_id: party.party_id,
-      username: party.username,
+      party_id: guest.party_id,
+      firstName: guest.first_name,
+      surname: guest.last_name,
     },
     remember
   );
@@ -53,8 +74,7 @@ export const handler = async (event) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      ok: true,
-      display_name: party.display_name,
+      ok: true
     }),
   };
 };
