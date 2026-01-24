@@ -4,6 +4,7 @@ import PageHeader from "../../layouts/PageHeader";
 
 import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
 import mapPoints from "../../data/map_points.with_images.json";
+import { Icon, PinCircleBorder2  } from "leaflet-extra-markers";
 
 function RecenterForCard({ selectedPoint, cardOpen }) {
   const map = useMap();
@@ -11,9 +12,11 @@ function RecenterForCard({ selectedPoint, cardOpen }) {
   React.useEffect(() => {
     if (!selectedPoint || !cardOpen) return;
 
-    // Pan the map upward so the marker isn't hidden behind the card
-    // (positive y = move map down -> marker appears higher)
-    map.panBy([0, 140], { animate: true });
+    map.setView(
+      [selectedPoint.lat-0.2/(map.getZoom()*2), selectedPoint.lng],
+      map.getZoom(),
+      { animate: true }
+    );
   }, [selectedPoint, cardOpen, map]);
 
   return null;
@@ -49,6 +52,12 @@ const OurLondon = () => {
   }, [activeType, selectedPoint]);
 
   const cardOpen = Boolean(selectedPoint);
+
+  const marker = new Icon({
+  icon: "fa-exclamation",
+  color: "#2D5341",
+  svg: PinCircleBorder2,
+});
 
   return (
     <div className="mapPageBody">
@@ -98,17 +107,27 @@ const OurLondon = () => {
             <Marker
               key={p.id ?? `${p.lat}-${p.lng}`}
               position={[p.lat, p.lng]}
+              icon = {marker}
               eventHandlers={{
                 click: () => setSelectedPoint(p),
               }}
             />
           ))}
-        </MapContainer>
+        
 
         {/* Bottom details card */}
         {selectedPoint && (
           <div className="mapBottomCard" role="dialog" aria-label="Location details">
-            <button
+
+
+                        {selectedPoint.image && (
+                          <div className = "cardImageWrapper">
+              <img
+                src={selectedPoint.image}
+                alt={selectedPoint.title || selectedPoint.name || "Place image"}
+                className="cardImage"
+              />
+                          <button
               type="button"
               className="cardClose"
               onClick={() => setSelectedPoint(null)}
@@ -116,14 +135,6 @@ const OurLondon = () => {
             >
               ×
             </button>
-
-                        {selectedPoint.image && (
-                          <div className = "imageWrapper">
-              <img
-                src={selectedPoint.image}
-                alt={selectedPoint.title || selectedPoint.name || "Place image"}
-                className="cardImage"
-              />
               <div className="cardPillWrapper">
               <div className="cardPill">{selectedPoint.type}</div>
               {selectedPoint.price_text && (
@@ -148,6 +159,8 @@ const OurLondon = () => {
           </div>
           </div>
         )}
+
+        </MapContainer>
       </div>
     </div>
   );
