@@ -7,7 +7,7 @@ import AuthenticatedLayout from "./layouts/AuthenticatedLayout";
 
 import PrivateRoute from "./components/PrivateRoute";
 import Navbar from './components/Navbar/Navbar';
-import Home from './pages/Home';
+import Home from './pages/Home/Home';
 import OurLondon from "./pages/OurLondon/OurLondon";  
 import Hotels from './pages/Hotels';
 import Venue from './pages/Venue';
