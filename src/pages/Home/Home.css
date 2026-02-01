@@ -1,5 +1,5 @@
 .homeBody{
-
+    max-width: 100vw;
   width: 100%;
   height: 100vh;
   height: 100svh;
@@ -7,6 +7,7 @@
   margin: 0;
   position: relative;
 
+  overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;

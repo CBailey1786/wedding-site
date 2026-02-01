@@ -1,9 +1,9 @@
-import {React, useRef} from "react";
+import { React, useRef } from "react";
 import './Home.css'
 import { NavLink } from "react-router-dom";
-import Home_Section1 from "./components/Home_Section1";
-import Home_Section2 from "./components/Home_Section2";
-import Home_Section3 from "./components/Home_Section3";
+import HeroSection from "./components/HeroSection";
+import PhotoSection from "./components/PhotoSection";
+import ScheduleSection from "./components/ScheduleSection";
 
 const Home = () => {
 
@@ -11,29 +11,29 @@ const Home = () => {
     const section2 = useRef();
     const section3 = useRef();
 
-    function scrollTo(section){
-        section.current.scrollIntoView({ behavior: "smooth"});
+    function scrollTo(section) {
+        section.current.scrollIntoView({ behavior: "smooth" });
     }
 
     return (
 
 
         <div className="homeBody">
-            <div ref = {section1}>
-            <Home_Section1 
-            scrollTo = {scrollTo}
-            goToSectionRef = {section2}
-            />
+            <div ref={section1}>
+                <HeroSection
+                    scrollTo={scrollTo}
+                    goToSectionRef={section2}
+                />
             </div>
-            <div ref = {section2}>
-            <Home_Section2 scrollTo = {scrollTo}
-                goToSectionRef = {section3}/>
+            <div ref={section2}>
+                <ScheduleSection scrollTo={scrollTo}
+                    goToSectionRef={section3} />
             </div>
-            <div ref = {section3}>
-            <Home_Section3/>
+            <div ref={section3}>
+                <PhotoSection />
             </div>
 
-            
+
 
 
         </div>

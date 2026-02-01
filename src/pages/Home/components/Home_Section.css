@@ -1,32 +1,30 @@
-
-
-.hero{
+.hero {
     position: relative;
     background-image: url("../../../assets/northern-lights-enhanced-bw.webp");
     background-repeat: no-repeat;
     background-position: 40% 30%;
     background-size: 210%;
-      /* fallback */
-  min-height: calc(var(--vh, 1vh) * 100);
+    /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
 
-  /* modern override */
-  min-height: 100dvh;
+    /* modern override */
+    min-height: 100dvh;
 
     width: 100%;
 
     scroll-snap-align: center;
 }
 
-.heroContent{
+.heroContent {
 
-          /* fallback */
-  min-height: calc(var(--vh, 1vh) * 100);
+    /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
 
-  /* modern override */
-  min-height: 100dvh;
+    /* modern override */
+    min-height: 100dvh;
 
     width: 100%;
-display: flex;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -34,7 +32,7 @@ display: flex;
     gap: var(--space-lg);
 }
 
-.heroColour{
+.heroColour {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -42,7 +40,7 @@ display: flex;
     opacity: 40%;
 }
 
-.namesWrapper{
+.namesWrapper {
     display: flex;
     gap: var(--space-md);
     flex-direction: column;
@@ -52,7 +50,7 @@ display: flex;
     z-index: 999;
 }
 
-.namesSection{
+.namesSection {
     display: flex;
     gap: var(--space-sm);
     flex-direction: column;
@@ -60,47 +58,49 @@ display: flex;
     align-items: center;
     color: white;
 }
-.names{
+
+.names {
     color: white;
 }
 
-.heroDetails{
+.heroDetails {
     z-index: 999;
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
 }
 
-.heroDetail{
+.heroDetail {
     color: white;
 }
 
-.heroButtons{
+.heroButtons {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
     z-index: 999;
 }
 
-.heroButton{
+.heroButton {
     border-radius: var(--space-sm);
     width: var(--space-xl);
     height: var(--space-lg);
 }
 
-.heroSecondary{
+.heroSecondary {
     cursor: pointer;
     background-color: var(--dark2);
     color: var(--light1);
 }
-.heroPrimary{
+
+.heroPrimary {
     border: 1px var(--dark2) solid;
-    
+
     background-color: var(--light1);
     color: var(--dark2);
 }
 
-.downArrow{
+.downArrow {
     position: absolute;
     bottom: var(--space-lg);
     left: 0;
@@ -115,24 +115,27 @@ display: flex;
     height: 40px;
     z-index: 2;
 
-    
-animation: bounce 1.2s ease-in-out infinite;
-  animation-delay: 3s;
+
+    animation: bounce 1.2s ease-in-out infinite;
+    animation-delay: 3s;
 
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(10px);
-  }
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(10px);
+    }
 }
 
 
-.downArrow2{
-        position: absolute;
+.downArrow2 {
+    position: absolute;
     bottom: var(--space-lg);
     left: 0;
     right: 0;
@@ -147,18 +150,151 @@ animation: bounce 1.2s ease-in-out infinite;
 
 }
 
-.whiteBody{
+.scheduleSection {
+    height: fit-content;
+    box-sizing: border-box;
     position: relative;
-    background-color: white;
-    height:100vh;
+    background-color: var(--light2);
+    /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    /* modern override */
+    min-height: 100dvh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+
     gap: var(--space-lg);
 
     scroll-snap-align: center;
 
+    padding: var(--space-xl) var(--space-md);
+   
+}
+
+.scheduleOfEvents {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: var(--space-lg);
+    position: relative;
+     
+}
+
+.scheduleBody{
+     width: 100%;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    position: relative;
+    margin-bottom: var(--space-lg);
+
+}
+
+.scheduleRight{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    width: 100%;
+}
+
+.scheduleComponentBody{
+    width: 100%;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md)
+}
+
+.scheduleComponentImage{
+    width: 100%;
+    aspect-ratio: 5/3;
+    object-fit: cover;
+    border-radius: var(--space-sm);
+    filter: grayscale(100%);
+}
+
+.scheduleComponentTextSection{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.scheduleLeft{
+    position:relative;
+}
+
+.timelineBar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    width: var(--space-xs);
+    height: 100%;
+    background-color: var(--dark2);
+    z-index: 1;
+}
+
+.timelineDot{
+    
+
+    left: 0;
+    right:0;
+    margin: 0 auto;
+    width: var(--space-sm);
+    height: var(--space-sm);
+    border-radius: 999px;
+    background-color: var(--light2);
+    border: solid var(--space-xs) var(--dark2);
+    z-index: 2;
+}
+
+.dot1{
+    position: absolute;
+    top: 0;
+}
+
+.dot2{
+    position: absolute;
+    top: 25.3%;
+}
+
+.dot3{
+    position: absolute;
+    top: 51%;
+}
+
+.dot4{
+    position: absolute;
+    top: 77.4%;
+}
+
+.dot5{
+    position: absolute;
+    top: 100%;
+}
+
+.photoSection {
+    height: fit-content;
+    box-sizing: border-box;
+    position: relative;
+    background-color: var(--light2);
+    /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    /* modern override */
+    min-height: 100dvh;
+    width: 100%;
+
+    gap: var(--space-lg);
+
+    scroll-snap-align: center;
+
+    padding: var(--space-xl) var(--space-md);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
 }
