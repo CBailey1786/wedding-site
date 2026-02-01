@@ -4,14 +4,14 @@ import flowers from '../../../assets/heart-flower-white.svg';
 import { NavLink } from "react-router-dom";
 import { PhotoCarousel } from "./PhotoCarousel";
 
-import silverstone from "../../../assets/silverstone-bw.png";
-import christmas from "../../../assets/christmas-bw.png";
-import columns from "../../../assets/columns-bw.png";
-import wedding from "../../../assets/wedding-bw.png";
+import silverstone from "../../../assets/silverstone.jpg";
+import river from "../../../assets/river.jpg";
+import columns from "../../../assets/columns.jpg";
+import wedding from "../../../assets/wedding.jpg";
 
 const photos = [
   { src: silverstone, alt: "One" },
-  { src: christmas, alt: "Two" },
+  { src: river, alt: "Two" },
   { src: columns, alt: "Three" },
   { src: wedding, alt: "Four" },
 ];
