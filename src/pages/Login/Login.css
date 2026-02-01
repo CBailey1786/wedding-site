@@ -16,7 +16,11 @@ display: flex;
 
 .imageWrapper{
     position: relative;
-    height:50vh;
+      /* fallback */
+  min-height: calc(var(--vh, 1vh) * 50);
+
+  /* modern override */
+  min-height: 50dvh;
     width: 100vw;
 
 }
