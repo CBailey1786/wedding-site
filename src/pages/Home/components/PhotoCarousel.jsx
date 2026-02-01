@@ -26,7 +26,7 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
     const slidesInView = emblaApi.slidesInView(true);
 
     // Tweak these two numbers to taste:
-    const MIN_SCALE = 0.85; // side cards
+    const MIN_SCALE = 0.80; // side cards
     const MAX_SCALE = 1.0;  // center card
 
     // For each snap point, find distance from current scroll
