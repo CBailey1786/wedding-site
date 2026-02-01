@@ -1,0 +1,154 @@
+
+
+.hero{
+    position: relative;
+    background-image: url("../../../assets/northern-lights-enhanced-bw.webp");
+    background-repeat: no-repeat;
+    background-position: 40% 30%;
+    background-size: 210%;
+    height:100vh;
+    width: 100%;
+
+    scroll-snap-align: center;
+}
+
+.heroContent{
+
+        height:100vh;
+    width: 100%;
+display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+}
+
+.heroColour{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: var(--dark1);
+    opacity: 40%;
+}
+
+.namesWrapper{
+    display: flex;
+    gap: var(--space-md);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 999;
+}
+
+.namesSection{
+    display: flex;
+    gap: var(--space-sm);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.names{
+    color: white;
+}
+
+.heroDetails{
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.heroDetail{
+    color: white;
+}
+
+.heroButtons{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    z-index: 999;
+}
+
+.heroButton{
+    border-radius: var(--space-sm);
+    width: var(--space-xl);
+    height: var(--space-lg);
+}
+
+.heroSecondary{
+    cursor: pointer;
+    background-color: var(--dark2);
+    color: var(--light1);
+}
+.heroPrimary{
+    border: 1px var(--dark2) solid;
+    
+    background-color: var(--light1);
+    color: var(--dark2);
+}
+
+.downArrow{
+    position: absolute;
+    bottom: var(--space-lg);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background: none;
+    background-image: url("../../../assets/down_arrow_white.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+
+    
+animation: bounce 1.2s ease-in-out infinite;
+  animation-delay: 3s;
+
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+
+.downArrow2{
+        position: absolute;
+    bottom: var(--space-lg);
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    background-image: url("../../../assets/down_arrow_green.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+
+}
+
+.whiteBody{
+    position: relative;
+    background-color: white;
+    height:100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: var(--space-lg);
+
+    scroll-snap-align: center;
+
+}
