@@ -6,7 +6,12 @@
     background-repeat: no-repeat;
     background-position: 40% 30%;
     background-size: 210%;
-    height:100vh;
+      /* fallback */
+  min-height: calc(var(--vh, 1vh) * 100);
+
+  /* modern override */
+  min-height: 100dvh;
+
     width: 100%;
 
     scroll-snap-align: center;
@@ -14,7 +19,12 @@
 
 .heroContent{
 
-        height:100vh;
+          /* fallback */
+  min-height: calc(var(--vh, 1vh) * 100);
+
+  /* modern override */
+  min-height: 100dvh;
+
     width: 100%;
 display: flex;
     flex-direction: column;
