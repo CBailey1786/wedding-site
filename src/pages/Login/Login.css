@@ -9,6 +9,8 @@ display: flex;
   /* modern override */
   min-height: 100dvh;
 
+
+
   box-sizing: border-box;
   margin: 0;
   position: relative;
@@ -16,11 +18,12 @@ display: flex;
 
 .imageWrapper{
     position: relative;
-      /* fallback */
-  min-height: calc(var(--vh, 1vh) * 50);
 
-  /* modern override */
-  min-height: 50dvh;
+    /* fallback */
+    height: calc(var(--vh, 1vh) * 50);
+
+    /* modern override */
+    height: 50dvh;
     width: 100vw;
 
 }
