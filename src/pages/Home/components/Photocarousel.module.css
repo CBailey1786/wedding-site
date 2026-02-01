@@ -33,8 +33,6 @@
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
-  background: #eee;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transform: scale(0.85);           /* starting size */
   transition: transform 120ms linear; /* keeps it smooth */
   will-change: transform;

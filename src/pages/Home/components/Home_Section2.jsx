@@ -4,12 +4,16 @@ import flowers from '../../../assets/heart-flower-white.svg';
 import { NavLink } from "react-router-dom";
 import { PhotoCarousel } from "./PhotoCarousel";
 
-const photos = [
-  { src: "src/assets/langham-outside.jpg", alt: "One" },
+import silverstone from "../../../assets/silverstone-bw.png";
+import christmas from "../../../assets/christmas-bw.png";
+import columns from "../../../assets/columns-bw.png";
+import wedding from "../../../assets/wedding-bw.png";
 
-  { src: "src/assets/northern-lights-enhanced-bw.webp", alt: "Two" },
-  { src: "src/assets/nhm-outside.webp", alt: "Three" },
-  { src: "src/assets/the-royal-horseguards.jpg", alt: "Four" },
+const photos = [
+  { src: silverstone, alt: "One" },
+  { src: christmas, alt: "Two" },
+  { src: columns, alt: "Three" },
+  { src: wedding, alt: "Four" },
 ];
 
 
