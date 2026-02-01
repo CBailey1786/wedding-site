@@ -2,7 +2,9 @@
 display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 100vh;   /* fill full screen height */
+  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   box-sizing: border-box;
   margin: 0;
   position: relative;
