@@ -9,7 +9,7 @@
 .viewport {
   width: 100%;
   overflow: hidden;
-  padding: 0 16px; /* tweak */
+  padding: 0 32px; /* tweak */
   touch-action: pan-y; /* allow vertical scroll + horizontal swipe */
 }
 
@@ -29,7 +29,7 @@
 
 /* Rounded photo card */
 .card {
-  width: 100%;
+  width: 80%;
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;

@@ -30,17 +30,17 @@ const Home = () => {
 
 
         <div className="homeBody">
-            <div ref={section1}>
+            <div className = "snapPage" ref={section1}>
                 <HeroSection
                     scrollTo={scrollTo}
                     goToSectionRef={section2}
                 />
             </div>
-            <div ref={section2}>
+            <div className = "snapPage" ref={section2}>
                 <ScheduleSection scrollTo={scrollTo}
                     goToSectionRef={section3} />
             </div>
-            <div ref={section3}>
+            <div className = "snapPage" ref={section3}>
                 <PhotoSection />
             </div>
 
