@@ -11,9 +11,20 @@ const Home = () => {
     const section2 = useRef();
     const section3 = useRef();
 
-    function scrollTo(section) {
-        section.current.scrollIntoView({ behavior: "smooth" });
-    }
+  function scrollTo(sectionRef) {
+    const scroller = scrollerRef.current;
+    const el = sectionRef.current;
+    if (!scroller || !el) return;
+
+    // Temporarily disable snap so Safari can't "correct" the final position
+    scroller.classList.add("snapOff");
+
+    const top = el.offsetTop; // offset within the scroll container
+    scroller.scrollTo({ top, behavior: "smooth" });
+
+    // Re-enable snap after the scroll settles
+    window.setTimeout(() => scroller.classList.remove("snapOff"), 500);
+  }
 
     return (
 
