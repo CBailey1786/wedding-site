@@ -17,13 +17,6 @@
 
 }
 
-.snapPage{
-  height: 100dvh;                 /* critical: every snap target is exactly viewport height */
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  overflow: hidden;               /* so only internal scrollers scroll */
-}
-
 
   .webkit-scrollbar {
     display: none;
