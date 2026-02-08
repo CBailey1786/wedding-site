@@ -9,11 +9,13 @@ import PrivateRoute from "./components/PrivateRoute";
 import Navbar from './components/Navbar/Navbar';
 import Home from './pages/Home/Home';
 import OurLondon from "./pages/OurLondon/OurLondon";  
-import Hotels from './pages/Hotels';
+import Hotels from './pages/Hotels/Hotels';
 import Venue from './pages/Venue';
-import Travel from './pages/Travel';
+import Travel from './pages/Travel/Travel';
 import RSVP from './pages/RSVP/RSVPMain';
 import Login from "./pages/Login/Login";
+import WeddingParty from "./pages/WeddingParty/WeddingParty";
+import FAQ from "./pages/FAQ/FAQ";
 
 
 function App() {
@@ -76,6 +78,28 @@ function App() {
             <PrivateRoute>
               <AuthenticatedLayout>
                 <Travel />
+              </AuthenticatedLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/WeddingParty"
+          element={
+            <PrivateRoute>
+              <AuthenticatedLayout>
+                <WeddingParty />
+              </AuthenticatedLayout>
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/FAQ"
+          element={
+            <PrivateRoute>
+              <AuthenticatedLayout>
+                <FAQ />
               </AuthenticatedLayout>
             </PrivateRoute>
           }

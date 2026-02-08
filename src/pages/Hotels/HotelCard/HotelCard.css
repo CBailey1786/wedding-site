@@ -1,0 +1,135 @@
+.HotelCard{
+    width: 100%;
+    position: relative;
+
+    border: 1px var(--light3) solid;
+    border-radius: var(--space-sm);
+}
+
+.cardImageWrapper{
+    height: 20vh;
+    height: 20svh;
+}
+
+.cardImage{
+    height: 100%;
+    
+}
+
+.HotelCardBottom{
+    padding: var(--space-md) var(--space-md);
+
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md)
+}
+
+.ButtonContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.hotelButton {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: var(--space-sm);
+    width: var(--space-xl);
+    height: var(--space-lg);
+
+    width: 100%;
+    padding: var(--space-sm) var(--space-md) ;
+    text-decoration: none;
+    
+}
+
+.hotelPrimary {
+    cursor: pointer;
+    background-color: var(--dark2);
+    color: var(--light1);
+}
+
+.hotelSecondary {
+    border: 1px white solid;
+    background-color: none;
+    color: white;
+}
+
+.ButtonContainer{
+    width: 100%;
+}
+
+.additionalHotelCard{
+    width: 100%;
+    aspect-ratio: 3/2;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.additionalHotelImage{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: var(--space-sm);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.imageScreen{
+    background-color: var(--dark2);
+    opacity: 30%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    border-radius: var(--space-sm);
+}
+
+.imageScreenRadial{
+    background-image: radial-gradient(var(--dark2), #ffffff00);
+    opacity: 70%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+
+    border-radius: var(--space-sm);
+}
+
+.additionalHotelInfo{
+    z-index: 4;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    gap: var(--space-sm);
+    
+}
+
+.additionalHotelName{
+    color: white;
+}
+
+.additionalHotelSubtitle{
+    color: white;
+}

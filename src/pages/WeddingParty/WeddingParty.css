@@ -1,0 +1,26 @@
+
+.picturesSection {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+
+  justify-content: center;
+
+  margin: 0 auto;
+  margin-bottom: var(--space-md);
+}
+
+.weddingPartyCard {
+  flex: 0 1 calc((100% - var(--space-sm) * 2) / 3);
+}
+
+.partyImage{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+        border-radius: var(--space-sm);
+}
+
+.partyName{
+    justify-self: center;
+}

@@ -1,15 +1,15 @@
 import React from "react";
 import './Hotels.css'
-import nhmOutside from '../../src/assets/nhm-outside.png';
-import HotelCard from "../components/HotelCard/HotelCard";
-import GrosvenorImg from '../../src/assets/grosvenor-bus.jpg';
-import TreehouseImg from '../../src/assets/treehouse-lobby.webp';
-import HorseguardsImg from '../../src/assets/the-royal-horseguards.jpg';
-import CorinthiaImg from '../../src/assets/corinthia-london.jpg';
-import ChurchillImg from '../../src/assets/the-churchill-outside.webp';
-import LanghamImg from '../../src/assets/langham-outside.jpg';
-import AdditionalHotels from "../components/HotelCard/AdditionalHotels";
-import PageHeader from "../layouts/PageHeader";
+import HotelCard from "./HotelCard/HotelCard";
+import GrosvenorImg from '../../../src/assets/grosvenor-bus.jpg';
+import TreehouseImg from '../../../src/assets/treehouse-lobby.webp';
+import HorseguardsImg from '../../../src/assets/the-royal-horseguards.jpg';
+import CorinthiaImg from '../../../src/assets/corinthia-london.jpg';
+import ChurchillImg from '../../../src/assets/the-churchill-outside.webp';
+import LanghamImg from '../../../src/assets/langham-outside.jpg';
+import AdditionalHotels from "./HotelCard/AdditionalHotels";
+import PageHeader from "../../layouts/PageHeader";
+
 
 const Hotels = () => {
 
@@ -45,26 +45,20 @@ const Hotels = () => {
         <div className="mainBody">
             <PageHeader pageName = "Hotels" />
 
-            {/* <div className="blurb">
-                <h3>We are delighted to be working with two fantastic central London hotels. Located in the heart of the city, Grosvenor House and The Treehouse are both just a stone’s throw from Regent Street, Soho, and Marylebone (a personal favourite of ours).
-                </h3>
-
-                <h3>While we are unable to provide discounted rates, we will be providing transport to and from the wedding from both hotels. We recommend booking early as possible to secure the best rates.
-                </h3>
-            </div> */}
+            <h3>Recommended Hotels</h3>
 
             <div className="hotelCardSection">
                 {HOTELS.map((h, i) => (
                     <HotelCard
-                        key={`${h.name}-${i}`}
                         name={h.name}
                         img={h.img}
-                        info={h.info}
-                        reversed={i % 2 === 1} // flip every second card
-                    />
+                        info = {h.info}                  
+                          />
                 ))}
 
             </div>
+
+            <h3>Other Hotels</h3>
 
             <div className="addtionalHotelCards">
                 <AdditionalHotels name="The Royal Horseguards" address="2 Whitehall Ct, London SW1A 2EJ" image = {HorseguardsImg} website = "https://www.royalhorseguardshotel.com/" />

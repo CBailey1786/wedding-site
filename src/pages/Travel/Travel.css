@@ -1,0 +1,25 @@
+.travelTextBlock{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.travelButton {
+    display: block;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: var(--space-sm);
+    width: var(--space-xl);
+    height: var(--space-lg);
+
+    width: 100%;
+    padding: var(--space-sm) var(--space-md) ;
+    text-decoration: none;
+    
+}
+
+.travelPrimary {
+    cursor: pointer;
+    background-color: var(--dark2);
+    color: var(--light1);
+}

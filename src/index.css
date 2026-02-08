@@ -67,22 +67,23 @@
     position: relative;
 }
 
-html,
-body,
-#root {
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100%;
+}
+
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
 
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch; /* default, but explicit is fine */
-}
 
 h1{
   font-size: var(--text-xl);
@@ -100,11 +101,19 @@ h2{
     margin: 0;
 }
 
+h3{
+  font-size: var(--text-md);
+  color: var(--dark2);
+    text-transform: uppercase;
+    margin: 0;
+}
+
 p{
   font-size: var(--text-base);
   color: var(--dark2);
   margin: 0;
   letter-spacing: 1px;
+  text-align: justify;
 }
 
 

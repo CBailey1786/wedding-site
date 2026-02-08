@@ -15,21 +15,23 @@
 
 .container {
   display: flex;
-  gap: 18px;
+  margin-left: -18px;
   will-change: transform;
 }
 
-/* Slide width controls how much adjacent slides peek in */
 .slide {
   flex: 0 0 72%;
   min-width: 0;
+
+  /* instead of gap */
+  padding-left: 18px;   /* = your spacing */
   display: flex;
   justify-content: center;
 }
 
 /* Rounded photo card */
 .card {
-  width: 80%;
+  width: 100%;
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
@@ -44,7 +46,7 @@
   object-fit: cover;
   display: block;
   /* Optional */
-  /* filter: grayscale(1); */
+  filter: grayscale(1);
 }
 
 .dots {

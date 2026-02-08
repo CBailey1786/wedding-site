@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import "./RSVPMain.css";
 import RSVPHeader from "./RSVPHeader";
@@ -18,6 +18,11 @@ import { useToast } from "../../components/Toasts/ToastContext";
 import { SUMMARY_STEP, DECLINE_ANSWERS } from "./constants";
 import { useParty } from "./useParty";
 import { useRSVPSteps } from "./useRSVPSteps";
+
+import gsap from "gsap"
+import {ScrollTrigger} from "gsap/dist/ScrollTrigger"
+gsap.registerPlugin(ScrollTrigger)
+
 
 
 export default function RSVPMain() {
@@ -50,6 +55,37 @@ export default function RSVPMain() {
     updateTransportAnswer,
     updateEmailAnswer,
   } = useRSVPSteps();
+
+  const bodyRef = useRef();
+  
+      // useEffect(() => {
+  
+      //     gsap.fromTo(
+      //         bodyRef.current,
+      //         {
+      //             autoAlpha: 0,
+      //             y: -40,
+      //         },
+  
+      //         {
+      //             y:0,
+      //             autoAlpha: 1,
+      //             duration: 1,
+  
+      //             scrollTrigger: {
+      //                 scroller: ".RSVPBody",
+      //                 trigger: bodyRef.current,
+      //                 start: "top 60%",
+      //                 end: "bottom 0%",
+      //                 toggleActions: "play none restart reverse",
+      //             }
+                  
+      //         }
+      //     )
+      // },[])
+
+
+
 
   const [submitting, setSubmitting] = useState(false);
 
@@ -96,7 +132,7 @@ export default function RSVPMain() {
 console.log(selectedGuest)
 
   return (
-    <main className="mainBody">
+    <main className="mainBody" >
       <RSVPHeader guest={selectedGuest} />
 
       {step === 0 && (
@@ -106,7 +142,7 @@ console.log(selectedGuest)
         </>
       )}
 
-
+<div className="RSVPBody" ref = {bodyRef}>
 {step === 1 && selectedGuest && (
   isPlusOne ? (
     <RSVPPlusOneDetails
@@ -229,6 +265,7 @@ console.log(selectedGuest)
           canResubmit={isDirty && !submitting}
         />
       )}
+      </div>
     </main>
   );
 }
