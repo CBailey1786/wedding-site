@@ -11,11 +11,14 @@
     width: 100%;
 }
 
+.faq_icon{
+    fill: var(--dark2);
+}
 
 
 .faq{
     cursor: pointer;
-    height: var(--space-xl);
+    height: var(--space-lg);
     border-radius: var(--space-sm);
     box-sizing: border-box;
     font-size: var(--text-base);

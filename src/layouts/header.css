@@ -1,0 +1,11 @@
+.header{
+    display: flex;
+    gap: var(--space-sm);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flowers{
+    width: var(--space-xl)
+}

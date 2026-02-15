@@ -2,12 +2,13 @@ import { useMemo } from "react";
 import { AccordionItem } from "./AccordionItem";
 import styles from "./FAQAccordion.module.css";
 
+
 function Answer({ answer }) {
   if (Array.isArray(answer)) {
     return (
       <>
         {answer.map((p, i) => (
-          <p key={i}>{p}</p>
+          <p key={i} className = {styles.faq_answer}>{p}</p>
         ))}
       </>
     );

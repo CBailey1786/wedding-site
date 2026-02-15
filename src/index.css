@@ -122,3 +122,18 @@ button{
   font-weight: 400;
   border: none;
 }
+
+.mainBody {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  
+  min-height: 100vh;   /* fill full screen height */
+  height: fit-content;
+  box-sizing: border-box;
+  padding: var(--space-xl) var(--space-md);
+  margin: 0;
+  gap: var(--space-lg);
+  position: relative;
+  margin-bottom: var(--space-md);
+}

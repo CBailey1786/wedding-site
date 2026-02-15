@@ -1,0 +1,100 @@
+/* --- initial two-card state --- */
+.pickerWrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.picker {
+  width: min(520px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+
+.cardBtn {
+  border: none;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.cardImage {
+  position: relative;
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--light2);
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+  /* filter: grayscale(1); */
+  transform: scale(1.02);
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.picker_gents img{
+    object-fit:cover;
+    transform: scale(1.5);
+    object-position: -35px 0px;
+}
+
+.picker_ladies img{
+    object-fit:cover;
+    transform: scale(1.2);
+    object-position: -20px -40px;
+}
+
+
+.cardOverlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(45, 83, 65, 0.2);
+}
+
+.cardTitle {
+  color: var(--light1);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+
+.cardBtn:hover .cardImage img {
+  transform: scale(1.06);
+  filter: grayscale(0.6);
+}
+
+.cardBtn:focus-visible {
+  outline: 3px solid rgba(0, 0, 0, 0.25);
+  outline-offset: 4px;
+  border-radius: 18px;
+}
+
+.selectedWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  justify-content: start;
+}
+
+
+.backBtn {
+  width: var(--space-xl);
+  justify-self: start;
+  text-align: start;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--dark2);
+  padding: 8px 0;
+}
+

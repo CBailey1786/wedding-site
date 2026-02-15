@@ -28,6 +28,8 @@ gsap.registerPlugin(ScrollTrigger)
 export default function RSVPMain() {
   const toast = useToast();
   const { party, loading, reloadParty } = useParty();
+
+  console.log("party",party)
   const {
     step,
     selectedGuest,
@@ -58,32 +60,6 @@ export default function RSVPMain() {
 
   const bodyRef = useRef();
   
-      // useEffect(() => {
-  
-      //     gsap.fromTo(
-      //         bodyRef.current,
-      //         {
-      //             autoAlpha: 0,
-      //             y: -40,
-      //         },
-  
-      //         {
-      //             y:0,
-      //             autoAlpha: 1,
-      //             duration: 1,
-  
-      //             scrollTrigger: {
-      //                 scroller: ".RSVPBody",
-      //                 trigger: bodyRef.current,
-      //                 start: "top 60%",
-      //                 end: "bottom 0%",
-      //                 toggleActions: "play none restart reverse",
-      //             }
-                  
-      //         }
-      //     )
-      // },[])
-
 
 
 

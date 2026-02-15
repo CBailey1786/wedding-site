@@ -1,5 +1,7 @@
 import { useId, useRef, useState, useLayoutEffect } from "react";
 import styles from "./FAQAccordion.module.css";
+import PlusIcon from "../../assets/icons/plus_white.svg?react";
+import MinusIcon from "../../assets/icons/minus_white.svg?react";
 
 export function AccordionItem({ question, children, defaultOpen = false }) {
   const [open, setOpen] = useState(defaultOpen);
@@ -28,7 +30,7 @@ export function AccordionItem({ question, children, defaultOpen = false }) {
       >
         <span className={styles.question}>{question}</span>
         <span className={styles.icon} aria-hidden="true">
-          {open ? "−" : "+"}
+          {open ? <MinusIcon className = "faq_icon" />: <PlusIcon className = "faq_icon"/>}
         </span>
       </button>
 

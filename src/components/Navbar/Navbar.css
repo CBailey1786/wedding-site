@@ -1,8 +1,3 @@
-/* ===== NAVBAR (use GRID so the logo truly centers) ===== */
-.navbar {
-
-}
-
 
 /* Link groups */
 .navBarSection {
@@ -130,7 +125,12 @@
   z-index: 2000;                 /* above backdrop */
   visibility: hidden; pointer-events: none;
 }
-.sideMenu.open { transform: translateX(0); visibility: visible; pointer-events: auto; }
+.sideMenu.open { transform: translateX(0); 
+  visibility: visible; 
+  pointer-events: auto; 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;}
 
 
 
@@ -201,4 +201,42 @@
 @media (max-width: 1200px) {
   .navBarSection { display: none; }
   .navbar { margin-top: 1.5rem; }
+}
+
+.rsvp-link{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--dark2);
+    color: var(--light1);
+    text-align: center;
+    border-radius: var(--space-sm);
+}
+
+.rsvp-link.active{
+  background-color: var(--dark2);
+  text-decoration: none;
+}
+.rsvp-link:visited{
+  text-decoration: none;
+  color: var(--light1);
+}
+
+.logoutButton{
+  text-decoration: none;
+    border: 1px var(--dark2) solid;
+    background-color: var(--light1);
+    color: var(--dark2);
+    border-radius: var(--space-sm);
+}
+
+.logoutButton:visited{
+  text-decoration: none;
+  color: var(--dark2);
+}
+
+
+.nav-section{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }

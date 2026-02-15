@@ -63,9 +63,9 @@ export default function Login() {
 
         <div className="loginBody">
 
-            <div className="imageWrapper">
-                <img className="heroImage" src={nhmOutsideWebp} alt="Natural History Museum" loading="lazy" />
-                <div className="imageOverlay"></div>
+            <div className="loginImageWrapper">
+                <img className="loginHeroImage" src={nhmOutsideWebp} alt="Natural History Museum" loading="lazy" />
+                <div className="loginImageOverlay"></div>
             </div>
 
             <div className="loginFormSection">
@@ -80,7 +80,7 @@ export default function Login() {
                             <UserIcon />
                         </span>
 
-                    <input className="single-line-input"
+                    <input className="single-line-input-login"
                         placeholder="First Name"
                         value={firstName}
                         onChange={(e) => setFirstName(e.target.value)}
@@ -93,7 +93,7 @@ export default function Login() {
                             <UserIcon />
                         </span>
 
-                    <input className="single-line-input"
+                    <input className="single-line-input-login"
                         placeholder="Surname"
                         value={surname}
                         onChange={(e) => setSurname(e.target.value)}
@@ -107,7 +107,7 @@ export default function Login() {
                         </span>
 
                     <input
-                        className="single-line-input"
+                        className="single-line-input-login"
                         placeholder="Password"
                         type={showPassword ? "text" : "password"}
                         value={password}

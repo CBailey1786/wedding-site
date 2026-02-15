@@ -100,7 +100,7 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
                 className={styles.card}
                 ref={(el) => setSlideRef(el, idx)}
               >
-                <img className={styles.img} src={p.src} alt={p.alt || ""} />
+                <img className={styles.img} src={p.src} alt={p.alt || ""} loading="lazy" />
               </div>
             </div>
           ))}

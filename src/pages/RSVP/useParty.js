@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 
-export function useParty() {
-  const [party, setParty] = useState(null);
+export function useParty({party, setParty}) {
+
   const [loading, setLoading] = useState(true);
 
   const reloadParty = useCallback(async () => {

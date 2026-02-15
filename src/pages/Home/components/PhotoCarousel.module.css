@@ -1,3 +1,8 @@
+:root {
+  --carousel-gap: 18px;
+}
+
+
 .wrap {
   width: 100%;
   display: flex;
@@ -9,26 +14,29 @@
 .viewport {
   width: 100%;
   overflow: hidden;
-  padding: 0 32px; /* tweak */
-  touch-action: pan-y; /* allow vertical scroll + horizontal swipe */
+  padding: 0 32px;
+  touch-action: pan-y;
 }
 
 .container {
   display: flex;
-  margin-left: -18px;
   will-change: transform;
+
+  /* spacing model */
+  margin-left: -48px;   /* cancels first slide's left padding */
+  padding-right: 18px;  /* ✅ adds matching spacing at the end */
 }
 
 .slide {
   flex: 0 0 72%;
   min-width: 0;
 
-  /* instead of gap */
-  padding-left: 18px;   /* = your spacing */
+  /* spacing between slides */
+  padding-left: 18px;
+
   display: flex;
   justify-content: center;
 }
-
 /* Rounded photo card */
 .card {
   width: 100%;

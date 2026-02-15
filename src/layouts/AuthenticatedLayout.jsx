@@ -1,11 +1,12 @@
-import Footer from "../components/Footer/Footer.jsx";
-import Navbar from "../components/Navbar/Navbar.jsx";
+// layouts/AuthenticatedLayout.jsx
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar/Navbar";
 
-export default function AuthenticatedLayout({ children }) {
+export default function AuthenticatedLayout() {
   return (
     <>
       <Navbar />
-      {children}
+      <Outlet />
     </>
   );
 }

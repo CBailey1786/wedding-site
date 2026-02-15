@@ -46,26 +46,21 @@ const Navbar = () => {
             <span></span>
           </button>
 
+          <div className="nav-section">
+
           <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
           <NavLink to="/OurLondon" className="nav-link" onClick={closeMenu}>Our London</NavLink>
           <NavLink to="/Hotels" className="nav-link" onClick={closeMenu}>Hotels</NavLink>
           <NavLink to="/Venue" className="nav-link" onClick={closeMenu}>Venue</NavLink>
           <NavLink to="/Travel" className="nav-link" onClick={closeMenu}>Travel</NavLink>
           <NavLink to="/FAQ" className="nav-link" onClick={closeMenu}>FAQ</NavLink>
-          <NavLink to="/WeddingParty" className="nav-link" onClick={closeMenu}>Wedding Party</NavLink>
-          <NavLink to="/RSVP" className="nav-link" onClick={closeMenu}>RSVP</NavLink>
-          {/* <NavLink to="/Story" className="nav-link" onClick={closeMenu}>Story</NavLink>
-          <NavLink to="/Schedule" className="nav-link" onClick={closeMenu}>Schedule</NavLink>
-          <NavLink to="/Venue" className="nav-link" onClick={closeMenu}>Venue</NavLink>
-          <NavLink to="/Travel" className="nav-link" onClick={closeMenu}>Travel</NavLink>
-          <NavLink to="/London" className="nav-link" onClick={closeMenu}>London</NavLink>
-          <NavLink to="/FAQ" className="nav-link" onClick={closeMenu}>FAQ</NavLink>
-
-          <NavLink to="/Hotels" end className="nav-link" onClick={closeMenu} aria-label="Home">
-            <button className="actionButton">Hotels</button>
-          </NavLink> */}
-
-          <button onClick={logout}>Log out</button>
+          <NavLink to="/DressCode" className="nav-link" onClick={closeMenu}>Dress Code</NavLink>
+          {/* <NavLink to="/WeddingParty" className="nav-link" onClick={closeMenu}>Wedding Party</NavLink> */}
+          </div>
+          <div className="nav-section">
+          <NavLink to="/RSVP" className="nav-link rsvp-link" onClick={closeMenu}>RSVP</NavLink>
+          <button className = "nav-link logoutButton" onClick={logout}>Log out</button>
+          </div>
         </aside>
     </>
   );

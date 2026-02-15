@@ -4,7 +4,7 @@ import './Home_Section.css'
 
 
 
-const ScheduleComponent = ({header, date, location, address, dress_code, photo}) => {
+const ScheduleComponent = ({id, header, date, location, address, dress_code, photo}) => {
 
     return(
         <div className = "scheduleComponentBody">
@@ -22,7 +22,7 @@ const ScheduleComponent = ({header, date, location, address, dress_code, photo})
                 <p className="scheduleComponentText">Dress Code: {dress_code}</p>
             </div>
 
-            <img className = "scheduleComponentImage" src={photo} alt="" />
+            <img className = {`scheduleComponentImage image_${id}`} src={photo} alt="" />
 
         </div>
     )

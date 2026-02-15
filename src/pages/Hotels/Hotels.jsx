@@ -1,18 +1,17 @@
 import React from "react";
 import './Hotels.css'
 import HotelCard from "./HotelCard/HotelCard";
-import GrosvenorImg from '../../../src/assets/grosvenor-bus.jpg';
-import TreehouseImg from '../../../src/assets/treehouse-lobby.webp';
-import HorseguardsImg from '../../../src/assets/the-royal-horseguards.jpg';
-import CorinthiaImg from '../../../src/assets/corinthia-london.jpg';
-import ChurchillImg from '../../../src/assets/the-churchill-outside.webp';
-import LanghamImg from '../../../src/assets/langham-outside.jpg';
+import GrosvenorImg from '../../../src/assets/hotels/grosvenor-bus.webp';
+import TreehouseImg from '../../../src/assets/hotels/treehouse-lobby.webp';
+import HorseguardsImg from '../../../src/assets/hotels/the-royal-horseguards.webp';
+import CorinthiaImg from '../../../src/assets/hotels/corinthia-london.webp';
+import ChurchillImg from '../../../src/assets/hotels/the-churchill-outside.webp';
+import LanghamImg from '../../../src/assets/hotels/langham-outside.webp';
 import AdditionalHotels from "./HotelCard/AdditionalHotels";
 import PageHeader from "../../layouts/PageHeader";
 
 
 const Hotels = () => {
-
 
     const HOTELS = [
         {
@@ -41,11 +40,14 @@ const Hotels = () => {
         },
     ];
 
+
     return (
         <div className="mainBody">
+            
             <PageHeader pageName = "Hotels" />
 
             <h3>Recommended Hotels</h3>
+            
 
             <div className="hotelCardSection">
                 {HOTELS.map((h, i) => (

@@ -8,7 +8,8 @@
 .list {
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: var(--space-md);
+  font-size: var(--text-sm);
 }
 
 /* item styles */
@@ -24,7 +25,7 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: var(--space-md);
+  padding: calc(var(--space-sm)*1.5);
   background: var(--dark2);
   color: var(--light1);
 
@@ -34,20 +35,34 @@
 }
 
 .question {
-  font-size: var(--text-md);
+  font-size: var(--text-sm);
+}
+
+.faq_answer{
+ font-size: var(--text-sm);
 }
 
 .icon {
-  width: var(--space-lg);
-  height: var(--space-lg);
+  width: var(--space-md);
+  height: var(--space-md);
   border-radius: 999px;
   background: var(--light1);
   color: var(--dark1);
 
   display: grid;
   place-items: center;
-  font-size: var(--space-md);
+  align-items: center;
+  justify-items: center;
+  vertical-align: center;
+  font-size: var(--space-sm);
   flex: 0 0 auto;
+  position: relative;
+}
+
+.faq_icon{
+fill: var(--dark2);
+  width: 1px;
+  height: var(--space-sm);
 }
 
 .panel {
@@ -60,9 +75,11 @@
 .panelInner {
   padding: var(--space-md);
   color: var(--dark2);
+  
 }
 
 .panelInner p {
+    font-size: var(--text-sm);
   margin: 0 0 var(--space-sm) 0;
   letter-spacing: 1px;
 }

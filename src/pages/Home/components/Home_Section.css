@@ -1,6 +1,6 @@
 .hero {
     position: relative;
-    background-image: url("../../../assets/northern-lights-enhanced-bw.webp");
+    background-image: url("../../../assets/home/northern-lights-enhanced-bw.webp");
     background-repeat: no-repeat;
     background-position: 40% 30%;
     background-size: 210%;
@@ -85,13 +85,14 @@
 
 .heroButton {
     border-radius: var(--space-sm);
-    width: var(--space-xl);
+    width: calc(var(--space-xl)*2);
     height: var(--space-lg);
 }
 
 .heroSecondary {
     cursor: pointer;
-    background-color: var(--dark2);
+    background: none;
+    border: 1px var(--light1) solid;
     color: var(--light1);
 }
 
@@ -227,13 +228,14 @@
 }
 
 .timelineBar{
+
     position: absolute;
-    top: 0;
+    top: 12px;
     left: 0;
     right:0;
     margin: 0 auto;
     width: var(--space-xs);
-    height: 100%;
+    height: calc(100% - 11px);
     background-color: var(--dark2);
     z-index: 1;
 }
@@ -252,30 +254,54 @@
     z-index: 2;
 }
 
-.dot1{
+.dots_no_rehearsal .dot1{
     position: absolute;
-    top: 0;
+    top: 0.7%;
 }
 
-.dot2{
+.dots_no_rehearsal .dot2{
     position: absolute;
-    top: 25.3%;
+    top: 35%;
 }
 
-.dot3{
+.dots_no_rehearsal .dot3{
     position: absolute;
-    top: 51%;
+    top: 70.2%;
 }
 
-.dot4{
-    position: absolute;
-    top: 77.4%;
-}
-
-.dot5{
+.dots_no_rehearsal .dot4{
     position: absolute;
     top: 100%;
 }
+
+.dots_rehearsal .dot1{
+    position: absolute;
+    top: 0.7%;
+}
+
+.dots_rehearsal .dot2{
+    position: absolute;
+    top: 25.6%;
+}
+
+.dots_rehearsal .dot3{
+    position: absolute;
+    top: 51.5%;
+}
+
+.dots_rehearsal .dot4{
+    position: absolute;
+    top: 77.7%;
+}
+
+.dots_rehearsal .dot5{
+    position: absolute;
+    top: 100%;
+}
+
+
+
+
 
 .photoSection {
     height: fit-content;
@@ -299,4 +325,14 @@
     flex-direction: column;
     justify-content: center;
    
+}
+
+.image_welcome{
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.image_wedding{
+    object-fit: cover;
+    object-position: 0 -90px;
 }

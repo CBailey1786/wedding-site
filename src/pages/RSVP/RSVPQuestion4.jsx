@@ -29,7 +29,7 @@ export default function RSVPQuestion4({ guest, value, onChange, onNext,nextLabel
     },
     {
       id: "mushroom",
-      label: "Portobello Mushroom",
+      label: "Portobello Mushroom (v)",
       sublabel: "with shallot tart tatin, wilted greens, celeriac purée & potato fondant",
       allergens: "celery, gluten, sulphites",
     },

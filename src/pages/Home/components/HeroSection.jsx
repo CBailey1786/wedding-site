@@ -1,15 +1,15 @@
-import {React, useRef, useEffect} from "react";
+import { React, useRef, useEffect } from "react";
 import './Home_Section.css'
 import flowers from '../../../assets/heart-flower-white.svg';
 import { NavLink } from "react-router-dom";
 
 import gsap from "gsap"
-import {ScrollTrigger} from "gsap/dist/ScrollTrigger"
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger)
 
 
 
-const HeroSection = ({scrollTo, goToSectionRef}) => {
+const HeroSection = ({ scrollTo, goToSectionRef }) => {
 
     const bodyRef = useRef();
 
@@ -23,7 +23,7 @@ const HeroSection = ({scrollTo, goToSectionRef}) => {
             },
 
             {
-                y:0,
+                y: 0,
                 autoAlpha: 1,
                 duration: 1,
 
@@ -34,20 +34,20 @@ const HeroSection = ({scrollTo, goToSectionRef}) => {
                     end: "bottom 0%",
                     toggleActions: "play none restart reverse",
                 }
-                
+
             }
         )
-    },[])
+    }, [])
 
 
 
     return (
 
-            <div className="hero">
-                <div className="heroColour">
-                </div>
+        <div className="hero">
+            <div className="heroColour">
+            </div>
 
-                <div className="heroContent" ref = {bodyRef} >
+            <div className="heroContent" ref={bodyRef} >
                 <div className="namesWrapper">
                     <img className="flowers" src={flowers} alt="flower-motif" />
                     <div className="namesSection">
@@ -56,30 +56,33 @@ const HeroSection = ({scrollTo, goToSectionRef}) => {
                 </div>
 
                 <div className="heroDetails">
-                    <p className = "heroDetail">13 June 2026</p>
-                    <p className = "heroDetail">Natural History Museum, London</p>
+                    <p className="heroDetail">13 June 2026</p>
+                    <p className="heroDetail">Natural History Museum, London</p>
                 </div>
 
                 <div className="heroButtons">
-                              <button
-            type="button"
-            className="heroButton heroPrimary">
-                RSVP
-          </button>
+                    <a href="/rsvp">
+                    <button
+                        type="button"
+                        className="heroButton heroPrimary">
+                        RSVP
+                    </button>
+                    </a>
 
-                                              <button
-            type="button"
-            className="heroButton heroSecondary">
-                Hotels
-          </button>
+                    <a href="/hotels">
+                    <button
+                        type="button"
+                        className="heroButton heroSecondary">
+                        Hotels
+                    </button>
+                    </a>
 
-          
-          </div>
-          <button className = "downArrow" onClick = {()=> scrollTo(goToSectionRef)}></button>
-
-          </div>
+                </div>
+                <button className="downArrow" onClick={() => scrollTo(goToSectionRef)}></button>
 
             </div>
+
+        </div>
     );
 };
 
