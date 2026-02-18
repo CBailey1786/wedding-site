@@ -24,7 +24,7 @@ export default function RSVPQuestion4({ guest, value, onChange, onNext,nextLabel
     {
       id: "fish",
       label: "Seared Stone Bass",
-      sublabel: "with crsipy Italian portatoes, samphire & lobster velouté",
+      sublabel: "with crsipy Italian potatoes, samphire & lobster velouté",
       allergens: "shellfish, fish, milk, sulphites",
     },
     {
