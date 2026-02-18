@@ -46,9 +46,11 @@ const Hotels = () => {
             
             <PageHeader pageName = "Hotels" />
 
+<div className="hotels-wrapper">
+<div className="hotels">
             <h3>Recommended Hotels</h3>
             
-
+            
             <div className="hotelCardSection">
                 {HOTELS.map((h, i) => (
                     <HotelCard
@@ -62,7 +64,7 @@ const Hotels = () => {
 
             <h3>Other Hotels</h3>
 
-            <div className="addtionalHotelCards">
+            <div className="additionalHotelCards">
                 <AdditionalHotels name="The Royal Horseguards" address="2 Whitehall Ct, London SW1A 2EJ" image = {HorseguardsImg} website = "https://www.royalhorseguardshotel.com/" />
                 <AdditionalHotels name="The Corinthia" address="10 Whitehall Pl, London SW1A 2BD" image = {CorinthiaImg} website = "https://www.corinthia.com/en-gb/london/" />
                 <AdditionalHotels name="The Churchill" address="30 Portman Square, London, W1H 7BH" image = {ChurchillImg} website = "https://www.hyatt.com/hyatt-regency/en-US/lonch-hyatt-regency-london-the-churchill"/>
@@ -73,8 +75,8 @@ const Hotels = () => {
 
 
 
-
-
+</div>
+</div>
 
         </div>
     );

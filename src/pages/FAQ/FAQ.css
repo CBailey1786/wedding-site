@@ -1,3 +1,13 @@
+
+
+    .FAQ-wrapper{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+
+    }
+
 .faqTextBlock{
     display: flex;
     flex-direction: column;
@@ -11,9 +21,7 @@
     width: 100%;
 }
 
-.faq_icon{
-    fill: var(--dark2);
-}
+
 
 
 .faq{
@@ -35,4 +43,21 @@
 
 .faqQuestion{
       color: white;
+}
+
+@media (min-width: 768px) {
+
+    .FAQ-body{
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-lg);
+    width: 60vw;
+
+}
+
+
+    .faq-accordion-wrapper{
+        width: 40vw;
+    }
+
 }

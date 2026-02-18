@@ -16,27 +16,24 @@ const HeroSection = ({ scrollTo, goToSectionRef }) => {
     useEffect(() => {
 
         gsap.fromTo(
-            bodyRef.current,
-            {
-                autoAlpha: 0,
-                y: -40,
-            },
-
-            {
-                y: 0,
-                autoAlpha: 1,
-                duration: 1,
-
-                scrollTrigger: {
-                    scroller: ".homeBody",
-                    trigger: bodyRef.current,
-                    start: "top 60%",
-                    end: "bottom 0%",
-                    toggleActions: "play none restart reverse",
-                }
-
-            }
-        )
+  bodyRef.current,
+  {
+    autoAlpha: 0,
+    y: -16,        // smaller movement
+  },
+  {
+    y: 0,
+    autoAlpha: 1,
+    duration: 0.8, // slightly quicker
+    ease: "power2.out",
+    scrollTrigger: {
+      scroller: ".homeBody",
+      trigger: bodyRef.current,
+      start: "top 75%",   // triggers later = less dramatic
+      toggleActions: "play none none reverse",
+    }
+  }
+);
     }, [])
 
 
@@ -62,19 +59,19 @@ const HeroSection = ({ scrollTo, goToSectionRef }) => {
 
                 <div className="heroButtons">
                     <a href="/rsvp">
-                    <button
-                        type="button"
-                        className="heroButton heroPrimary">
-                        RSVP
-                    </button>
+                        <button
+                            type="button"
+                            className="heroButton heroPrimary">
+                            RSVP
+                        </button>
                     </a>
 
                     <a href="/hotels">
-                    <button
-                        type="button"
-                        className="heroButton heroSecondary">
-                        Hotels
-                    </button>
+                        <button
+                            type="button"
+                            className="heroButton heroSecondary">
+                            Hotels
+                        </button>
                     </a>
 
                 </div>

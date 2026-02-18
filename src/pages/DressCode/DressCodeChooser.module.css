@@ -41,14 +41,14 @@
 
 .picker_gents img{
     object-fit:cover;
-    transform: scale(1.5);
-    object-position: -35px 0px;
+    transform: scale(1.2);
+    object-position: 0px 0px;
 }
 
 .picker_ladies img{
     object-fit:cover;
     transform: scale(1.2);
-    object-position: -20px -40px;
+    object-position: -10px -40px;
 }
 
 
@@ -98,3 +98,10 @@
   padding: 8px 0;
 }
 
+@media (min-width: 768px) {
+
+.picker{
+  flex-direction: row;
+  width: 60vw;
+}
+}

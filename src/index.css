@@ -86,7 +86,7 @@ html, body {
 
 
 h1{
-  font-size: var(--text-xl);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);;
   color: var(--dark1);
   text-align: center;
   padding: 0;
@@ -95,21 +95,21 @@ h1{
 }
 
 h2{
-  font-size: var(--text-lg);
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
   color: var(--dark2);
     text-transform: uppercase;
     margin: 0;
 }
 
 h3{
-  font-size: var(--text-md);
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
   color: var(--dark2);
     text-transform: uppercase;
     margin: 0;
 }
 
 p{
-  font-size: var(--text-base);
+  font-size: clamp(0.9rem, 1vw, 1rem);
   color: var(--dark2);
   margin: 0;
   letter-spacing: 1px;

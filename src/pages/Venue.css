@@ -1,18 +1,44 @@
-.venuePhotos{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    flex-direction: row;
-    position: relative;
-}
 
 .venueImg{
-    width: 100%;
+      height: 60vh;  
     border-radius: 1rem;
 }
 
-@media screen and (max-width: 1000px) {
-  .venuePhotos {
-    grid-template-columns: 1fr;
+.venuebody{
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.venue-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+
+  .venuebody {
+    flex-direction: row-reverse;
+    align-items: flex-start;     /* important */
+    gap: var(--space-lg);
+
+    width: auto;
+    max-width: 90vw;             /* cap overall width */
+    margin: 0 auto;
   }
+
+  .venueImg {
+              /* ✅ fixed vertical height */
+    width: auto;                 /* ✅ width determined by image ratio */
+    object-fit: cover;
+    flex: 0 0 auto;              /* don't allow shrinking */
+  }
+
+  .blurb {
+    flex: 0 1 auto;              /* allow natural width */
+    max-width: 60ch;             /* keeps text readable */
+  }
+
 }

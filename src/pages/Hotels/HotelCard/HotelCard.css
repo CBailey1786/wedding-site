@@ -64,7 +64,7 @@
 
 .additionalHotelCard{
     width: 100%;
-    aspect-ratio: 3/2;
+    aspect-ratio: 3 / 2;
     position: relative;
 
     display: flex;
@@ -73,6 +73,8 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+
+    padding: clamp(12px, 2vw, 28px);  /* ✅ scales padding */
 }
 
 .additionalHotelImage{
@@ -126,10 +128,33 @@
     
 }
 
-.additionalHotelName{
+.additionalHotelName {
     color: white;
+    font-size: clamp(1rem, 2vw, 1.6rem);   /* scales nicely */
+    line-height: 1.2;
+    text-align: center;
 }
 
-.additionalHotelSubtitle{
+.additionalHotelSubtitle {
     color: white;
+    font-size: clamp(0.8rem, 1.4vw, 1rem);
+}
+
+.hotelButton {
+    line-height:clamp(0.75rem, 1.2vw, 0.95rem) ;
+    font-size: clamp(0.75rem, 1.2vw, 0.95rem);
+    padding: clamp(6px, 1vw, 12px) clamp(12px, 2vw, 20px);
+}
+
+@media (min-width: 768px) {
+    .HotelCard{
+
+    }
+
+    .cardImageWrapper{
+    height: 30vh;
+}
+
+
+
 }

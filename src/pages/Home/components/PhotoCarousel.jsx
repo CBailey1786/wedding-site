@@ -9,12 +9,22 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
     startIndex: initialIndex,
   });
 
-  const slideRefs = useRef([]); // holds card DOM nodes
+  const slideRefs = useRef([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const setSlideRef = useCallback((el, index) => {
     slideRefs.current[index] = el;
   }, []);
+
+  const scrollTo = useCallback(
+    (idx) => emblaApi && emblaApi.scrollTo(idx),
+    [emblaApi]
+  );
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   const applyTweenScale = useCallback(() => {
     if (!emblaApi) return;
@@ -25,15 +35,12 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
     const snaps = emblaApi.scrollSnapList();
     const slidesInView = emblaApi.slidesInView(true);
 
-    // Tweak these two numbers to taste:
-    const MIN_SCALE = 0.80; // side cards
-    const MAX_SCALE = 1.0;  // center card
+    const MIN_SCALE = 0.82;
+    const MAX_SCALE = 1.0;
 
-    // For each snap point, find distance from current scroll
     snaps.forEach((snap, snapIdx) => {
       let diffToTarget = snap - scrollProgress;
 
-      // Loop handling: adjust diff based on loop points so scaling stays correct
       if (engine.options.loop) {
         engine.slideLooper.loopPoints.forEach((loopPoint) => {
           const target = loopPoint.target();
@@ -45,13 +52,10 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
         });
       }
 
-      // Only bother scaling slides that are near view (performance)
       if (!slidesInView.includes(snapIdx)) return;
 
-      // Convert distance into a scale value
-      // closer to 0 distance => closer to MAX_SCALE
       const distance = Math.abs(diffToTarget);
-      const t = Math.max(0, 1 - distance * 2.2); // 2.2 controls falloff
+      const t = Math.max(0, 1 - distance * 2.2);
       const scale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * t;
 
       const node = slideRefs.current[snapIdx];
@@ -59,15 +63,22 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
     });
   }, [emblaApi]);
 
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  const onSlideClick = useCallback(
+    (idx) => {
+      if (!emblaApi) return;
+      // If you're mid-drag, Embla might block clicks – this avoids accidental jumps
+      if (emblaApi.clickAllowed && !emblaApi.clickAllowed()) return;
+
+      if (idx !== emblaApi.selectedScrollSnap()) {
+        emblaApi.scrollTo(idx);
+      }
+    },
+    [emblaApi]
+  );
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    // Init scale once
     applyTweenScale();
     onSelect();
 
@@ -76,34 +87,43 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
       applyTweenScale();
       onSelect();
     });
-
-    // Update scaling continuously while scrolling/dragging
     emblaApi.on("scroll", applyTweenScale);
 
     return () => {
       emblaApi.off("scroll", applyTweenScale);
+      emblaApi.off("select", onSelect);
     };
   }, [emblaApi, applyTweenScale, onSelect]);
 
-  const scrollTo = useCallback(
-    (idx) => emblaApi && emblaApi.scrollTo(idx),
-    [emblaApi]
-  );
+  
 
   return (
     <div className={styles.wrap}>
       <div className={styles.viewport} ref={emblaRef}>
         <div className={styles.container}>
-          {photos.map((p, idx) => (
-            <div className={styles.slide} key={`${p.src}-${idx}`}>
-              <div
-                className={styles.card}
-                ref={(el) => setSlideRef(el, idx)}
-              >
-                <img className={styles.img} src={p.src} alt={p.alt || ""} loading="lazy" />
+          {photos.map((p, idx) => {
+            const isSelected = idx === selectedIndex;
+
+            return (
+              <div className={styles.slide} key={`${p.src}-${idx}`}>
+                <button
+                  type="button"
+                  className={`${styles.card} ${isSelected ? styles.cardSelected : ""}`}
+                  ref={(el) => setSlideRef(el, idx)}
+                  onClick={() => onSlideClick(idx)}
+                  aria-label={`View photo ${idx + 1}`}
+                >
+                  <img
+                    className={styles.img}
+                    src={p.src}
+                    alt={p.alt || ""}
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </button>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -111,9 +131,7 @@ export function PhotoCarousel({ photos, initialIndex = 0 }) {
         {photos.map((_, idx) => (
           <button
             key={idx}
-            className={`${styles.dot} ${
-              idx === selectedIndex ? styles.dotActive : ""
-            }`}
+            className={`${styles.dot} ${idx === selectedIndex ? styles.dotActive : ""}`}
             onClick={() => scrollTo(idx)}
             aria-label={`Go to slide ${idx + 1}`}
           />

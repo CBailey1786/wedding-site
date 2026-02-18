@@ -1,13 +1,4 @@
-.RSVPMain {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;   /* fill full screen height */
-  box-sizing: border-box;
-padding: var(--space-xl) var(--space-md);
-  margin: 0;
-  gap: var(--space-md);
-}
+
 
 .RSVPHeader{
     display: flex;
@@ -28,6 +19,36 @@ padding: var(--space-xl) var(--space-md);
     flex-direction: column;
     gap: var(--space-md);
     width: 100%;
+}
+
+.rsvp-select-guest{
+     display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+
+@media (min-width: 768px){
+    .answer_list{
+    
+    width: 50vw;
+}
+
+.rsvp-step{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.select-guest-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+
 }
 
 

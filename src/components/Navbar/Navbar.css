@@ -1,76 +1,93 @@
+/* =========================
+   NAVBAR (MOBILE FIRST)
+========================= */
 
-/* Link groups */
-.navBarSection {
-  display: flex;
-  gap: 1rem;          /* modern browsers */
-  min-width: 0;
-  margin-bottom: 1.25rem;
-}
-/* flex-gap fallback (iOS 13-) */
-@supports not (gap: 1rem) {
-  .navBarSection { margin-left: -1rem; }
-  .navBarSection > * { margin-left: 1rem; }
-}
-
-.navBarSection:first-of-type { justify-content: flex-end; }
-.navBarSection:last-of-type  { justify-content: flex-start; }
-
-/* Links */
+/* ---------- Shared link styles ---------- */
 .nav-link {
   text-decoration: none;
-  font-size: 1.25rem;
+  font-size: var(--space-md);
   color: black;
-  /* height: fit-content;  ← not needed; can cause oddities */
   padding: 0.625rem 1.25rem;
   border-radius: 0.3125rem;
   white-space: nowrap;
 }
-.nav-link:hover { color: white; background-color: #283B34; }
-.nav-link.active { color: black; text-decoration: underline; }
-.nav-link.active:hover { color: white; }
 
-/* Center logo */
-.logoLink {
-  grid-column: 2;
-  justify-self: center;
-  display: inline-flex;
+.nav-link.active {
+  color: black;
+  text-decoration: underline;
+}
+
+.nav-link.active:hover {
+  color: white;
+}
+
+/* RSVP + Logout variants (kept from your current CSS) */
+.rsvp-link {
+  cursor: pointer;
+  background-color: var(--dark2);
+  color: var(--light1);
+  text-align: center;
+  border-radius: var(--space-sm);
   text-decoration: none;
 }
-.logoLink:focus { outline: none }
-.logoLink:focus-visible { outline: none } /* newer browsers */
 
-.nhmLogo{
-  width: 120px; /* fallback for older browsers */
-  width: clamp(90px, 11vw, 120px);
-  height: auto;
-  object-fit: contain;
+.rsvp-link:hover{
+  text-decoration: underline;
 }
 
-/* ===== BURGER (spanless; requires <i> inside the button) ===== */
-/* JSX should be: <button class="burger"><i></i></button> */
+.rsvp-link.active {
+  color: var(--light1);
+  background-color: var(--dark2);
+  text-decoration: none;
+}
 
-.burgerWrapper{
+.rsvp-link:visited {
+  text-decoration: none;
+}
+
+.logoutButton {
+  border: 1px var(--dark2) solid;
+  background-color: var(--light1);
+  color: var(--dark2);
+  border-radius: var(--space-sm);
+}
+
+.logoutButton:visited {
+  color: var(--dark2);
+  text-decoration: none;
+}
+
+/* ---------- Mobile drawer grouping ---------- */
+.nav-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+
+/* =========================
+   MOBILE: BURGER + DRAWER
+========================= */
+
+.burgerWrapper {
   position: fixed;
-  /* keep clear of notches */
   top: max(2rem, env(safe-area-inset-top));
-  left: max(2rem, env(safe-area-inset-right));
+  left: max(2rem, env(safe-area-inset-left));
   width: 48px;
   height: 48px;
   border-radius: 5px;
   z-index: 101;
   background-color: #fefefe;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  
-
-  
 }
+
 .burger {
-  display: flex; /* mobile-first: visible by default */
+  position: relative; /* important for pseudo bars */
   width: 28px;
   height: 22px;
-  color: #283B34;            /* bars use currentColor */
+  color: #283B34;
   background: none;
   border: 0;
   padding: 0;
@@ -78,9 +95,9 @@
 
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
-  transform: translateZ(0);  /* iOS compositing nudge */
-
+  transform: translateZ(0);
 }
+
 .burger::before,
 .burger::after,
 .burger i {
@@ -89,83 +106,95 @@
   position: absolute;
   left: 0;
   width: 100%;
-  height: 3px;               /* >=3px to avoid subpixel fade */
+  height: 3px;
   background: currentColor;
   border-radius: 2px;
 }
-.burger i { top: 50%; transform: translateY(-50%); }
+
+.burger i {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
 .burger::before { top: 0; }
 .burger::after  { bottom: 0; }
 
-.burger:focus { outline: none }
-.burger:focus-visible { outline: none } /* newer browsers */
-
-/* ===== SIDE MENU & BACKDROP (use fixed + dvh) ===== */
-.sideMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;             /* fallback */
+.burger:focus,
+.burger:focus-visible {
+  outline: none;
 }
-@supports (height: 100dvh) {
-  .sideMenu { height: 100dvh; } /* correct on iOS Safari */
-}
-.sideMenu {
-  position: fixed;
-  top: 0; left: 0;
-  height: 100vh;
-  width: 60%;
-  max-width: 340px;
-  background: #fff;
-  box-shadow: -2px 0 12px rgba(0,0,0,0.18);
-  padding: 4rem 1.5rem 2rem;
-  display: flex; flex-direction: column; gap: 1.25rem;
-  transform: translateX(-120%);
-  transition: transform 0.6s ease-in-out;
-  z-index: 2000;                 /* above backdrop */
-  visibility: hidden; pointer-events: none;
-}
-.sideMenu.open { transform: translateX(0); 
-  visibility: visible; 
-  pointer-events: auto; 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;}
 
-
-
-/* Backdrop: inert when closed */
+/* Backdrop */
 .backdrop {
   position: fixed;
   inset: 0;
   background-color: #283B34;
   opacity: 0;
-  pointer-events: none;          /* inert when closed */
+  pointer-events: none;
   transition: opacity 0.6s ease-in-out;
-  z-index: 1999;                 /* below the menu */
+  z-index: 1999;
 }
+
 .backdrop.open {
   opacity: 0.32;
   pointer-events: auto;
 }
 
+/* Drawer */
+.sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+  max-width: 340px;
+  background: #fff;
+  box-shadow: -2px 0 12px rgba(0, 0, 0, 0.18);
+  padding: 4rem 1.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  transform: translateX(-120%);
+  transition: transform 0.6s ease-in-out;
+  z-index: 2000;
+
+  visibility: hidden;
+  pointer-events: none;
+
+  height: 100vh; /* fallback */
+}
+
+@supports (height: 100dvh) {
+  .sideMenu { height: 100dvh; }
+}
+
+.sideMenu.open {
+  transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
+
+  /* your layout intent */
+  justify-content: space-between;
+}
+
+/* Close X */
 .closeBtn {
   position: fixed;
   top: max(1rem, env(safe-area-inset-top));
-  right: max(1rem, env(safe-area-inset-right)); /* use right for top-right */
+  right: max(1rem, env(safe-area-inset-right));
   width: 28px;
   height: 28px;
   background: none;
   border: 0;
   padding: 0;
   cursor: pointer;
-  color: #283B34;                 /* stroke color via currentColor */
-  z-index: 2010;                  /* above the sideMenu/backdrop */
+  color: #283B34;
+  z-index: 2010;
   -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
 }
 
-/* Two strokes forming the X */
 .closeBtn::before,
 .closeBtn::after {
   content: "";
@@ -173,70 +202,158 @@
   top: 50%;
   left: 50%;
   width: 100%;
-  height: 3px;                    /* >=3px for Safari crispness */
+  height: 3px;
   background: currentColor;
   border-radius: 2px;
   transform-origin: center;
 }
+
 .closeBtn::before { transform: translate(-50%, -50%) rotate(45deg); }
 .closeBtn::after  { transform: translate(-50%, -50%) rotate(-45deg); }
 
-.closeBtn:focus { outline: none }
-.closeBtn:focus-visible { outline: none } /* newer browsers */
-.closeBtn:focus { outline: none; box-shadow: none; }
+.closeBtn:focus,
+.closeBtn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
 
-/* ===== REDUCED MOTION ===== */
+
+/* =========================
+   DESKTOP: TOP NAVBAR
+   (hidden on mobile)
+========================= */
+
+.desktopNav {
+  display: none;   /* hidden by default */
+}
+
+/* Any shared styles go here */
+.desktopNav-inner {
+  transition: all 0.4s ease;
+}
+
+.nav-left,
+.nav-right {
+  display: none;   /* mobile doesn’t use them */
+}
+
+/* Logo image */
+.nav-logo img,
+.nhmLogo {
+  width: 60px; /* fallback */
+  width: clamp(40px, 5vw, 60px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
 @media (prefers-reduced-motion: reduce) {
-  .sideMenu, .burger::before, .burger::after, .burger i,
-  .backdrop { transition: none !important; }
+  .sideMenu,
+  .backdrop {
+    transition: none !important;
+  }
 }
 
-/* ===== BREAKPOINTS ===== */
-/* Desktop: hide burger, show desktop links */
-@media (min-width: 1200px) {
-  .burger { display: none; }
-  .navBarSection { display: flex; }
-}
-/* Mobile: hide desktop link groups (drawer handles links) */
-@media (max-width: 1200px) {
-  .navBarSection { display: none; }
-  .navbar { margin-top: 1.5rem; }
-}
 
-.rsvp-link{
-    text-decoration: none;
-    cursor: pointer;
-    background-color: var(--dark2);
-    color: var(--light1);
-    text-align: center;
-    border-radius: var(--space-sm);
-}
+/* =========================
+   BREAKPOINT: 2 VERSIONS ONLY
+   Mobile (<768) = drawer
+   Desktop (>=768) = top navbar
+========================= */
+@media (min-width: 1220px) {
 
-.rsvp-link.active{
-  background-color: var(--dark2);
-  text-decoration: none;
-}
-.rsvp-link:visited{
-  text-decoration: none;
-  color: var(--light1);
-}
+  /* hide mobile UI */
+  .burgerWrapper,
+  .sideMenu,
+  .backdrop {
+    display: none !important;
+  }
 
-.logoutButton{
-  text-decoration: none;
-    border: 1px var(--dark2) solid;
-    background-color: var(--light1);
+  /* show desktop top nav */
+  .desktopNav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background: #ffffff;
+    padding: 1rem 2rem;
+    height: 85px;
+  }
+
+  .desktopNav-inner {
+    max-width: 1400px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    min-width: 0;
+  }
+
+  .nav-logo {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .nav-link{
+    font-size: calc(var(--space-sm)*1.5);
     color: var(--dark2);
-    border-radius: var(--space-sm);
+  }
+
+  .nav-link:hover {
+  text-decoration: underline;
 }
 
-.logoutButton:visited{
-  text-decoration: none;
+.nav-link.active {
+  color: var(--dark2);
+  text-decoration: underline;
+}
+
+.nav-link.active:hover {
   color: var(--dark2);
 }
 
 
-.nav-section{
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
+/* RSVP + Logout variants (kept from your current CSS) */
+.rsvp-link {
+
+  color: var(--light1);
+
+}
+
+.rsvp-link.active {
+  color: var(--light1);
+}
+
+}
+
+
+/* =========================
+   LEGACY CLASSES (optional)
+   If you had older desktop nav markup,
+   keep these hidden so they don't interfere.
+========================= */
+.navBarSection,
+.logoLink {
+  display: none;
+}
+
+
+.logOutDesktop{
+  position: absolute;
+  right: 2vw;
+  cursor: pointer;
 }

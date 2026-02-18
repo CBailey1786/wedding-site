@@ -16,7 +16,7 @@ import RSVPSummary from "./RSVPSummary";
 import { useToast } from "../../components/Toasts/ToastContext";
 
 import { SUMMARY_STEP, DECLINE_ANSWERS } from "./constants";
-import { useParty } from "./useParty";
+import { useParty } from "../../components/Party/PartyContext";
 import { useRSVPSteps } from "./useRSVPSteps";
 
 import gsap from "gsap"
@@ -108,14 +108,16 @@ export default function RSVPMain() {
 console.log(selectedGuest)
 
   return (
-    <main className="mainBody" >
+    <main className="mainBody RSVPBody" >
       <RSVPHeader guest={selectedGuest} />
 
       {step === 0 && (
-        <>
+        <div className="select-guest-wrapper">
+        <div className="rsvp-select-guest">
           <p>Please select the guest for whom you would like to RSVP:</p>
           <GuestSelect guests={party.guests} onSelectGuest={handleSelectGuest} />
-        </>
+        </div>
+        </div>
       )}
 
 <div className="RSVPBody" ref = {bodyRef}>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Login.css"
 import nhmLogo from '../../../src/assets/natural-history-outline.png';
 import nhmOutsideWebp from '../../../src/assets/nhm-outside.webp?url';
-import PageHeader from "../../layouts/PageHeader";
+import flowers from '../../assets/heart-flower.svg';
 import { User, Lock, Eye, EyeOff } from "lucide-react";
 
 const UserIcon = () => <User size={18} />;
@@ -69,7 +69,14 @@ export default function Login() {
             </div>
 
             <div className="loginFormSection">
-                <PageHeader pageName="Login" />
+                <header className="header">
+                    <img className = "flowers" src={flowers} alt="flower-motif" />
+                    <div className = "headerText">
+                        <h2>Login</h2>
+                    </div>
+                        
+                </header>
+                           
 
                 <p>Please sign in using any full name given on your invite.</p>
 

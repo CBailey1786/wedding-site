@@ -33,7 +33,7 @@ export default function RSVPQuestion3({ guest, value, onChange, onNext,nextLabel
       </div>
 
 
-
+    <div className="rsvp-step">
       <div className="answer_list">
               <p className="rsvp-question">
         Please select { possessive } starter:
@@ -92,6 +92,7 @@ export default function RSVPQuestion3({ guest, value, onChange, onNext,nextLabel
         >
           {nextLabel ?? "Next"}
         </button>
+      </div>
       </div>
       </div>
     </>

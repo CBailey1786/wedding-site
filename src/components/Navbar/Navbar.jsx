@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import nhmLogo from '../../assets/natural-history-outline.png';
@@ -15,29 +15,82 @@ const Navbar = () => {
 
   const closeMenu = () => setIsOpen(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
+useEffect(() => {
+  const onScroll = () => setScrolled(window.scrollY > 60);
+
+  onScroll(); // set initial state in case user loads mid-page
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  return () => window.removeEventListener("scroll", onScroll);
+}, []);
+
   return (
     <>
-      <div className="burgerWrapper">
-        <button
-          className={`burger ${isOpen ? "open" : ""}`}
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-        >
+      {/* =======================
+      DESKTOP NAVBAR
+  ======================= */}
+  <nav className={`desktopNav ${scrolled ? "collapsed" : ""}`}>
+  <div className="desktopNav-inner">
+    <div className="nav-left">
+      <NavLink to="/" className="nav-link">Home</NavLink>
+      <NavLink to="/OurLondon" className="nav-link">Our London</NavLink>
+      <NavLink to="/Hotels" className="nav-link">Hotels</NavLink>
+      <NavLink to="/Venue" className="nav-link">Venue</NavLink>
+    </div>
 
+    <div className="nav-center">
+      {scrolled ? (
+        <button
+          className="burger desktopBurger"
+          onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
+          aria-controls="mobile-menu"
+          aria-expanded={isOpen}
+        >
           <i />
         </button>
-      </div>
-
-
-      {isOpen && (
-        <div
-          className="backdrop open"
-          onClick={closeMenu}
-          aria-hidden
-        />
+      ) : (
+        <a href="/">
+        <img className="nhmLogo" src={nhmLogo} alt="Venue" />
+        </a>
       )}
+    </div>
+
+    <div className="nav-right">
+      <NavLink to="/Travel" className="nav-link">Travel</NavLink>
+      <NavLink to="/FAQ" className="nav-link">FAQ</NavLink>
+      <NavLink to="/DressCode" className="nav-link">Dress Code</NavLink>
+      <NavLink to="/RSVP" className="nav-link rsvp-link">RSVP</NavLink>
+      
+    </div>
+    <button className = "nav-link logoutButton logOutDesktop" onClick={logout}>Log out</button>
+  </div>
+</nav>
+
+
+
+  {/* =======================
+      MOBILE NAVBAR
+  ======================= */}
+  <div className="burgerWrapper">
+    <button
+      className={`burger ${isOpen ? "open" : ""}`}
+      onClick={() => setIsOpen(!isOpen)}
+      aria-label="Toggle menu"
+    >
+      <i />
+    </button>
+  </div>
+
+  {isOpen && (
+    <div
+      className="backdrop open"
+      onClick={closeMenu}
+      aria-hidden
+    />
+  )}
 
         {/* Side drawer (mobile) */}
         <aside id="mobile-menu" className={`sideMenu ${isOpen ? "open" : ""}`}>

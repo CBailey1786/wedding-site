@@ -57,7 +57,7 @@ export function DressCodePanel({
               img.shape === "round" ? styles.round : styles.soft
             }`}
           >
-            <img src={img.src} alt={img.alt || ""} loading="lazy" />
+            <img className= {styles.panelImg} src={img.src} alt={img.alt || ""} loading="lazy" />
           </figure>
         ))}
       </div>

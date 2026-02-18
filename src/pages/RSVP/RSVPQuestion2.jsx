@@ -62,7 +62,7 @@ export default function RSVPQuestion2({
 
       <div className="answer_list">
         <p className="rsvp-question">
-          Please select the events { subject } will be attending:
+          Please select all of the events { subject } will be attending:
         </p>
 
         {visibleOptions.map((event) => {

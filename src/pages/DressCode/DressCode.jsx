@@ -1,5 +1,6 @@
 import React from "react";
 import { DressCodeChooser } from "./DressCodeChooser";
+import "./DressCode.css"
 
 import gentsCover from "../../assets/19099.webp";
 import ladiesCover from "../../assets/Edmund_Blair_Leighton_-_The_Golden_Train.jpg";
@@ -56,7 +57,11 @@ export default function DressCode() {
   return (
   <div className="mainBody">
               <PageHeader pageName = "Dress Code" />
+              <div className="dresscode-wrapper">
+                <div className="dresscode">
   <DressCodeChooser options={options} />
+  </div>
+  </div>
 
   </div>
   )

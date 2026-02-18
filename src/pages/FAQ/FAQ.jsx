@@ -12,6 +12,8 @@ const FAQ = () => {
     return (
         <div className="mainBody">
             <PageHeader pageName = "Frequently asked questions" />
+            <div className="FAQ-wrapper">
+            <div className="FAQ-body">
             <div className="faqTextBlock">
 
                 <p>Everything you need to know ahead of the big day.  <br></br><br></br>
@@ -23,10 +25,11 @@ const FAQ = () => {
                 </p>
 
             </div>
-
+            <div className="faq-accordion-wrapper">
             <FAQAccordion faqs={faqs} />
-
-
+            </div>
+</div>
+</div>
         </div>
     );
 };

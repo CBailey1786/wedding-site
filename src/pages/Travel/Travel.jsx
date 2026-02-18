@@ -10,6 +10,8 @@ const Travel = () => {
     return (
         <div className="mainBody">
             <PageHeader pageName = "Travel" />
+            <div className="travel-wrapper">
+            <div className="travel">
             <div className="travelTextBlock">
                 <h3>Passport Information </h3>
 
@@ -48,9 +50,9 @@ const Travel = () => {
 
                 </p>
 
-
+</div>
             </div>
-
+</div>
         </div>
     );
 };

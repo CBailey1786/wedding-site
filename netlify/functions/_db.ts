@@ -18,6 +18,7 @@ export async function getPartyWithDetails(partyId: string) {
       display_name,
       coming_from_abroad,
       arrival_date,
+      is_admin,
       guests:guests (
         guest_id,
         first_name,

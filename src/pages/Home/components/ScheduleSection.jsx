@@ -23,30 +23,34 @@ const ScheduleSection = ({ scrollTo = "noArrow", goToSectionRef, member_in_weddi
     const bodyRef = useRef();
 
     useEffect(() => {
+  const mm = window.matchMedia("(max-width: 767px)");
 
-        gsap.fromTo(
-            bodyRef.current,
-            {
-                autoAlpha: 0,
-                y: -40,
-            },
+  if (!mm.matches) return; // 🚫 Do nothing on desktop
 
-            {
-                y: 0,
-                autoAlpha: 1,
-                duration: 1,
+  const ctx = gsap.context(() => {
+    gsap.fromTo(
+  bodyRef.current,
+  {
+    autoAlpha: 0,
+    y: -16,        // smaller movement
+  },
+  {
+    y: 0,
+    autoAlpha: 1,
+    duration: 0.8, // slightly quicker
+    ease: "power2.out",
+    scrollTrigger: {
+      scroller: ".homeBody",
+      trigger: bodyRef.current,
+      start: "top 75%",   // triggers later = less dramatic
+      toggleActions: "play none none reverse",
+    }
+  }
+);
+  });
 
-                scrollTrigger: {
-                    scroller: ".homeBody",
-                    trigger: bodyRef.current,
-                    start: "top 60%",
-                    end: "bottom 0%",
-                    toggleActions: "play none restart reverse",
-                }
-
-            }
-        )
-    }, [])
+  return () => ctx.revert(); // ✅ proper GSAP cleanup
+}, []);
 
 
     return (
@@ -61,28 +65,16 @@ const ScheduleSection = ({ scrollTo = "noArrow", goToSectionRef, member_in_weddi
 
                 <div className="scheduleBody">
                     <div className="scheduleLeft">
-                        <div className="timelineBar"></div>
-                        {member_in_wedding_party && <div className = "dots_rehearsal">
-                        <div className="timelineDot dot1"></div>
-                        <div className="timelineDot dot2"></div>
-                        <div className="timelineDot dot3"></div>
-                        <div className="timelineDot dot4"></div>
-                        <div className="timelineDot dot5"></div>
-                        </div>
-                        }
-
-                        {!member_in_wedding_party && <div className = "dots_no_rehearsal">
-                        <div className="timelineDot dot1"></div>
-                        <div className="timelineDot dot2"></div>
-                        <div className="timelineDot dot3"></div>
-                        <div className="timelineDot dot4"></div>
-
-                        </div>
-                        }
+                         <div className={`timelineDots ${member_in_wedding_party ? "isRehearsal" : ""}`}>
+    {(member_in_wedding_party ? [1,2,3,4,5] : [1,2,3,4]).map((_, i) => (
+      <div key={i} className="timelineDot" />
+    ))}
+  </div>
+                    
                         
 
                     </div>
-                    <div className="scheduleRight">
+                    <div className="scheduleRight scheduleList">
                         {member_in_wedding_party && 
                         <ScheduleComponent
                         id = "rehearsal"

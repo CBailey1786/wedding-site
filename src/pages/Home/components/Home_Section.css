@@ -12,7 +12,7 @@
 
     width: 100%;
 
-    scroll-snap-align: center;
+    scroll-snap-align: start;
 }
 
 .heroContent {
@@ -68,7 +68,7 @@
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
-    
+
 }
 
 .heroDetail {
@@ -87,10 +87,10 @@
     border-radius: var(--space-sm);
     width: calc(var(--space-xl)*2);
     height: var(--space-lg);
+    cursor: pointer;
 }
 
 .heroSecondary {
-    cursor: pointer;
     background: none;
     border: 1px var(--light1) solid;
     color: var(--light1);
@@ -170,7 +170,7 @@
     scroll-snap-align: start;
 
     padding: var(--space-xl) var(--space-md);
-   
+
 }
 
 .scheduleOfEvents {
@@ -180,11 +180,11 @@
     justify-content: flex-start;
     gap: var(--space-lg);
     position: relative;
-     
+
 }
 
-.scheduleBody{
-     width: 100%;
+.scheduleBody {
+    width: 100%;
     display: grid;
     grid-template-columns: 20% 80%;
     position: relative;
@@ -192,7 +192,7 @@
 
 }
 
-.scheduleRight{
+.scheduleRight {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -200,7 +200,7 @@
     width: 100%;
 }
 
-.scheduleComponentBody{
+.scheduleComponentBody {
     width: 100%;
     position: relative;
 
@@ -209,7 +209,7 @@
     gap: var(--space-md)
 }
 
-.scheduleComponentImage{
+.scheduleComponentImage {
     width: 100%;
     aspect-ratio: 5/3;
     object-fit: cover;
@@ -217,22 +217,22 @@
     filter: grayscale(100%);
 }
 
-.scheduleComponentTextSection{
+.scheduleComponentTextSection {
     display: flex;
     flex-direction: column;
     gap: var(--space-md);
 }
 
-.scheduleLeft{
-    position:relative;
+.scheduleLeft {
+    position: relative;
 }
 
-.timelineBar{
+.timelineBar {
 
     position: absolute;
     top: 12px;
     left: 0;
-    right:0;
+    right: 0;
     margin: 0 auto;
     width: var(--space-xs);
     height: calc(100% - 11px);
@@ -240,11 +240,11 @@
     z-index: 1;
 }
 
-.timelineDot{
-    
+.timelineDot {
+
 
     left: 0;
-    right:0;
+    right: 0;
     margin: 0 auto;
     width: var(--space-sm);
     height: var(--space-sm);
@@ -254,6 +254,7 @@
     z-index: 2;
 }
 
+/* 
 .dots_no_rehearsal .dot1{
     position: absolute;
     top: 0.7%;
@@ -297,7 +298,7 @@
 .dots_rehearsal .dot5{
     position: absolute;
     top: 100%;
-}
+} */
 
 
 
@@ -307,7 +308,8 @@
     height: fit-content;
     box-sizing: border-box;
     position: relative;
-    background-color: var(--light2);
+    background-color: var(--light1);
+
     /* fallback */
     min-height: calc(var(--vh, 1vh) * 100);
 
@@ -317,22 +319,252 @@
 
     gap: var(--space-lg);
 
-    scroll-snap-align: center;
-
-    padding: var(--space-xl) var(--space-md);
+    scroll-snap-align: start;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-   
+
 }
 
-.image_welcome{
+.image_welcome {
     object-fit: cover;
     object-position: 0 0;
 }
 
-.image_wedding{
+.image_wedding {
     object-fit: cover;
     object-position: 0 -90px;
+}
+
+
+    /* Vertical bar */
+    .scheduleLeft::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: var(--space-xs);
+        background: var(--dark2);
+        border-radius: 999px;
+        z-index: 1;
+    }
+
+    /* Dot container */
+    .timelineDots {
+        position: relative;
+        z-index: 2;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* First at top, last at bottom */
+        align-items: center;
+
+        height: 100%;
+        width: 100%;
+    }
+
+    .timelineDot {
+        width: var(--space-sm);
+        height: var(--space-sm);
+        border-radius: 999px;
+        background-color: var(--light2);
+        border: solid var(--space-xs) var(--dark2);
+    }
+
+    /* 4 vs 5 rows depending on rehearsal */
+    .timelineDots:not(.isRehearsal)~* {}
+
+    /* no-op */
+    .scheduleLeft:has(.timelineDots.isRehearsal) {
+        grid-template-rows: repeat(5, 1fr);
+    }
+
+    .scheduleLeft:not(:has(.timelineDots.isRehearsal)) {
+        grid-template-rows: repeat(4, 1fr);
+    }
+
+
+/* DESKTOP: hero becomes shorter */
+@media (min-width: 768px) {
+
+    .hero {
+        height: 70vh;
+        min-height: clamp(0px, 30vh, 100vh);
+        scroll-snap-align: start;
+        /* optional: feels better than 'center' on desktop */
+        background-size: cover;
+        /* optional: looks better than 210% on wide screens */
+        background-position: 50% 35%;
+    }
+
+    .heroContent {
+        height: 70vh;
+        min-height: clamp(0px, 30vh, 100vh);
+        padding: 6rem 0;
+        /* optional: keeps content breathing room */
+    }
+
+    /* Optional: hide the arrow on desktop (since it isn't a full snap page anymore) */
+    .downArrow {
+        display: none;
+    }
+
+    /* Optional: make buttons horizontal on desktop */
+    .heroButtons {
+        flex-direction: row;
+    }
+
+    .homeBody {
+        scroll-snap-type: none;
+    }
+
+    .snapPage {
+        scroll-snap-align: none;
+    }
+
+    .scheduleOfEvents {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    /* 3-column master grid: left | timeline | right */
+    .scheduleBody {
+        display: grid;
+        grid-template-columns: 1fr 40px 1fr;
+        column-gap: clamp(30px, 4vw, 80px);
+        align-items: start;
+    }
+
+    /* timeline stays in the middle */
+    .scheduleLeft {
+        grid-column: 2;
+        grid-row: 1;
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .timelineBar {
+        position: relative;
+        left: 50%;
+    }
+
+    .scheduleLeft {
+        grid-column: 2;
+        grid-row: 1;
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+    }
+
+
+
+    /* let the items participate directly in scheduleBody grid */
+    .scheduleRight {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        display: contents;
+    }
+
+    /* vertical spacing between items */
+    .scheduleList {
+        display: grid;
+        gap: clamp(28px, 3vw, 56px);
+    }
+
+    /* IMPORTANT: remove each item's own grid */
+    .scheduleComponentBody {
+        display: contents;
+    }
+
+    /* common sizing */
+    .scheduleComponentTextSection {
+        max-width: clamp(34ch, 34vw, 46ch);
+        min-width: 0;
+    }
+
+    .scheduleComponentImage {
+        width: clamp(220px, 22vw, 340px);
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        border-radius: 14px;
+        display: block;
+        filter: grayscale(100%);
+    }
+
+    /* ODD: text left, image right */
+    .scheduleList .scheduleComponentBody:nth-child(odd) .scheduleComponentTextSection {
+        grid-column: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-self: end;
+        text-align: right;
+        padding-right: clamp(10px, 1.2vw, 24px);
+        /* pushes away from the line */
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(odd) p {
+        text-align: right;
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(odd) .scheduleComponentImage {
+        grid-column: 3;
+        justify-self: start;
+        padding-left: clamp(10px, 1.2vw, 24px);
+        /* pushes away from the line */
+    }
+
+    /* EVEN: image left, text right */
+    .scheduleList .scheduleComponentBody:nth-child(even) .scheduleComponentImage {
+        grid-column: 1;
+        justify-self: end;
+        padding-right: clamp(10px, 1.2vw, 24px);
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(even) .scheduleComponentTextSection {
+        grid-column: 3;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        justify-self: start;
+        text-align: left;
+        padding-left: clamp(10px, 1.2vw, 24px);
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(1)>* {
+        grid-row: 1;
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(2)>* {
+        grid-row: 2;
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(3)>* {
+        grid-row: 3;
+    }
+
+    .scheduleList .scheduleComponentBody:nth-child(4)>* {
+        grid-row: 4;
+    }
+
+    .photoSection {
+
+    /* fallback */
+    min-height: calc(var(--vh, 1vh) * 100);
+
+    /* modern override */
+    min-height: calc(100dvh);
+
+}
+
 }

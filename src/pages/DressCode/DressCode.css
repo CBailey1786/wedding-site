@@ -1,0 +1,16 @@
+
+@media (min-width: 768px) {
+
+.dresscode-wrapper{
+display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.dresscode{
+    display: flex;
+    flex-direction: row;
+    width: 60vw;
+}
+}

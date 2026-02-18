@@ -8,7 +8,7 @@ export default function PageHeader ({pageName}) {
                 <header className="header">
                     <img className = "flowers" src={flowers} alt="flower-motif" />
                     <div className = "headerText">
-                        <h1>{pageName}</h1>
+                        <h2>{pageName}</h2>
                     </div>
                        
                 </header>

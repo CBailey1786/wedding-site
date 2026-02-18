@@ -3,7 +3,12 @@ h3{
     text-align: justify;
 }
 
-
+  .hotels{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: var(--space-md);
+  }
 
 .nhmImage {
     width: 90%;
@@ -25,8 +30,28 @@ h3{
     gap: var(--space-md);
 }
 
-@media (max-width: 850px) {
-  .miniCards {
-    flex-direction: column;
+@media (min-width: 768px) {
+
+  .hotels{
+    width: 80vw;
   }
+
+  .hotels-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+
+  .hotelCardSection{
+    flex-direction: row;
+  }
+
+  .additionalHotelCards{
+    display: flex;
+    flex-direction: row;
+    gap: var(--space-md);
+}
+
 }

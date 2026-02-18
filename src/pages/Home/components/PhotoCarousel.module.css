@@ -2,50 +2,130 @@
   --carousel-gap: 18px;
 }
 
-
 .wrap {
   width: 100%;
-  display: flex;
+  display: inline-flex;          /* ✅ shrink-wrap vertically */
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;   /* ✅ don’t stretch */
+  height: auto;   
 }
 
-/* Enables the “half shown off screen” look */
+/* Give the carousel a sensible max width on desktop */
+@media (min-width: 768px) {
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+/* “peek” padding */
 .viewport {
   width: 100%;
   overflow: hidden;
-  padding: 0 32px;
+  position: relative;
   touch-action: pan-y;
+
+  height: auto;                  /* ✅ */
+  flex: 0 0 auto;  
+}
+
+.viewport::before,
+.viewport::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50px;              /* fade width */
+  z-index: 5;
+  pointer-events: none;
+}
+
+
+/* .viewport::before {
+  left: 0;
+  background: linear-gradient(to right, var(--light-2, #f4f7f4), rgba(0,0,0,0));
+}
+
+.viewport::after {
+  right: 0;
+  background: linear-gradient(to left, var(--light-2, #f4f7f4), rgba(0,0,0,0));
+}
+ */
+
+@media (min-width: 768px) {
+  .wrap {
+    max-width: 100vw;
+    margin: 0 auto;
+  }
+
+  .slide {
+    flex: 0 0 28%;          /* <-- key change */
+  }
+}
+
+@media (min-width: 1100px) {
+  .slide {
+    flex: 0 0 24%;
+  }
 }
 
 .container {
   display: flex;
+  align-items: flex-start; 
+  gap: var(--carousel-gap, 18px);
+  padding: 0 56px;          /* ensures side slides can be fully visible */
   will-change: transform;
-
-  /* spacing model */
-  margin-left: -48px;   /* cancels first slide's left padding */
-  padding-right: 18px;  /* ✅ adds matching spacing at the end */
+  align-items: center;
 }
+
 
 .slide {
-  flex: 0 0 72%;
+    display: flex;
+  align-items: flex-start;
   min-width: 0;
-
-  /* spacing between slides */
-  padding-left: 18px;
-
+  flex: 0 0 72%;
   display: flex;
   justify-content: center;
+  position: relative;       /* for z-index */
+  z-index: 1;
 }
-/* Rounded photo card */
+
+/* Tablet/desktop: smaller cards so they fit the screen properly */
+@media (min-width: 768px) {
+  .slide {
+    flex: 0 0 46%;
+  }
+}
+
+/* Wide desktop: show more context */
+@media (min-width: 1100px) {
+  .slide {
+    flex: 0 0 24%;
+  }
+}
+
 .card {
   width: 100%;
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
-  transform: scale(0.85);           /* starting size */
-  transition: transform 120ms linear; /* keeps it smooth */
+
+  transform: scale(0.85);
+  transition: transform 120ms linear;
   will-change: transform;
+
+  cursor: pointer;
+  border: 0;
+  padding: 0;
+  background: transparent;
+
+  transform-origin: center center; /* helps scaling behave */
+}
+
+/* Optional: subtle emphasis on selected slide */
+.cardSelected {
+  cursor: default;
 }
 
 .img {
@@ -53,8 +133,9 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Optional */
-  filter: grayscale(1);
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: grayscale();
 }
 
 .dots {

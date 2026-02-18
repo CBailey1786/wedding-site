@@ -92,6 +92,8 @@ export default function RSVPQuestion5({ guest, value, onChange, onNext,nextLabel
         <div className="rsvp-progress-bar rsvp-progress-bar--step5" />
       </div>
 
+      <div className="rsvp-step">
+
       <div className="answer_list">
         <p className="rsvp-question">
           Do {subject} have any special dietary requirements?
@@ -178,6 +180,7 @@ export default function RSVPQuestion5({ guest, value, onChange, onNext,nextLabel
             {nextLabel ?? "Next"}
           </button>
         </div>
+      </div>
       </div>
       </>
   );

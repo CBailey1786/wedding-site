@@ -10,6 +10,8 @@ const Venue = () => {
     return (
         <div className="mainBody">
             <PageHeader pageName = "Venue" />
+            <div className="venue-wrapper">
+            <div className="venuebody">
             <div className="blurb">
                 <p>Established in 1881, the Natural History Museum is one of London’s true treasures. Sometimes dubbed a <span style = {{fontStyle: "italic"}}>cathedral to nature</span>, more than 80 million specimens are housed within its soaring Romanesque arches, including some collected by Charles Darwin himself (who will be presiding over the evening from his perch atop the grand staircase). </p>
                 <br></br>
@@ -19,9 +21,10 @@ const Venue = () => {
 
             </div>
 
-            <div className = "venuePhotos">
-                <img className = "venueImg" src={CameronNHM} alt="Cameron at the NHM" />
+            <img className = "venueImg" src={CameronNHM} alt="Cameron at the NHM" />
+
             </div>
+        </div>
         </div>
     );
 };

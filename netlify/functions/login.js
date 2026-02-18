@@ -25,8 +25,8 @@ export const handler = async (event) => {
   const { data: guests, error } = await supabase
     .from("guests")
     .select("party_id, first_name, last_name")
-    .eq("first_name", first)
-    .eq("last_name", last)
+    .ilike("first_name", first)
+    .ilike("last_name", last)
     .limit(2);
 
 

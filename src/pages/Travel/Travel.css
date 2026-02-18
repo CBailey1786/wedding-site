@@ -1,3 +1,16 @@
+.travel-wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.travel{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
 .travelTextBlock{
     display: flex;
     flex-direction: column;
@@ -15,11 +28,24 @@
     width: 100%;
     padding: var(--space-sm) var(--space-md) ;
     text-decoration: none;
-    
 }
 
 .travelPrimary {
     cursor: pointer;
     background-color: var(--dark2);
     color: var(--light1);
+}
+
+@media (min-width: 768px) {
+    .travel{
+        width: 60vw;
+    }
+
+    .travelButton {
+        align-self: center;
+    justify-self: center;
+    width: 20vw;
+}
+
+
 }
