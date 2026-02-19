@@ -5,7 +5,7 @@
   height: 100vh;
   min-height: 100vh;   /* fill full screen height */
   box-sizing: border-box;
-    padding-top: var(--space-xl) ;
+    padding-top: var(--space-md) ;
   margin: 0;
   gap: var(--space-md);
   position: relative;
@@ -69,8 +69,9 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  left: 12px;
-  right: 12px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
   bottom: 12px;
   z-index: 1000;
 
@@ -177,4 +178,17 @@ border-radius: 5px 5px 0 0;
     width: 100%;
     position: relative;
     z-index: 999;
+}
+
+@media (min-width: 768px) {
+
+  .mapBottomCard {
+
+  left: 12px;
+  right:auto;
+  margin: none;
+  bottom: 12px;
+ 
+  }
+
 }

@@ -23,7 +23,7 @@ h3{
   margin-bottom: var(--space-md);
 }
 
-.addtionalHotelCards{
+.additionalHotelCards{
     width: 100%;
     display: flex;
     flex-direction: column;

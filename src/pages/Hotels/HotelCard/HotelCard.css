@@ -16,6 +16,9 @@
     
 }
 
+.HotelCardBody{
+    height: 20vh;
+}
 .HotelCardBottom{
     padding: var(--space-md) var(--space-md);
 
@@ -39,10 +42,14 @@
     border-radius: var(--space-sm);
     width: var(--space-xl);
     height: var(--space-lg);
-
     width: 100%;
     padding: var(--space-sm) var(--space-md) ;
     text-decoration: none;
+
+      display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
     
 }
 
@@ -131,7 +138,7 @@
 .additionalHotelName {
     color: white;
     font-size: clamp(1rem, 2vw, 1.6rem);   /* scales nicely */
-    line-height: 1.2;
+    line-height: clamp(1rem, 2vw, 1.6rem);
     text-align: center;
 }
 
@@ -147,9 +154,6 @@
 }
 
 @media (min-width: 768px) {
-    .HotelCard{
-
-    }
 
     .cardImageWrapper{
     height: 30vh;
