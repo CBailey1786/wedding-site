@@ -181,6 +181,8 @@ const plusOneNameLabel = (() => {
       <div className="answer_list">
         <p className="summary-label">SUMMARY</p>
 
+        <p>Please review your selections. Amendments can be made using the pencil icon. Once you are happy, please submit your RSVP using the button at the bottom.</p>
+
         {rows.map((row) => (
           <div key={row.key} className="answer multiline summary-row">
             <div className="summary-text">
