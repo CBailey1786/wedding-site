@@ -74,7 +74,7 @@
   display: flex;
   align-items: flex-start; 
   gap: var(--carousel-gap, 18px);
-  padding: 0 56px;          /* ensures side slides can be fully visible */
+  padding: 0 18px;          /* ensures side slides can be fully visible */
   will-change: transform;
   align-items: center;
 }
@@ -106,6 +106,7 @@
 }
 
 .card {
+  height: auto; 
   width: 100%;
   aspect-ratio: 3 / 4;
   border-radius: 18px;

@@ -169,7 +169,7 @@
 
     scroll-snap-align: start;
 
-    padding: var(--space-xl) var(--space-md);
+    padding: var(--space-lg) var(--space-sm);
 
 }
 
@@ -398,7 +398,7 @@
         /* optional: feels better than 'center' on desktop */
         background-size: cover;
         /* optional: looks better than 210% on wide screens */
-        background-position: 50% 35%;
+        background-position: 50% 40%;
     }
 
     .heroContent {
@@ -485,6 +485,11 @@
     .scheduleComponentBody {
         display: contents;
     }
+
+    .scheduleComponentText{
+  white-space: pre-line;
+}
+    
 
     /* common sizing */
     .scheduleComponentTextSection {

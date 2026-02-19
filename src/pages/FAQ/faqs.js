@@ -28,7 +28,8 @@ export const faqs = [
     {
     category: "Travel",
     question: "Will there be parking at the venue?",
-    answer: "Unfortunately due to the location of our venue, we are not able to provide parking. However, there are ample public transport options as well as the provided transport from the JW Marriott Grosvenor House Hotel, Park Lane.",
+    answer: ["Unfortunately due to the location of our venue, we are not able to provide parking. However, there are ample public transport options as well as the provided transport from the JW Marriott Grosvenor House Hotel, Park Lane. ",
+        "If you do require parking there is limited on-street parking for the museum on Queens Gate on Saturday evenings / Sunday mornings."]
   },
 {
     category: "Food",

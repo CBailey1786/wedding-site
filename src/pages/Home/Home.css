@@ -21,3 +21,23 @@
   .webkit-scrollbar {
     display: none;
   }
+
+  @media (min-width: 768px) {
+    .homeBody{
+
+  overflow-x: auto;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
+  scroll-snap-type: none;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+      height: fit-content;
+}
+
+
+  .webkit-scrollbar {
+    display:auto;
+  }
+
+  }

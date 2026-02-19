@@ -51,7 +51,7 @@ export default function RSVPQuestion4({ guest, value, onChange, onNext,nextLabel
 
       <div className="answer_list">
               <p className="rsvp-question">
-        Please select { possessive } main course:
+        Please select { possessive } main course for the wedding breakfast:
       </p>
 
         {MAIN_OPTIONS.map((main) => {

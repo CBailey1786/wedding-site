@@ -11,7 +11,7 @@ const ScheduleComponent = ({id, header, date, location, address, dress_code, pho
             <div className="scheduleComponentTextSection">
                 <div className="scheduleComponentHeader">
                     <h2 className="scheduleComponentHeader">{header}</h2>
-                    <p className="scheduleComponentText">{date}</p>
+                    <p className="scheduleComponentText" dangerouslySetInnerHTML={{ __html: date }}></p>
                 </div>
 
                 <div className="scheduleComponentAddress">
