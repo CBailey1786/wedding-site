@@ -341,15 +341,19 @@
     /* Vertical bar */
     .scheduleLeft::before {
         content: "";
+        width: 100%;
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
         width: var(--space-xs);
         background: var(--dark2);
         border-radius: 999px;
         z-index: 1;
+        display: flex;
+        justify-content: center;
     }
 
     /* Dot container */
@@ -365,6 +369,7 @@
 
         height: 100%;
         width: 100%;
+
     }
 
     .timelineDot {
@@ -405,6 +410,7 @@
         height: 70vh;
         min-height: clamp(0px, 30vh, 100vh);
         padding: 6rem 0;
+        gap: var(--space-md);
         /* optional: keeps content breathing room */
     }
 
@@ -434,7 +440,7 @@
     /* 3-column master grid: left | timeline | right */
     .scheduleBody {
         display: grid;
-        grid-template-columns: 1fr 40px 1fr;
+        grid-template-columns: 1fr 20px 1fr;
         column-gap: clamp(30px, 4vw, 80px);
         align-items: start;
     }
@@ -463,7 +469,7 @@
 
         display: flex;
         justify-content: center;
-        align-items: stretch;
+        align-items: center;
     }
 
 
@@ -487,6 +493,8 @@
     }
 
     .scheduleComponentText{
+        width: clamp(34ch, 34vw, 46ch);
+        max-width: clamp(34ch, 34vw, 46ch);
   white-space: pre-line;
 }
     
@@ -514,7 +522,6 @@
         justify-content: center;
         justify-self: end;
         text-align: right;
-        padding-right: clamp(10px, 1.2vw, 24px);
         /* pushes away from the line */
     }
 
@@ -525,7 +532,6 @@
     .scheduleList .scheduleComponentBody:nth-child(odd) .scheduleComponentImage {
         grid-column: 3;
         justify-self: start;
-        padding-left: clamp(10px, 1.2vw, 24px);
         /* pushes away from the line */
     }
 
@@ -533,7 +539,6 @@
     .scheduleList .scheduleComponentBody:nth-child(even) .scheduleComponentImage {
         grid-column: 1;
         justify-self: end;
-        padding-right: clamp(10px, 1.2vw, 24px);
     }
 
     .scheduleList .scheduleComponentBody:nth-child(even) .scheduleComponentTextSection {
@@ -543,7 +548,7 @@
         justify-content: center;
         justify-self: start;
         text-align: left;
-        padding-left: clamp(10px, 1.2vw, 24px);
+
     }
 
     .scheduleList .scheduleComponentBody:nth-child(1)>* {

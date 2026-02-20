@@ -27,7 +27,7 @@ export default function DressCode() {
       panelProps: {
         title: "Wedding Ceremony & Reception",
         text: [
-          "Black tie encouraged. Please wear a formal suit or tuxedo with a tie or bowtie. If you are looking to rent a suit we recommend the below:",
+          "Black tie. Please wear a formal dinner jacket (tuxedo for those from the US) with a bowtie. If you are looking to rent a suit we recommend the below:",
         ],
         links: [
           { label: "Oliver Brown", href: "https://hire.oliverbrownlondon.com/collections/black-tie-hire" },

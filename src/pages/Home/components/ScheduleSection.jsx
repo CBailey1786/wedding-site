@@ -89,7 +89,7 @@ const ScheduleSection = ({ scrollTo = "noArrow", goToSectionRef, member_in_weddi
                         <ScheduleComponent
                         id = "welcome"
                             header="Welcome Party"
-                            date="12 June 2026 19:00 - 00:00"
+                            date="12 June 2026 19:30 - 00:00<br><br>Dinner & drinks will be served."
                             location="The Nest,"
                             address="14-15 Langham Place, London, W1B 2QS"
                             dress_code="Smart Casual"
@@ -99,10 +99,10 @@ const ScheduleSection = ({ scrollTo = "noArrow", goToSectionRef, member_in_weddi
                         <ScheduleComponent
                         id = "wedding"
                             header="Wedding Ceremony & Reception"
-                            date="13 June 2026 18:30 - 03:00.<br>Ceremony at 19:15."
+                            date="13 June 2026 18:30 - 03:00<br>Ceremony at 19:15."
                             location="The Natural History Museum,"
                             address="Cromwell Road, London, SW7 5BD"
-                            dress_code="Black Tie Encouraged"
+                            dress_code="Black Tie"
                             photo={wedding_ceremony}
                         />
 
