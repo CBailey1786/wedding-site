@@ -114,7 +114,7 @@ console.log(selectedGuest)
       {step === 0 && (
         <div className="select-guest-wrapper">
         <div className="rsvp-select-guest">
-          <p>You can amend any response in your RSVP at any time until the deadline of 31st March 2026.</p>
+          <p>You can amend any response in your RSVP at any time until the deadline of 31st March 2026 (even after you initially submit your response).</p>
           <p>Please select the guest for whom you would like to RSVP:</p>
           
           <GuestSelect guests={party.guests} onSelectGuest={handleSelectGuest} />
