@@ -51,6 +51,7 @@ h3{
   .additionalHotelCards{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap; 
     gap: var(--space-md);
 }
 

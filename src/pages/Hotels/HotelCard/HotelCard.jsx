@@ -1,8 +1,8 @@
 import React from "react";
 import "./HotelCard.css";
 
-const HotelCard = ({ name, img, info }) => {
-
+const HotelCard = ({ name, img, info,discount_subheader, link , discount_text  }) => {
+  console.log(name, discount_subheader)
   return (
 
     <div className="HotelCard">
@@ -29,9 +29,21 @@ const HotelCard = ({ name, img, info }) => {
 
         </div>
 
+                {discount_subheader != null &&
+        
+        <div className="roomBlockDiv">
+        <h3>{discount_subheader}</h3>
+        <p>{discount_text}</p>
+        <a className = "links" href={link} target="_blank">Room block rate link</a>
+        </div>
+        }
+
         <div className="ButtonContainer">
           <a className="hotelButton hotelPrimary" href={info.website} target="_blank">Visit their website</a>
         </div>
+
+
+
       </div>
     </div>
 

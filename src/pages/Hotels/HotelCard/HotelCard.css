@@ -4,6 +4,7 @@
 
     border: 1px var(--light3) solid;
     border-radius: var(--space-sm);
+    height: fit-content;
 }
 
 .cardImageWrapper{
@@ -159,6 +160,27 @@
     height: 30vh;
 }
 
+.additionalHotelCard{
+    width: 48%;
+}
 
 
+}
+
+.roomBlockDiv{
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.links {
+  color: var(--dark2);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  width: fit-content;
+}
+
+.links:hover {
+  border-bottom-color: rgba(0, 0, 0, 0.35);
 }
