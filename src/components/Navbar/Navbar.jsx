@@ -39,9 +39,6 @@ useEffect(() => {
   <div className="desktopNav-inner">
 
         <div className="AdminDesktop">
-      {party?.is_admin && (
-        <NavLink to="/admin">Admin</NavLink>
-      )}
       </div>
     <div className="nav-left">     
       <NavLink to="/" className="nav-link">Home</NavLink>
@@ -121,10 +118,8 @@ useEffect(() => {
           {/* <NavLink to="/WeddingParty" className="nav-link" onClick={closeMenu}>Wedding Party</NavLink> */}
           </div>
           <div className="nav-section">
-          <NavLink to="/RSVP" className="nav-link rsvp-link" onClick={closeMenu}>RSVP</NavLink>
-          {party?.is_admin && (
-        <NavLink to="/Admin" className="nav-link rsvp-link">Admin</NavLink>
-      )}
+          <NavLink to="https://www.prezola.com/buy/view/327344" className="nav-link rsvp-link" target="_blank" onClick={closeMenu}>Registry</NavLink>
+          
           <button className = "nav-link logoutButton" onClick={logout}>Log out</button>
           </div>
         </aside>
