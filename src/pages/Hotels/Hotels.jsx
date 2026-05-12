@@ -24,9 +24,12 @@ const Hotels = () => {
                 displayWebsite: "www.marriott.com",
                 website: "https://www.marriott.com/en-us/hotels/longh-jw-marriott-grosvenor-house-london/overview/",
             },
-            discount_subheader: "Room block",
-            link: "https://app.marriott.com/reslink?id=1764688867015&key=GRP&app=resvlink",
-            discount_text: "We currently have a small number of Superior King Rooms on hold at a discounted rate of £520 plus 5% service. If you find that the reservation link has sold out, you'd like a different room type or you'd like your room for a longer period please email our wedding planner on caroline@carolinesianweddings.co.uk ."
+            discount_subheader: null,
+            link: null,
+            discount_text: null
+            // discount_subheader: "Room block",
+           // link: "https://app.marriott.com/reslink?id=1764688867015&key=GRP&app=resvlink",
+            // discount_text: "We currently have a small number of Superior King Rooms on hold at a discounted rate of £520 plus 5% service. If you find that the reservation link has sold out, you'd like a different room type or you'd like your room for a longer period please email our wedding planner on caroline@carolinesianweddings.co.uk ."
         },
         // duplicate for now — swap this out later
 

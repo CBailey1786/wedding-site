@@ -357,3 +357,9 @@
   right: 2vw;
   cursor: pointer;
 }
+
+.AdminDesktop{
+  position: absolute;
+  left: 2vw;
+  cursor: pointer;
+}

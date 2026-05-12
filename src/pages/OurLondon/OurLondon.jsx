@@ -120,7 +120,7 @@ const OurLondon = () => {
           <div className="mapBottomCard" role="dialog" aria-label="Location details">
 
 
-                        {selectedPoint.image && (
+          {selectedPoint.image && (
                           <div className = "cardImageWrapper">
               <img
                 src={selectedPoint.image}

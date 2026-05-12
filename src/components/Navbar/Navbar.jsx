@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import "./Navbar.css";
 import nhmLogo from '../../assets/natural-history-outline.png';
 
+import { useParty } from "../../components/Party/PartyContext";
+
 async function logout() {
     await fetch("/.netlify/functions/logout", {
         method: "POST",
@@ -26,6 +28,8 @@ useEffect(() => {
   return () => window.removeEventListener("scroll", onScroll);
 }, []);
 
+    const { party } = useParty();
+
   return (
     <>
       {/* =======================
@@ -33,7 +37,13 @@ useEffect(() => {
   ======================= */}
   <nav className={`desktopNav ${scrolled ? "collapsed" : ""}`}>
   <div className="desktopNav-inner">
-    <div className="nav-left">
+
+        <div className="AdminDesktop">
+      {party?.is_admin && (
+        <NavLink to="/admin">Admin</NavLink>
+      )}
+      </div>
+    <div className="nav-left">     
       <NavLink to="/" className="nav-link">Home</NavLink>
       <NavLink to="/OurLondon" className="nav-link">Our London</NavLink>
       <NavLink to="/Hotels" className="nav-link">Hotels</NavLink>
@@ -62,7 +72,7 @@ useEffect(() => {
       <NavLink to="/Travel" className="nav-link">Travel</NavLink>
       <NavLink to="/FAQ" className="nav-link">FAQ</NavLink>
       <NavLink to="/DressCode" className="nav-link">Dress Code</NavLink>
-      <NavLink to="/RSVP" className="nav-link rsvp-link">RSVP</NavLink>
+      <NavLink to="https://www.prezola.com/buy/view/327344" className="nav-link rsvp-link" target="_blank">Registry</NavLink>
       
     </div>
     <button className = "nav-link logoutButton logOutDesktop" onClick={logout}>Log out</button>
@@ -100,7 +110,7 @@ useEffect(() => {
           </button>
 
           <div className="nav-section">
-
+            
           <NavLink to="/" className="nav-link" onClick={closeMenu}>Home</NavLink>
           <NavLink to="/OurLondon" className="nav-link" onClick={closeMenu}>Our London</NavLink>
           <NavLink to="/Hotels" className="nav-link" onClick={closeMenu}>Hotels</NavLink>
@@ -112,6 +122,9 @@ useEffect(() => {
           </div>
           <div className="nav-section">
           <NavLink to="/RSVP" className="nav-link rsvp-link" onClick={closeMenu}>RSVP</NavLink>
+          {party?.is_admin && (
+        <NavLink to="/Admin" className="nav-link rsvp-link">Admin</NavLink>
+      )}
           <button className = "nav-link logoutButton" onClick={logout}>Log out</button>
           </div>
         </aside>

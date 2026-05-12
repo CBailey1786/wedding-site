@@ -8,6 +8,8 @@ export default function useAuth() {
     async function check() {
       const res = await fetch("/.netlify/functions/me");
 
+      console.log(res)
+
       if (res.ok) {
         const json = await res.json();
         setParty(json);

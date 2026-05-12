@@ -97,11 +97,3 @@
   color: var(--dark2);
   padding: 8px 0;
 }
-
-@media (min-width: 768px) {
-
-.picker{
-  flex-direction: row;
-  width: 60vw;
-}
-}

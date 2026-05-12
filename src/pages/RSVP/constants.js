@@ -25,6 +25,7 @@ export const DECLINE_ANSWERS = {
 };
 
 export const EDIT_STEP_MAP = {
+  plusOne: 1,
   rsvp: 1,
   events: 2,
   starter: 3,

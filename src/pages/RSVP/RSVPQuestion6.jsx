@@ -7,7 +7,7 @@ export default function RSVPQuestion6({ guest, value, onChange, onNext,nextLabel
   const selectedHotel = value?.hotel ?? null;
   const otherHotel = value?.otherHotel ?? "";
 
-    const { subject } = getPronouns(guest)
+  const { subject } = getPronouns(guest)
 
   const HOTEL_OPTIONS = [
     { id: "grosvenor", label: "Grosvenor House" },

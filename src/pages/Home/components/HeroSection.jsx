@@ -58,19 +58,19 @@ const HeroSection = ({ scrollTo, goToSectionRef }) => {
                 </div>
 
                 <div className="heroButtons">
-                    <a href="/rsvp">
+                    <a href="https://www.prezola.com/buy/view/327344" target="_blank">
                         <button
                             type="button"
                             className="heroButton heroPrimary">
-                            RSVP
+                            Registry
                         </button>
                     </a>
 
-                    <a href="/hotels">
+                    <a href="/travel">
                         <button
                             type="button"
                             className="heroButton heroSecondary">
-                            Hotels
+                            Travel
                         </button>
                     </a>
 

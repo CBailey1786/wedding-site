@@ -47,3 +47,4 @@ export function makeCookie(token, rememberMe = false) {
 
   return attrs.join("; ");
 }
+

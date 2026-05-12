@@ -1,0 +1,9 @@
+.responseCallout{
+    font-size: var(--space-md);
+    font-weight: 600;
+}
+
+.responseOutOfCallout{
+    font-size: var(--space-sm);
+    color: var(--grey1);
+}

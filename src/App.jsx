@@ -11,10 +11,13 @@ import Travel from "./pages/Travel/Travel";
 import RSVP from "./pages/RSVP/RSVPMain";
 import FAQ from "./pages/FAQ/FAQ";
 import DressCode from "./pages/DressCode/DressCode";
+import Admin from "./pages/Admin/Admin";
 
 import PrivateRoute from "./components/PrivateRoute";
+import AdminRoute from "./components/Admin/AdminRoute";
 import AuthenticatedLayout from "./layouts/AuthenticatedLayout";
 import { PartyProvider } from "./components/Party/PartyContext";
+import { AdminProvider } from "./components/Admin/AdminContext";
 
 function ProtectedShell() {
   return (
@@ -35,6 +38,7 @@ export default function App() {
 
         {/* PROTECTED */}
         <Route element={<ProtectedShell />}>
+
           <Route path="/" element={<Home />} />
           <Route path="/OurLondon" element={<OurLondon />} />
           <Route path="/Hotels" element={<Hotels />} />
@@ -43,6 +47,19 @@ export default function App() {
           <Route path="/FAQ" element={<FAQ />} />
           <Route path="/DressCode" element={<DressCode />} />
           <Route path="/RSVP" element={<RSVP />} />
+
+          {/* ADMIN ONLY */}
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <AdminProvider>
+                  <Admin />
+                </AdminProvider>
+              </AdminRoute>
+            }
+          />
+
         </Route>
       </Routes>
     </Router>

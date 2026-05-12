@@ -1,0 +1,234 @@
+.adm-wrap {
+  padding: 0 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* cards */
+.adm-gridCards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.adm-card {
+    display: flex;
+    flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: var(--space-sm);
+  padding: var(--space-md) var(--space-md);
+    background: var(--light1);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.adm-cardLabel {
+  font-size: calc(var(--space-sm)*1.5);
+  opacity: 0.75;
+}
+
+.adm-subheader{
+      font-size: calc(var(--space-sm));
+  opacity: 0.75;
+}
+
+.adm-cardValue {
+        margin-top: var(--space-md);
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.adm-cardSub {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.adm-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.adm-btn {
+  border: 1px solid rgba(0,0,0,0.15);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.adm-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.adm-grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.adm-panel {
+display: flex;
+flex-direction: column;
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.adm-panelHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.adm-muted {
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.adm-bars {
+    margin-top: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.adm-barRow {
+  display: grid;
+  grid-template-columns: minmax(120px, 1.2fr) 3fr minmax(90px, 0.8fr);
+  align-items: center;
+  gap: 10px;
+}
+
+.adm-barLabel {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.adm-barTrack {
+  height: 10px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.adm-barFill {
+  height: 100%;
+  background: var(--dark2);
+  border-radius: 999px;
+}
+
+.adm-barValue {
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.adm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adm-listRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.adm-pill {
+  border: 1px solid rgba(0,0,0,0.12);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 13px;
+  background: rgba(0,0,0,0.03);
+}
+
+.adm-warn {
+  border: 1px solid rgba(0,0,0,0.18);
+  background: rgba(255, 215, 0, 0.15);
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+/* responsive */
+@media (max-width: 980px) {
+  .adm-gridCards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .adm-grid2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============================= */
+/* Dietary table styling */
+/* ============================= */
+
+.adm-tableWrap {
+  margin-top: var(--space-md);
+  overflow-x: auto;
+}
+
+.adm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.adm-table thead th {
+  text-align: left;
+  font-weight: 600;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  opacity: 0.75;
+}
+
+.adm-table tbody tr {
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.adm-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.adm-table td {
+  padding: 10px 8px;
+  vertical-align: top;
+}
+
+.adm-table td:first-child {
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.adm-table td:last-child {
+  color: var(--dark2);
+}
+
+/* subtle hover like your cards */
+.adm-table tbody tr:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+/* show more / less button alignment */
+.adm-tableActions {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* optional: soften long dietary text */
+.adm-table td:last-child {
+  word-break: break-word;
+  line-height: 1.4;
+}
